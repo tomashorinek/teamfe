@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+h1, h2, h3 {
+  color: #111;
+}
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.footer .socials a {
+  color: #ccc;
+  margin: 0 1rem;
+  text-decoration: none;
+}
