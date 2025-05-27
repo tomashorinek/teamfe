@@ -1,57 +1,184 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TeamFE - Fitness Evolution | Komunita, koučink, produkty a vývoj chytrého vybavení do fitka">
-  <title>TeamFE | Fitness Evolution</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>TeamFE - Fitness Evolution</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #111;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 3rem;
+      background: linear-gradient(to right, #111, #222);
+    }
+    header img {
+      height: 60px;
+      border-radius: 8px;
+    }
+    .headline {
+      flex-grow: 1;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    .subhead {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 0.2rem;
+    }
+    .cta {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .cta a {
+      background-color: #FF6600;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 0.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+    .cta a:hover {
+      background-color: #D94F00;
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+      border-bottom: 1px solid #222;
+    }
+    .section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff3c3c;
+    }
+    .three-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .three-columns div {
+      flex: 1 1 calc(33.333% - 1rem);
+      background-color: #1c1c1c;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .three-columns strong {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .external-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .external-link a {
+      color: #ff3c3c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #000;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ccc;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <img src="images/teamfe-logo.png" alt="TeamFE Logo" class="logo" />
-    <h1>TeamFE - Fitness Evolution</h1>
-    <p>Komunita. Koučink. Produkty. Skutečný progres.</p>
-    <nav>
-      <ul>
-        <li><a href="#o-nas">O nás</a></li>
-        <li><a href="#tym">Tým</a></li>
-        <li><a href="#produkty">Produkty</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
+  <header>
+    <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/teamfe-logo.png" alt="TeamFE Logo" />
+    <div class="headline">
+      <h1>TeamFE - Fitness Evolution</h1>
+      <div class="subhead">Evoluce nezačíná ve fitku. Začíná v tobě.</div>
+    </div>
   </header>
 
-  <section id="o-nas">
-    <h2>O nás</h2>
-    <p>TeamFE vznikl z touhy poskytnout víc než jen trénink. Jsme vývojáři, trenéři, klienti a lidé, kteří věří, že fitness není jen cíl, ale evoluce.</p>
-  </section>
+  <div class="cta">
+    <a href="#komunita">Přidej se</a>
+    <a href="#onas">Zjistit víc</a>
+  </div>
 
-  <section id="tym">
-    <h2>Náš tým</h2>
-    <div class="team-member"><h3>Kuba Železňák</h3><p>Zakladatel TeamFe. Trenér, kouč a vize celé značky.</p></div>
-    <div class="team-member"><h3>Tomáš Hořínek</h3><p>Spoluzakladatel a architekt značky TeamFe.</p></div>
-    <div class="team-member"><h3>Vojta Janša</h3><p>Vývoj a výroba chytrého vybavení pro fitness.</p></div>
-  </section>
+  <div class="section" id="onas">
+    <h2>Proč TeamFE?</h2>
+    <div class="three-columns">
+      <div>
+        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/zkušenosti.png" alt="Zkušenosti" width="100" height="100">
+        <strong>Zkušenosti</strong><br />Trénink podložený vědou a praxí
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/komunita.png" alt="Komunita" width="100" height="100">
+        <strong>Komunita</strong><br />Síla jednotlivce, podpora týmu
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/vyvoj.png" alt="Vývoj" width="100" height="100">
+        <strong>Vývoj</strong><br />Stroje a přístup, které jinde nenajdeš
+      </div>
+    </div>
+  </div>
 
-  <section id="produkty">
+  <div class="section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
-  </section>
+    <div class="external-link">
+      <a href="https://teamfe-shop.cz">Navštiv náš e-shop</a>
+    </div>
+  </div>
 
-  <section id="blog">
-    <h2>Blog</h2>
-    <p>Importujeme hodnotný obsah z Instagramu. Edukace, trénink, mindset a tipy z praxe.</p>
-    <a href="#">Příspěvek 1</a>
-  </section>
+  <div class="section" id="komunita">
+    <h2>Komunita a Členství</h2>
+    <p>
+      Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny
+      like-minded lidí.
+    </p>
+    <div class="cta">
+      <a href="#">Získat přístup</a>
+    </div>
+  </div>
 
-  <section id="kontakt">
-    <h2>Kontakt</h2>
-    <p>Email: info@teamfe.cz</p>
-    <p>Instagram: <a href="https://instagram.com/kuba_fe">@kuba_fe</a></p>
-  </section>
+  <div class="section" id="koucink">
+    <h2>Koučink</h2>
+    <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
+    <div class="cta">
+      <a href="#">Vyplnit dotazník</a>
+    </div>
+  </div>
 
-  <footer><p>&copy; 2025 TeamFE. Všechna práva vyhrazena.</p></footer>
+  <div class="section" id="blog">
+    <h2>Blog a videa</h2>
+    <p>Tipy, příběhy, triky a rady na cestě za lepším tréninkem.</p>
+    <div class="cta">
+      <a href="#">Číst blog</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 TEAMFE &ndash; Všechna práva vyhrazena<br />
+    <a href="#">Instagram</a> | <a href="#">Kontakt</a>
+  </footer>
 </body>
 </html>
