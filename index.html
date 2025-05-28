@@ -3,182 +3,123 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TeamFE - Fitness Evolution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #111;
-      color: #f0f0f0;
-      line-height: 1.6;
+      background-color: #0d0d0d;
+      color: #fff;
+      scroll-behavior: smooth;
     }
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2rem 3rem;
-      background: linear-gradient(to right, #111, #222);
-    }
-    header img {
-      height: 60px;
-      border-radius: 8px;
-    }
-    .headline {
-      flex-grow: 1;
       text-align: center;
+      padding: 3rem 1rem;
+      background: radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 100%);
     }
-    h1 {
+    header h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      margin: 0;
+      font-size: 2.8rem;
+      margin: 0.5rem 0;
     }
-    .subhead {
-      font-size: 1.1rem;
+    header p {
+      font-size: 1.2rem;
       color: #ccc;
-      margin-top: 0.2rem;
     }
-    .cta {
+    .cta-buttons {
       margin-top: 1.5rem;
-      text-align: center;
     }
-    .cta a {
+    .cta-buttons button {
       background-color: #FF6600;
       color: white;
       padding: 12px 24px;
       border: none;
       cursor: pointer;
-      border-radius: 4px;
-      margin: 0.5rem;
-      font-weight: bold;
-      text-decoration: none;
+      border-radius: 5px;
+      margin: 0 0.5rem;
       transition: all 0.3s ease-in-out;
     }
-    .cta a:hover {
+    .cta-buttons button:hover {
       background-color: #D94F00;
       transform: scale(1.05);
     }
     .section {
-      padding: 4rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-      border-bottom: 1px solid #222;
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff3c3c;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
     }
-    .three-columns {
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .icon-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .three-columns div {
-      flex: 1 1 calc(33.333% - 1rem);
-      background-color: #1c1c1c;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .three-columns strong {
-      font-size: 1.1rem;
-      color: #fff;
-    }
-    .external-link {
-      text-align: center;
+      gap: 2rem;
+      justify-content: center;
       margin-top: 2rem;
     }
-    .external-link a {
-      color: #ff3c3c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
+    .icon-card {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 250px;
       text-align: center;
-      padding: 3rem 1rem;
-      background-color: #000;
-      font-size: 0.9rem;
+      transition: all 0.3s ease;
     }
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      text-decoration: none;
+    .icon-card:hover {
+      background-color: #2c2c2c;
+      transform: translateY(-5px);
+    }
+    .icon-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+    }
+    .gradient-section {
+      background: linear-gradient(to bottom, #111 0%, #181818 100%);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/teamfe-logo.png" alt="TeamFE Logo" />
-    <div class="headline">
-      <h1>TeamFE - Fitness Evolution</h1>
-      <div class="subhead">Evoluce nezačíná ve fitku. Začíná v tobě.</div>
+    <img src="images/teamfe-logo.png" alt="TeamFE Logo" style="height: 60px" />
+    <h1>TeamFE - Fitness Evolution</h1>
+    <p>Evoluce nezačíná ve fitku. Začíná v tobě.</p>
+    <div class="cta-buttons">
+      <button onclick="location.href='#join'">Přidej se</button>
+      <button onclick="location.href='#more'">Zjistit víc</button>
     </div>
   </header>
 
-  <div class="cta">
-    <a href="#komunita">Přidej se</a>
-    <a href="#onas">Zjistit víc</a>
-  </div>
-
-  <div class="section" id="onas">
-    <h2>Proč TeamFE?</h2>
-    <div class="three-columns">
-      <div>
-        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/zkušenosti.png" alt="Zkušenosti" width="100" height="100">
-        <strong>Zkušenosti</strong><br />Trénink podložený vědou a praxí
+  <section class="section gradient-section fade-in" id="more">
+    <h2 style="color: #ff3c3c;">Proč TeamFE?</h2>
+    <div class="icon-grid">
+      <div class="icon-card">
+        <img src="images/ikona-zkusenosti.png" alt="Zkušenosti" />
+        <h3>Zkušenosti</h3>
+        <p>Trénink podložený vědou a praxí</p>
       </div>
-      <div>
-        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/komunita.png" alt="Komunita" width="100" height="100">
-        <strong>Komunita</strong><br />Síla jednotlivce, podpora týmu
+      <div class="icon-card">
+        <img src="images/ikona-komunita.png" alt="Komunita" />
+        <h3>Komunita</h3>
+        <p>Síla jednotlivce, podpora týmu</p>
       </div>
-      <div>
-        <img src="https://raw.githubusercontent.com/teamfe-cz/teamfe-site/main/images/vyvoj.png" alt="Vývoj" width="100" height="100">
-        <strong>Vývoj</strong><br />Stroje a přístup, které jinde nenajdeš
+      <div class="icon-card">
+        <img src="images/ikona-vyvoj.png" alt="Vývoj" />
+        <h3>Vývoj</h3>
+        <p>Stroje a přístup, které jinde nenajdeš</p>
       </div>
     </div>
-  </div>
-
-  <div class="section" id="produkty">
-    <h2>Produkty</h2>
-    <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
-    <div class="external-link">
-      <a href="https://teamfe-shop.cz">Navštiv náš e-shop</a>
-    </div>
-  </div>
-
-  <div class="section" id="komunita">
-    <h2>Komunita a Členství</h2>
-    <p>
-      Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny
-      like-minded lidí.
-    </p>
-    <div class="cta">
-      <a href="#">Získat přístup</a>
-    </div>
-  </div>
-
-  <div class="section" id="koucink">
-    <h2>Koučink</h2>
-    <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
-    <div class="cta">
-      <a href="#">Vyplnit dotazník</a>
-    </div>
-  </div>
-
-  <div class="section" id="blog">
-    <h2>Blog a videa</h2>
-    <p>Tipy, příběhy, triky a rady na cestě za lepším tréninkem.</p>
-    <div class="cta">
-      <a href="#">Číst blog</a>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 TEAMFE &ndash; Všechna práva vyhrazena<br />
-    <a href="#">Instagram</a> | <a href="#">Kontakt</a>
-  </footer>
+  </section>
 </body>
 </html>
