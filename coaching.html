@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching - TeamFE</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #111;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    h1 .highlight {
+      color: #ff3c3c;
+      font-weight: 600;
+    }
+    h1 .bold-name {
+      color: #ffffff;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+    .profile {
+      max-width: 900px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      padding: 2rem;
+    }
+    .profile img {
+      width: 250px;
+      border-radius: 10px;
+    }
+    .profile-text {
+      flex: 1;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background-color: #1c1c1c;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #2b2b2b;
+      color: white;
+    }
+    button {
+      margin-top: 2rem;
+      background-color: #FF6600;
+      color: white;
+      padding: 12px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+    button:hover {
+      background-color: #D94F00;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1><span class="highlight">Osobní koučink</span> s <span class="bold-name">Kubou Železňákem</span></h1>
+
+  <div class="profile">
+    <img src="/images/kuba-profile.jpg" alt="Kuba Železňák">
+    <div class="profile-text">
+      <p>Kuba je tváří a hlavním trenérem TeamFE. Jeho přístup kombinuje roky osobní zkušenosti, precizní znalosti a skutečný zájem o každého klienta. Není jen certifikovaným koučem, ale i členem týmu ProgressiveCoaches.cz, který pomohl desítkám lidí dosáhnout nejen formy, ale i dlouhodobé rovnováhy mezi tréninkem, jídlem a životem.</p>
+      <p>Společně sestavíte plán, který bude odpovídat přesně vašemu režimu – ať už pracujete na směny, nebo máte minimum času. Nejde o obecné rady, ale o osobní přístup. Právě ten dělá rozdíl.</p>
+    </div>
+  </div>
+
+  <h2>Formulář pro osobní koučink</h2>
+  <form action="mailto:info@teamfe.cz" method="POST" enctype="text/plain">
+    <label for="email">Váš e-mail:</label>
+    <input type="email" id="email" name="E-mail" required>
+
+    <label for="name">Jméno a příjmení:</label>
+    <input type="text" id="name" name="Jméno" required>
+
+    <label for="phone">Telefonní číslo:</label>
+    <input type="text" id="phone" name="Telefon">
+
+    <label for="goal">Jaký je Váš cíl:</label>
+    <select id="goal" name="Cíl">
+      <option value="redukce">Redukce tuku</option>
+      <option value="svaly">Nabrání svalů</option>
+      <option value="zavody">Příprava na závody</option>
+    </select>
+
+    <label for="age">Věk:</label>
+    <input type="number" id="age" name="Věk">
+
+    <label for="height">Výška (v cm):</label>
+    <input type="number" id="height" name="Výška">
+
+    <label for="weight">Váha (v kg):</label>
+    <input type="number" id="weight" name="Váha">
+
+    <label for="diet">Dietní omezení:</label>
+    <input type="text" id="diet" name="Dietní omezení">
+
+    <label for="health">Zdravotní problémy nebo zranění:</label>
+    <textarea id="health" name="Zdravotní problémy"></textarea>
+
+    <label for="notes">Další poznámky:</label>
+    <textarea id="notes" name="Poznámky"></textarea>
+
+    <button type="submit">Odeslat formulář</button>
+  </form>
+</body>
+</html>
