@@ -1,20 +1,49 @@
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-h1, h2, h3 {
-  color: #111;
-}
-.footer {
   background: #111;
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
+  color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
-.footer .socials a {
-  color: #ccc;
-  margin: 0 1rem;
+header {
+  text-align: center;
+  padding: 2rem;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+}
+.cta-buttons .btn {
+  background: #FF6600;
+  color: white;
+  padding: 12px 24px;
   text-decoration: none;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+}
+.cta-buttons .btn:hover {
+  background: #D94F00;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card {
+  background: #1c1c1c;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 200px;
+}
+.card img {
+  width: 100px;
+  margin-bottom: 0.5rem;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #000;
 }

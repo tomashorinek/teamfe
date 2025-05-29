@@ -1,125 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>TeamFE - Fitness Evolution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 100%);
-    }
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      margin: 0.5rem 0;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    .cta-buttons {
-      margin-top: 1.5rem;
-    }
-    .cta-buttons button {
-      background-color: #FF6600;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 0 0.5rem;
-      transition: all 0.3s ease-in-out;
-    }
-    .cta-buttons button:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
-    }
-    .section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards;
-    }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .icon-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .icon-card {
-      background-color: #1a1a1a;
-      padding: 1rem;
-      border-radius: 10px;
-      width: 250px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .icon-card:hover {
-      background-color: #2c2c2c;
-      transform: translateY(-5px);
-    }
-    .icon-card img {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1rem;
-    }
-    .gradient-section {
-      background: linear-gradient(to bottom, #111 0%, #181818 100%);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <img src="images/teamfe-logo.png" alt="TeamFE Logo" style="height: 60px" />
+    <img src="images/logo.png" alt="TeamFE Logo" width="120">
     <h1>TeamFE - Fitness Evolution</h1>
     <p>Evoluce nezačíná ve fitku. Začíná v tobě.</p>
     <div class="cta-buttons">
-      <button onclick="location.href='#join'">Přidej se</button>
-      <button onclick="location.href='#more'">Zjistit víc</button>
+      <a href="coaching.html" class="btn">Přidej se</a>
+      <a href="#produkty" class="btn">Zjistit víc</a>
     </div>
   </header>
 
-  <section class="section gradient-section fade-in" id="more">
-    <h2 style="color: #ff3c3c;">Proč TeamFE?</h2>
-    <div class="icon-grid">
-      <div class="icon-card">
-        <img src="images/ikona-zkusenosti.png" alt="Zkušenosti" />
+  <section class="why" id="why">
+    <h2>Proč TeamFE?</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="images/zkusenosti.png" alt="Zkušenosti">
         <h3>Zkušenosti</h3>
         <p>Trénink podložený vědou a praxí</p>
       </div>
-      <div class="icon-card">
-        <img src="images/ikona-komunita.png" alt="Komunita" />
+      <div class="card">
+        <img src="images/komunita.png" alt="Komunita">
         <h3>Komunita</h3>
         <p>Síla jednotlivce, podpora týmu</p>
       </div>
-      <div class="icon-card">
-        <img src="images/ikona-vyvoj.png" alt="Vývoj" />
+      <div class="card">
+        <img src="images/vyvoj.png" alt="Vývoj">
         <h3>Vývoj</h3>
         <p>Stroje a přístup, které jinde nenajdeš</p>
       </div>
     </div>
   </section>
+
+  <section class="products" id="produkty">
+    <h2>Produkty</h2>
+    <ul>
+      <li><strong>FE Deadlift Jack</strong> – Skvělý pomocník pro snadné zvednutí osy při nakládání kotoučů.</li>
+      <li><strong>GymPin 10 mm / 8 mm</strong> – Přidej zátěž na stroj, když nestačí klasické cihly.</li>
+      <li><strong>FE Adaptér na kladky</strong> – Nastavitelná šířka úchopu, ideální pro trénink zad, paží i tricepsů.</li>
+    </ul>
+    <p><a href="products.html" class="btn">Navštiv náš e-shop</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 TEAMFE – Všechna práva vyhrazena</p>
+  </footer>
 </body>
 </html>
