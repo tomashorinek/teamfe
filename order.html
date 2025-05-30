@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Objednávka produktů - TeamFE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      padding: 2rem;
+    }
+    h1 {
+      color: #ff3c3c;
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background-color: #1a1a1a;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: none;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background-color: #ff6600;
+      color: white;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #d94f00;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛒 Objednávka produktů TeamFE</h1>
+  <form action="mailto:info@teamfe.cz" method="POST" enctype="text/plain">
+    <label for="name">Jméno a příjmení</label>
+    <input type="text" id="name" name="Jméno" required>
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="E-mail" required>
+
+    <label for="phone">Telefon (volitelné)</label>
+    <input type="text" id="phone" name="Telefon">
+
+    <label for="products">Zvolený produkt</label>
+    <select id="products" name="Produkt">
+      <option value="Deadlift Jack">Deadlift Jack</option>
+      <option value="GymPin 8 mm">GymPin 8 mm</option>
+      <option value="GymPin 10 mm">GymPin 10 mm</option>
+      <option value="Nastavitelný adaptér">Nastavitelný adaptér</option>
+    </select>
+
+    <label for="quantity">Počet kusů</label>
+    <input type="number" id="quantity" name="Počet kusů" min="1" required>
+
+    <label for="address">Doručovací adresa</label>
+    <textarea id="address" name="Adresa" rows="4" required></textarea>
+
+    <label for="note">Poznámka k objednávce</label>
+    <textarea id="note" name="Poznámka" rows="3"></textarea>
+
+    <label>
+      <input type="checkbox" name="Souhlas" required>
+      Souhlasím se zpracováním údajů pro účel vyřízení objednávky.
+    </label>
+
+    <input type="submit" value="Odeslat objednávku">
+  </form>
+</body>
+</html>
