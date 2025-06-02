@@ -4,142 +4,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coaching - TeamFE</title>
+  <title>Koučink s Kubou</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #111;
-      color: #f0f0f0;
       margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+    }
+    .section {
+      background-image: url('images/kubafecoaching.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 5rem 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    .form-container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(0,0,0,0.7);
       padding: 2rem;
-      line-height: 1.6;
+      border-radius: 12px;
     }
-    h1, h2 {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-    h1 .highlight {
-      color: #ff3c3c;
-      font-weight: 600;
-    }
-    h1 .bold-name {
-      color: #ffffff;
-      font-weight: 800;
-    }
-    h2 {
-      font-size: 1.6rem;
-      color: #ffffff;
-      margin-top: 2rem;
-    }
-    .profile {
-      max-width: 900px;
-      margin: 2rem auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      background-color: #1c1c1c;
-      border-radius: 10px;
-      padding: 2rem;
-    }
-    .profile img {
-      width: 250px;
-      border-radius: 10px;
-    }
-    .profile-text {
-      flex: 1;
-    }
-    form {
-      max-width: 600px;
-      margin: 2rem auto;
-      background-color: #1c1c1c;
-      padding: 2rem;
-      border-radius: 10px;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    input, textarea, select {
+    input, textarea {
       width: 100%;
       padding: 0.5rem;
       margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
       border: none;
-      border-radius: 5px;
-      background-color: #2b2b2b;
-      color: white;
     }
-    button {
-      margin-top: 2rem;
-      background-color: #FF6600;
+    input[type="submit"] {
+      background-color: #ff6600;
       color: white;
-      padding: 12px;
-      border: none;
+      font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: all 0.3s ease-in-out;
-    }
-    button:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <h1><span class="highlight">Osobní koučink</span> s <span class="bold-name">Kubou Železňákem</span></h1>
-
-  <div class="profile">
-    <img src="images/kuba-profile.jpg" alt="Kuba Železňák">
-    <div class="profile-text">
-      <p>Kuba je tváří a hlavním trenérem TeamFE. Jeho přístup kombinuje roky osobní zkušenosti, precizní znalosti a skutečný zájem o každého klienta. Není jen certifikovaným koučem, ale i členem týmu ProgressiveCoaches.cz, který pomohl desítkám lidí dosáhnout nejen formy, ale i dlouhodobé rovnováhy mezi tréninkem, jídlem a životem.</p>
-      <p>Společně sestavíte plán, který bude odpovídat přesně vašemu režimu – ať už pracujete na směny, nebo máte minimum času. Nejde o obecné rady, ale o osobní přístup. Právě ten dělá rozdíl.</p>
+  <section class="section" id="koucink">
+    <div class="form-container">
+      <h2>Koučink s Kubou</h2>
+      <p>
+        <strong>👨‍🏫 O KUBOVI<br/>Tvůj trenér. Tvůj průvodce. Tvůj náskok.</strong><br/><br/>
+        Kuba Železňák není jen trenér. Je to člověk, který spojil vědecký přístup k tréninku s reálnou zkušeností z desítek klientských transformací – a s vlastním vývojem od naturálního závodníka až po sportovce, který ví, kam míří.<br/><br/>
+        ✔ Trénuješ s někým, kdo sám prošel každou fází – hubnutím, stagnací, přetížením i soutěžní přípravou.<br/>
+        ✔ Dostaneš plán postavený na tobě – žádné šablony, žádné bludy z internetu.<br/>
+        ✔ Dostaneš vedení – techniku, mindset, výživu, regeneraci. A výsledky.<br/><br/>
+        Kuba staví na vztahu. Na pochopení. A na tvrdé práci.<br/>
+        A to všechno za férových podmínek. I proto je jeho přístup něco, co si pochvalují začátečníci i zkušení lifteři.
+      </p>
+      <form action="mailto:info@teamfe.cz" method="post" enctype="text/plain">
+        <label for="email">Tvůj e-mail:</label><br/>
+        <input type="email" id="email" name="email" required><br/>
+        <label for="name">Jméno a příjmení:</label><br/>
+        <input type="text" id="name" name="name" required><br/>
+        <label for="phone">Telefonní číslo:</label><br/>
+        <input type="text" id="phone" name="phone"><br/>
+        <label for="goal">Jaký je tvůj cíl:</label><br/>
+        <input type="text" id="goal" name="goal"><br/>
+        <label for="age">Věk:</label><br/>
+        <input type="number" id="age" name="age"><br/>
+        <label for="height">Výška (v cm):</label><br/>
+        <input type="number" id="height" name="height"><br/>
+        <label for="weight">Váha (v kg):</label><br/>
+        <input type="number" id="weight" name="weight"><br/>
+        <label for="diet">Speciální dietní omezení:</label><br/>
+        <input type="text" id="diet" name="diet"><br/>
+        <label for="health">Zdravotní problémy nebo zranění:</label><br/>
+        <input type="text" id="health" name="health"><br/>
+        <label for="notes">Další poznámky nebo dotazy:</label><br/>
+        <textarea id="notes" name="notes" rows="4"></textarea><br/>
+        <input type="submit" value="Odeslat">
+      </form>
     </div>
-  </div>
-
-  <h2>Formulář pro osobní koučink</h2>
-  <form action="mailto:info@teamfe.cz" method="POST" enctype="text/plain">
-    <label for="email">Váš e-mail:</label>
-    <input type="email" id="email" name="E-mail" required>
-
-    <label for="name">Jméno a příjmení:</label>
-    <input type="text" id="name" name="Jméno" required>
-
-    <label for="phone">Telefonní číslo:</label>
-    <input type="text" id="phone" name="Telefon">
-
-    <label for="goal">Jaký je Váš cíl:</label>
-    <select id="goal" name="Cíl">
-      <option value="redukce">Redukce tuku</option>
-      <option value="svaly">Nabrání svalů</option>
-      <option value="zavody">Příprava na závody</option>
-    </select>
-
-    <label for="age">Věk:</label>
-    <input type="number" id="age" name="Věk">
-
-    <label for="height">Výška (v cm):</label>
-    <input type="number" id="height" name="Výška">
-
-    <label for="weight">Váha (v kg):</label>
-    <input type="number" id="weight" name="Váha">
-
-    <label for="diet">Dietní omezení:</label>
-    <input type="text" id="diet" name="Dietní omezení">
-
-    <label for="health">Zdravotní problémy nebo zranění:</label>
-    <textarea id="health" name="Zdravotní problémy"></textarea>
-
-    <label for="notes">Další poznámky:</label>
-    <textarea id="notes" name="Poznámky"></textarea>
-
-    <button type="submit">Odeslat formulář</button>
-  </form>
+  </section>
 </body>
 </html>
