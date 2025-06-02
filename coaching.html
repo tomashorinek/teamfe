@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Koučink s Kubou</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -11,7 +10,7 @@
       margin: 0;
       font-family: 'Roboto', sans-serif;
       background-color: #0d0d0d;
-      color: white;
+      color: #fff;
     }
     .section {
       background-image: url('images/kubafecoaching.jpeg');
@@ -21,7 +20,7 @@
       padding: 5rem 1rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     }
-    .form-container {
+    .section > div {
       max-width: 800px;
       margin: auto;
       background: rgba(0,0,0,0.7);
@@ -31,56 +30,70 @@
     input, textarea {
       width: 100%;
       padding: 0.5rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+      margin-top: 0.2rem;
       border-radius: 6px;
       border: none;
+      margin-bottom: 1rem;
     }
     input[type="submit"] {
       background-color: #ff6600;
       color: white;
+      padding: 10px 20px;
       font-weight: bold;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <section class="section" id="koucink">
-    <div class="form-container">
-      <h2>Koučink s Kubou</h2>
-      <p>
-        <strong>👨‍🏫 O KUBOVI<br/>Tvůj trenér. Tvůj průvodce. Tvůj náskok.</strong><br/><br/>
-        Kuba Železňák není jen trenér. Je to člověk, který spojil vědecký přístup k tréninku s reálnou zkušeností z desítek klientských transformací – a s vlastním vývojem od naturálního závodníka až po sportovce, který ví, kam míří.<br/><br/>
-        ✔ Trénuješ s někým, kdo sám prošel každou fází – hubnutím, stagnací, přetížením i soutěžní přípravou.<br/>
-        ✔ Dostaneš plán postavený na tobě – žádné šablony, žádné bludy z internetu.<br/>
-        ✔ Dostaneš vedení – techniku, mindset, výživu, regeneraci. A výsledky.<br/><br/>
-        Kuba staví na vztahu. Na pochopení. A na tvrdé práci.<br/>
-        A to všechno za férových podmínek. I proto je jeho přístup něco, co si pochvalují začátečníci i zkušení lifteři.
-      </p>
-      <form action="mailto:info@teamfe.cz" method="post" enctype="text/plain">
-        <label for="email">Tvůj e-mail:</label><br/>
-        <input type="email" id="email" name="email" required><br/>
-        <label for="name">Jméno a příjmení:</label><br/>
-        <input type="text" id="name" name="name" required><br/>
-        <label for="phone">Telefonní číslo:</label><br/>
-        <input type="text" id="phone" name="phone"><br/>
-        <label for="goal">Jaký je tvůj cíl:</label><br/>
-        <input type="text" id="goal" name="goal"><br/>
-        <label for="age">Věk:</label><br/>
-        <input type="number" id="age" name="age"><br/>
-        <label for="height">Výška (v cm):</label><br/>
-        <input type="number" id="height" name="height"><br/>
-        <label for="weight">Váha (v kg):</label><br/>
-        <input type="number" id="weight" name="weight"><br/>
-        <label for="diet">Speciální dietní omezení:</label><br/>
-        <input type="text" id="diet" name="diet"><br/>
-        <label for="health">Zdravotní problémy nebo zranění:</label><br/>
-        <input type="text" id="health" name="health"><br/>
-        <label for="notes">Další poznámky nebo dotazy:</label><br/>
-        <textarea id="notes" name="notes" rows="4"></textarea><br/>
-        <input type="submit" value="Odeslat">
-      </form>
-    </div>
-  </section>
+<section class="section" id="koucink">
+  <div>
+    <h2>Koučink s Kubou</h2>
+    <p>
+      <strong>O KUBOVI<br/>Tvůj trenér. Tvůj průvodce. Tvůj náskok.</strong><br/><br/>
+      Kuba Železňák není jen trenér. Je to člověk, který spojil vědecký přístup k tréninku s reálnou zkušeností z desítek klientských transformací – a s vlastním vývojem od naturálního závodníka až po sportovce, který ví, kam míří.<br/><br/>
+      Díky roky budované disciplíně, hlubokým znalostem anatomie, výživy i suplementace dokáže navrhnout plán, který funguje i v těch nejnáročnějších podmínkách – ať už jsi student, rodič, nebo makáš 12 hodin denně.<br/><br/>
+      Trénuješ s někým, kdo sám prošel každou fází – hubnutím, stagnací, přetížením i soutěžní přípravou.<br/>
+      Dostaneš plán postavený na tobě – žádné šablony, žádné bludy z internetu.<br/>
+      Dostaneš vedení – techniku, mindset, výživu, regeneraci. A výsledky.<br/><br/>
+      Kuba staví na vztahu. Na pochopení. A na tvrdé práci.<br/>
+      A to všechno za férových podmínek. I proto je jeho přístup něco, co si pochvalují začátečníci i zkušení lifteři.<br/><br/>
+      Je také součástí týmu <a href="https://teamprogressivecoaches.cz" target="_blank" style="color: #ff6600; text-decoration: underline;">Team Progressive Coaches</a>.
+    </p>
+
+    <form action="https://formspree.io/f/xanjybjz" method="POST">
+      <label for="email">Tvůj e-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="name">Jméno a příjmení:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">Telefonní číslo:</label>
+      <input type="text" id="phone" name="phone">
+
+      <label for="goal">Jaký je tvůj cíl:</label>
+      <input type="text" id="goal" name="goal" placeholder="např. redukce tuku, nabrání svalů, příprava na závody">
+
+      <label for="age">Věk:</label>
+      <input type="number" id="age" name="age">
+
+      <label for="height">Výška (v cm):</label>
+      <input type="number" id="height" name="height">
+
+      <label for="weight">Váha (v kg):</label>
+      <input type="number" id="weight" name="weight">
+
+      <label for="diet">Speciální dietní omezení:</label>
+      <input type="text" id="diet" name="diet">
+
+      <label for="health">Zdravotní problémy nebo zranění:</label>
+      <input type="text" id="health" name="health">
+
+      <label for="notes">Další poznámky nebo dotazy:</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+
+      <input type="submit" value="Odeslat">
+    </form>
+  </div>
+</section>
 </body>
 </html>
