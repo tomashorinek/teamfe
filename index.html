@@ -65,12 +65,22 @@
       max-width: 900px;
       margin: 0 auto;
       border-bottom: 1px solid #222;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .section.fade-in {
+      opacity: 1;
+      transform: translateY(0);
     }
     .section h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #ff3c3c;
+    }
+    .gradient-section {
+      background: linear-gradient(to bottom, #111 0%, #181818 100%);
     }
     .icon-grid {
       display: flex;
@@ -124,9 +134,6 @@
       margin: 0 0.5rem;
       text-decoration: none;
     }
-    .gradient-section {
-      background: linear-gradient(to bottom, #111 0%, #181818 100%);
-    }
   </style>
 </head>
 <body>
@@ -141,7 +148,7 @@
       </div>
     </div>
   </header>
-  <section class="section gradient-section fade-in" id="more">
+  <section class="section gradient-section" id="more">
     <h2>Proč TeamFE?</h2>
     <div class="icon-grid">
       <div class="icon-card">
@@ -161,21 +168,21 @@
       </div>
     </div>
   </section>
-  <div class="section" id="produkty">
+  <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
     <div class="external-link">
       <a href="eshop.html">Navštiv náš e-shop</a>
     </div>
   </div>
-  <div class="section" id="komunita">
+  <div class="section gradient-section" id="komunita">
     <h2>Komunita a Členství</h2>
     <p>Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny like-minded lidí.</p>
     <div class="cta-buttons">
       <a href="#">Získat přístup</a>
     </div>
   </div>
-  <div class="section" id="koucink">
+  <div class="section gradient-section" id="koucink">
     <h2>Koučink</h2>
     <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
     <div class="cta-buttons">
@@ -185,7 +192,7 @@
       <img src="images/kubafecoaching.jpeg" alt="Kuba Železňák" style="max-width:100%; border-radius:12px;" />
     </div>
   </div>
-  <div class="section" id="blog">
+  <div class="section gradient-section" id="blog">
     <h2>Blog a videa</h2>
     <p>Tipy, příběhy, triky a rady na cestě za lepším tréninkem.</p>
     <div class="cta-buttons">
@@ -196,5 +203,14 @@
     © 2025 TEAMFE – Všechna práva vyhrazena<br />
     <a href="#">Instagram</a> | <a href="#">Kontakt</a>
   </footer>
+  <script>
+    document.addEventListener("scroll", function () {
+      document.querySelectorAll(".section").forEach(element => {
+        if (element.getBoundingClientRect().top < window.innerHeight) {
+          element.classList.add("fade-in");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
