@@ -13,6 +13,24 @@
       color: #fff;
       scroll-behavior: smooth;
     }
+    .parallax {
+      background-image: url('images/parallax-gym.jpg');
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: -1;
+    }
+    .parallax::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
     header {
       display: flex;
       align-items: center;
@@ -106,6 +124,25 @@
       height: 96px;
       margin-bottom: 1rem;
     }
+    .icon-card .description {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease-in-out;
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      text-align: center;
+      min-height: 50px;
+    }
+    .icon-link:hover .description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .icon-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
     .external-link {
       text-align: center;
       margin-top: 2rem;
@@ -134,29 +171,10 @@
       margin: 0 0.5rem;
       text-decoration: none;
     }
-  
-    .icon-card .description {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease-in-out;
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-      text-align: center;
-      min-height: 50px;
-    }
-    .icon-link:hover .description {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .icon-link {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-    }
-    </style>
+  </style>
 </head>
 <body>
+  <div class="parallax"></div>
   <header>
     <img src="images/LOGO TEAMFE.png" alt="TeamFE Logo" />
     <div class="headline">
@@ -169,35 +187,31 @@
     </div>
   </header>
   <section class="section gradient-section" id="more">
-  <h2>Proč TeamFE?</h2>
-  <div class="icon-grid">
-
-    <a href="#koucink" class="icon-link">
-      <div class="icon-card">
-        <img src="images/zkušenosti ikona.jpg" alt="Zkušenosti" />
-        <h3>Zkušenosti</h3>
-        <div class="description">Kuba spojuje vědu a praxi. Od naturálního závodníka po kouče desítek transformací – ví, co funguje.</div>
-      </div>
-    </a>
-
-    <a href="#komunita" class="icon-link">
-      <div class="icon-card">
-        <img src="images/komunita ikona.jpg" alt="Komunita" />
-        <h3>Komunita</h3>
-        <div class="description">Přístup k tipům, videím a slevám. Spojujeme like-minded lidi. Evoluce nezačíná ve fitku. Začíná v tobě.</div>
-      </div>
-    </a>
-
-    <a href="eshop.html" class="icon-link">
-      <div class="icon-card">
-        <img src="images/vývjoj ikona.png" alt="Vývoj" />
-        <h3>Vývoj</h3>
-        <div class="description">Vybavení, co šetří čas, peníze i nervy. Od pomůcek po vlastní stroje – efektivní, dostupné, bez zbytečností.</div>
-      </div>
-    </a>
-
-  </div>
-</section>
+    <h2>Proč TeamFE?</h2>
+    <div class="icon-grid">
+      <a href="#koucink" class="icon-link">
+        <div class="icon-card">
+          <img src="images/zkušenosti ikona.jpg" alt="Zkušenosti" />
+          <h3>Zkušenosti</h3>
+          <div class="description">Kuba spojuje vědu a praxi. Od naturálního závodníka po kouče desítek transformací – ví, co funguje.</div>
+        </div>
+      </a>
+      <a href="#komunita" class="icon-link">
+        <div class="icon-card">
+          <img src="images/komunita ikona.jpg" alt="Komunita" />
+          <h3>Komunita</h3>
+          <div class="description">Přístup k tipům, videím a slevám. Spojujeme like-minded lidi. Evoluce nezačíná ve fitku. Začíná v tobě.</div>
+        </div>
+      </a>
+      <a href="eshop.html" class="icon-link">
+        <div class="icon-card">
+          <img src="images/vývjoj ikona.png" alt="Vývoj" />
+          <h3>Vývoj</h3>
+          <div class="description">Vybavení, co šetří čas, peníze i nervy. Od pomůcek po vlastní stroje – efektivní, dostupné, bez zbytečností.</div>
+        </div>
+      </a>
+    </div>
+  </section>
   <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
