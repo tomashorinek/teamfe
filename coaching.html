@@ -42,58 +42,97 @@
       font-weight: bold;
       cursor: pointer;
     }
+    .reference-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideIn 1.2s ease-out 0.3s forwards;
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .stars {
+      color: #FFD700;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .quote-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .quote-text {
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #f2f2f2;
+    }
+    .author {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
-<section class="section" id="koucink">
-  <div>
-    <h2>Koučink s Kubou</h2>
-    <p>
-      <strong>O KUBOVI<br/>Tvůj trenér. Tvůj průvodce. Tvůj náskok.</strong><br/><br/>
-      Kuba Železňák není jen trenér. Je to člověk, který spojil vědecký přístup k tréninku s reálnou zkušeností z desítek klientských transformací – a s vlastním vývojem od naturálního závodníka až po sportovce, který ví, kam míří.<br/><br/>
-      Díky roky budované disciplíně, hlubokým znalostem anatomie, výživy i suplementace dokáže navrhnout plán, který funguje i v těch nejnáročnějších podmínkách – ať už jsi student, rodič, nebo makáš 12 hodin denně.<br/><br/>
-      Trénuješ s někým, kdo sám prošel každou fází – hubnutím, stagnací, přetížením i soutěžní přípravou.<br/>
-      Dostaneš plán postavený na tobě – žádné šablony, žádné bludy z internetu.<br/>
-      Dostaneš vedení – techniku, mindset, výživu, regeneraci. A výsledky.<br/><br/>
-      Kuba staví na vztahu. Na pochopení. A na tvrdé práci.<br/>
-      A to všechno za férových podmínek. I proto je jeho přístup něco, co si pochvalují začátečníci i zkušení lifteři.<br/><br/>
-      Je také součástí týmu <a href="https://teamprogressivecoaches.cz" target="_blank" style="color: #ff6600; text-decoration: underline;">Team Progressive Coaches</a>.
-    </p>
+  <section class="section" id="koucink">
+    <div>
+      <h2>Koučink s Kubou</h2>
+      <p>
+        <strong>O KUBOVI<br/>Tvůj trenér. Tvůj průvodce. Tvůj náskok.</strong><br/><br/>
+        Kuba Železňák není jen trenér. Je to člověk, který spojil vědecký přístup k tréninku s reálnou zkušeností z desítek klientských transformací – a s vlastním vývojem od naturálního závodníka až po sportovce, který ví, kam míří.<br/><br/>
+        Díky roky budované disciplíně, hlubokým znalostem anatomie, výživy i suplementace dokáže navrhnout plán, který funguje i v těch nejnáročnějších podmínkách – ať už jsi student, rodič, nebo makáš 12 hodin denně.<br/><br/>
+        Trénuješ s někým, kdo sám prošel každou fází – hubnutím, stagnací, přetížením i soutěžní přípravou.<br/>
+        Dostaneš plán postavený na tobě – žádné šablony, žádné bludy z internetu.<br/>
+        Dostaneš vedení – techniku, mindset, výživu, regeneraci. A výsledky.<br/><br/>
+        Kuba staví na vztahu. Na pochopení. A na tvrdé práci.<br/>
+        A to všechno za férových podmínek. I proto je jeho přístup něco, co si pochvalují začátečníci i zkušení lifteři.<br/><br/>
+        Je také součástí týmu <a href="https://teamprogressivecoaches.cz" target="_blank" style="color: #ff6600; text-decoration: underline;">Team Progressive Coaches</a>.
+      </p>
 
-    <form action="https://formspree.io/f/xanjybjz" method="POST">
-      <label for="email">Tvůj e-mail:</label>
-      <input type="email" id="email" name="email" required>
+      <form action="https://formspree.io/f/xanjybjz" method="POST">
+        <label for="email">Tvůj e-mail:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="name">Jméno a příjmení:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="phone">Telefonní číslo:</label>
+        <input type="text" id="phone" name="phone">
+        <label for="goal">Jaký je tvůj cíl:</label>
+        <input type="text" id="goal" name="goal" placeholder="např. redukce tuku, nabrání svalů, příprava na závody">
+        <label for="age">Věk:</label>
+        <input type="number" id="age" name="age">
+        <label for="height">Výška (v cm):</label>
+        <input type="number" id="height" name="height">
+        <label for="weight">Váha (v kg):</label>
+        <input type="number" id="weight" name="weight">
+        <label for="diet">Speciální dietní omezení:</label>
+        <input type="text" id="diet" name="diet">
+        <label for="health">Zdravotní problémy nebo zranění:</label>
+        <input type="text" id="health" name="health">
+        <label for="notes">Další poznámky nebo dotazy:</label>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+        <input type="submit" value="Odeslat">
+      </form>
 
-      <label for="name">Jméno a příjmení:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="phone">Telefonní číslo:</label>
-      <input type="text" id="phone" name="phone">
-
-      <label for="goal">Jaký je tvůj cíl:</label>
-      <input type="text" id="goal" name="goal" placeholder="např. redukce tuku, nabrání svalů, příprava na závody">
-
-      <label for="age">Věk:</label>
-      <input type="number" id="age" name="age">
-
-      <label for="height">Výška (v cm):</label>
-      <input type="number" id="height" name="height">
-
-      <label for="weight">Váha (v kg):</label>
-      <input type="number" id="weight" name="weight">
-
-      <label for="diet">Speciální dietní omezení:</label>
-      <input type="text" id="diet" name="diet">
-
-      <label for="health">Zdravotní problémy nebo zranění:</label>
-      <input type="text" id="health" name="health">
-
-      <label for="notes">Další poznámky nebo dotazy:</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
-
-      <input type="submit" value="Odeslat">
-    </form>
-  </div>
-</section>
+      <div class="reference-box">
+        <div class="stars">★★★★★</div>
+        <div class="quote-title">„Od chaosu k progresu“ – můj příběh</div>
+        <div class="quote-text">
+          Začínal jsem jako nespokojený kluk, který si prošel extrémy – nejprve drastickým hubnutím na 70 kg při výšce 185 cm, později přejídáním a stagnací ve fitku. Zkoušel jsem všechno sám: hodiny videí, hodiny tréninku… ale výsledky nepřicházely.<br><br>
+          Až do chvíle, kdy jsem potkal Kubu. Jeho znalosti, přístup a ochota mi otevřely úplně nový pohled na trénink. Začal mě vést – nejprve nezištně, později symbolicky. A najednou všechno dávalo smysl. I ve 12hodinových směnách v režimu 6/1 mi Kuba dokázal sestavit plán, který fungoval.<br><br>
+          Trénujeme spolu už tři roky – a bylo to jedno z nejlepších rozhodnutí, jaké jsem kdy udělal. Nejen kvůli výsledkům, ale i kvůli přístupu, který Kuba reprezentuje.
+        </div>
+        <div class="author">Tomáš, 3 roky s Kubou</div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
