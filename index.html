@@ -62,13 +62,6 @@
       transform: scale(1.05);
     }
     .section {
-  padding: 3rem 1rem;
-  margin: 0 auto;
-  border-bottom: 1px solid #222;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
       padding: 3rem 1rem;
       max-width: 900px;
       margin: 0 auto;
@@ -91,13 +84,6 @@
       background: linear-gradient(to bottom, #111 0%, #181818 100%);
     }
     .parallax {
-  background-image: url('images/parallax-gym.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-}
       background-image: url('images/parallax-gym.jpg');
       background-attachment: fixed;
       background-position: center;
@@ -175,14 +161,7 @@
       color: inherit;
       display: inline-block;
     }
-  
-    .parallax .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    </style>
+  </style>
 </head>
 <body>
   <!-- Content stays unchanged except that #more has class "parallax" -->
@@ -198,7 +177,7 @@
       </div>
     </div>
   </header>
-  <section class="section gradient-section parallax" id="more"><div class="overlay">
+  <section class="section gradient-section parallax" id="more">
     <h2>Proč TeamFE?</h2>
     <div class="icon-grid">
       <a href="#koucink" class="icon-link">
@@ -223,7 +202,7 @@
         </div>
       </a>
     </div>
-  </div></section>
+  </section>
   <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
