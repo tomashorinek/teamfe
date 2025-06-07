@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
+      background: url('images/parallax-gym.jpg') center center fixed;background-size: cover; background-repeat: no-repeat;
       color: #fff;
       scroll-behavior: smooth;
     }
@@ -172,7 +172,16 @@
       color: inherit;
       display: inline-block;
     }
-  </style>
+  
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+</style>
 </head>
 <body>
   <header>
@@ -214,6 +223,7 @@
       </div>
     </div>
   </section>
+
 
   <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
@@ -263,4 +273,3 @@
   </script>
 </body>
 </html>
-
