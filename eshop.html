@@ -89,6 +89,25 @@
     input[type="submit"]:hover {
       background-color: #d94f00;
     }
+    .thumbnail-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .thumbnail-row img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      transition: transform 0.2s ease;
+    }
+    .thumbnail-row img:hover {
+      transform: scale(1.05);
+      border-color: #ff3c3c;
+    }
   </style>
 </head>
 <body>
@@ -97,7 +116,14 @@
   <h2>Produkty</h2>
 
   <div class="product-card">
-    <img src="images/deadlift-jack.jpg" alt="FE Deadlift Jack" />
+    <img id="mainImage" src="images/dljack5.jpg" alt="FE Deadlift Jack" />
+    <div class="thumbnail-row">
+      <img src="images/dljack1.jpg" onclick="changeImage('images/dljack1.jpg')" alt="1">
+      <img src="images/dljack2.jpg" onclick="changeImage('images/dljack2.jpg')" alt="2">
+      <img src="images/dljack3.jpg" onclick="changeImage('images/dljack3.jpg')" alt="3">
+      <img src="images/dljack4.jpg" onclick="changeImage('images/dljack4.jpg')" alt="4">
+      <img src="images/dljack5.jpg" onclick="changeImage('images/dljack5.jpg')" alt="5">
+    </div>
     <h3>🢍 FE Deadlift Jack</h3>
     <p><strong>Už žádné přetahování s činkou.</strong><br />
     Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
@@ -153,5 +179,10 @@
   </form>
 </section>
 
+<script>
+  function changeImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+</script>
 </body>
 </html>
