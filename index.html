@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="cs">
-<head><script type='text/javascript' src='https://www.teamfe.cz/aChz8SS5oO2AcqvMGHuH_MCzABygYNVYswrIePC2KyqgZt5gZV1oGbJhERRdpR7CwARXEMl-M1WpEQa1XTguJA=='></script>
+<head>
+  <script type='text/javascript' src='https://www.teamfe.cz/aChz8SS5oO2AcqvMGHuH_MCzABygYNVYswrIePC2KyqgZt5gZV1oGbJhERRdpR7CwARXEMl-M1WpEQa1XTguJA=='></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TeamFE - Fitness Evolution</title>
@@ -9,7 +11,9 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: url('images/parallax-gym.jpg') center center fixed;background-size: cover; background-repeat: no-repeat;
+      background: url('images/parallax-gym.jpg') center center fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
       color: #fff;
       scroll-behavior: smooth;
     }
@@ -172,16 +176,45 @@
       color: inherit;
       display: inline-block;
     }
-  
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
-
-</style>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+      }
+      header img {
+        height: 80px;
+        margin-bottom: 1rem;
+      }
+      .headline {
+        padding: 1.5rem 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .subhead {
+        font-size: 1rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .cta-buttons a {
+        display: block;
+        margin: 0.5rem auto;
+        width: 80%;
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -223,8 +256,6 @@ body::before {
       </div>
     </div>
   </section>
-
-
   <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
