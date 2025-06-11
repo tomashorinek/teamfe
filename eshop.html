@@ -1,120 +1,120 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head><script type='text/javascript' src='https://www.teamfe.cz/X_GeT8uDI4v_Jdh26MTxW-9wsHJInW5iKMUG4xwHfTovpDePO0NppPURIG_p4NwuD2WJBKW2Hkgn2cYx3EIKFA=='></script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TeamFE E-shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
-<style>
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #0d0d0d;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-.section {
-  padding: 3rem 1rem;
-  max-width: 900px;
-  margin: auto;
-}
-h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #ff3c3c;
-}
-.product-card {
-  background-color: #1c1c1c;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-.product-card img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
-}
-.product-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem;
-  margin: 1rem 0 0.5rem;
-}
-.product-card p {
-  font-size: 1rem;
-  color: #ddd;
-}
-.cta-button {
-  display: inline-block;
-  background-color: #ff6600;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.cta-button:hover {
-  background-color: #d94f00;
-  transform: scale(1.05);
-}
-.toggle-gallery {
-  margin-top: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  color: #ff6600;
-  text-decoration: underline;
-}
-.thumbnail-row {
-  display: none;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.thumbnail-row img {
-  width: 100px;
-  height: auto;
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
-}
-.thumbnail-row img:hover {
-  transform: scale(1.05);
-  border-color: #ff3c3c;
-}
-form {
-  background-color: #1c1c1c;
-  padding: 2rem;
-  border-radius: 12px;
-  margin-top: 3rem;
-}
-label, input, textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-input, textarea {
-  padding: 0.5rem;
-  border: none;
-  border-radius: 6px;
-}
-input[type="submit"] {
-  background-color: #ff6600;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-input[type="submit"]:hover {
-  background-color: #d94f00;
-}
-</style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeamFE E-shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #ff3c3c;
+    }
+    .product-card {
+      background-color: #1c1c1c;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .product-card img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+    }
+    .product-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .product-card p {
+      font-size: 1rem;
+      color: #ddd;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #ff6600;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #d94f00;
+      transform: scale(1.05);
+    }
+    .toggle-gallery {
+      margin-top: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ff6600;
+      text-decoration: underline;
+    }
+    .thumbnail-row {
+      display: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .thumbnail-row img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      transition: transform 0.2s ease;
+    }
+    .thumbnail-row img:hover {
+      transform: scale(1.05);
+      border-color: #ff3c3c;
+    }
+    form {
+      background-color: #1c1c1c;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 3rem;
+    }
+    label, input, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    input, textarea {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 6px;
+    }
+    input[type="submit"] {
+      background-color: #ff6600;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #d94f00;
+    }
+  </style>
 </head>
 <body>
 <section class="section" id="produkty">
@@ -122,27 +122,27 @@ input[type="submit"]:hover {
 
 <!-- DEADLIFT JACK -->
 <div class="product-card">
-  <img id="mainImage1" src="images/dljack5.png" alt="FE Deadlift Jack" />
+  <img id="mainImage1" src="images/dljack4.png" alt="FE Deadlift Jack" />
   <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
   <div id="gallery1" class="thumbnail-row">
     <img src="images/dljack1.png" onclick="document.getElementById('mainImage1').src=this.src">
     <img src="images/dljack2.png" onclick="document.getElementById('mainImage1').src=this.src">
     <img src="images/dljack3.png" onclick="document.getElementById('mainImage1').src=this.src">
-    <img src="images/dljack4.png" onclick="document.getElementById('mainImage1').src=this.src">
     <img src="images/dljack5.png" onclick="document.getElementById('mainImage1').src=this.src">
+    <img src="images/dljack4.png" onclick="document.getElementById('mainImage1').src=this.src">
   </div>
   <h3>🢍 FE Deadlift Jack</h3>
   <p><strong>Už žádné přetahování s činkou.</strong><br />
-  Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
-  Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
-  Minimalistický design<br />
-  Rychlé nakládání<br />
-  Bezkonkurenční cena</p>
+    Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
+    Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
+    Minimalistický design<br />
+    Rychlé nakládání<br />
+    Bezkonkurenční cena</p>
   <ul>
-    <li>✔️ Délka: 100 cm</li>
-    <li>✔️ Hloubka: 60 cm</li>
-    <li>✔️ Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
-    <li>✔️ Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
+    <li>Délka: 100 cm</li>
+    <li>Hloubka: 60 cm</li>
+    <li>Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
+    <li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
   </ul>
 </div>
 
@@ -162,53 +162,32 @@ input[type="submit"]:hover {
   </div>
   <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
   <p><strong>Když ti nestačí váha na stroji.</strong><br />
-  Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.<br />
-  Kompatibilní s většinou strojů<br />
-  8 mm (45 kg), 10 mm (60 kg) nosnost<br />
-  Super jednoduchý design<br />
-  Nejlepší poměr cena/funkčnost</p>
+    Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
   <ul>
-    <li>✔️ Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
-    <li>✔️ Délka tyče do stroje: 10 cm</li>
-    <li>✔️ Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+    <li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
+    <li>Délka tyče do stroje: 10 cm</li>
+    <li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+    <li>Hmotnost: 450 g</li>
   </ul>
 </div>
 
-<!-- FE BAR - NASTAVITELNÝ ADAPTÉR -->
+<!-- FE BAR -->
 <div class="product-card">
-  <img src="images/febar.png" alt="FE Bar – nastavitelný adaptér na kladky" />
+  <img id="mainImage3" src="images/febar1.png" alt="FE Bar – nastavitelný adaptér na kladky" />
+  <div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
+  <div id="gallery3" class="thumbnail-row">
+    <img src="images/febar2.png" onclick="document.getElementById('mainImage3').src=this.src">
+    <img src="images/febar.png" onclick="document.getElementById('mainImage3').src=this.src">
+  </div>
   <h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
-  <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong><br />
-  Cestuješ mezi fitky nebo tě omezuje vybavení? Tento <strong>kompaktní adaptér</strong> nahradí celý stojan s madly.<br />
-  Nastavitelná šířka úchopu<br />
-  Funguje s D-handly nebo daisy chainem<br />
-  Ideální pro cokoliv, co tě napadne<br />
-  Odolný a pevný, vhodný i na cestování</p>
+  <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
   <ul>
-    <li>✔️ Počet otvorů: 23</li>
-    <li>✔️ Rozestup mezi otvory: 1,5 cm</li>
-    <li>✔️ Kompaktní design s logem Fe</li>
-    <li>✔️ Kompatibilita s různým vybavením posiloven</li>
+    <li>Počet otvorů: 23</li>
+    <li>Rozestup mezi otvory: 1,5 cm</li>
+    <li>Kompaktní design s logem Fe</li>
+    <li>Kompatibilita s různým vybavením posiloven</li>
   </ul>
 </div>
-
-<form action="https://formspree.io/f/mjkrvoep" method="POST">
-<h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
-<label for="name">Jméno a příjmení:</label>
-<input type="text" id="name" name="name" required>
-<label for="email">E-mail:</label>
-<input type="email" id="email" name="email" required>
-<label for="product">Vybraný produkt:</label>
-<input type="text" id="product" name="product" placeholder="Např. Deadlift Jack, GymPin 8mm..." required>
-<label for="quantity">Počet kusů:</label>
-<input type="number" id="quantity" name="quantity" min="1" required>
-<label for="address">Doručovací adresa:</label>
-<textarea id="address" name="address" rows="3" required></textarea>
-<label for="message">Poznámka:</label>
-<textarea id="message" name="message" rows="3"></textarea>
-<input type="submit" value="Odeslat objednávku">
-</form>
-</section>
 
 <script>
 function toggleGallery(id) {
@@ -216,5 +195,23 @@ function toggleGallery(id) {
   el.style.display = el.style.display === "flex" ? "none" : "flex";
 }
 </script>
+
+<form action="https://formspree.io/f/mjkrvoep" method="POST">
+  <h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
+  <label for="name">Jméno a příjmení:</label>
+  <input type="text" id="name" name="name" required>
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+  <label for="product">Vybraný produkt:</label>
+  <input type="text" id="product" name="product" placeholder="Např. Deadlift Jack, GymPin 8mm..." required>
+  <label for="quantity">Počet kusů:</label>
+  <input type="number" id="quantity" name="quantity" min="1" required>
+  <label for="address">Doručovací adresa:</label>
+  <textarea id="address" name="address" rows="3" required></textarea>
+  <label for="message">Poznámka:</label>
+  <textarea id="message" name="message" rows="3"></textarea>
+  <input type="submit" value="Odeslat objednávku">
+</form>
+</section>
 </body>
 </html>
