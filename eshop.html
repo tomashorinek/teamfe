@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
+      background: linear-gradient(to bottom, #0d0d0d 0%, #1a1a1a 100%);
       color: white;
       margin: 0;
       padding: 0;
@@ -18,6 +18,11 @@
       padding: 3rem 1rem;
       max-width: 900px;
       margin: auto;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     h2 {
       font-family: 'Montserrat', sans-serif;
@@ -32,12 +37,20 @@
       margin-bottom: 2rem;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
     }
     .product-card img {
       width: 100%;
       max-width: 400px;
       border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .product-card img:hover {
+      transform: scale(1.02);
     }
     .product-card h3 {
       font-family: 'Montserrat', sans-serif;
@@ -66,8 +79,20 @@
       margin-top: 1rem;
       cursor: pointer;
       font-weight: bold;
-      color: #ff6600;
-      text-decoration: underline;
+      color: #fff;
+      background-color: #ff6600;
+      padding: 12px 18px;
+      border-radius: 30px;
+      display: inline-block;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.5);
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .toggle-gallery:hover {
+      background-color: #d94f00;
+      transform: scale(1.05);
     }
     .thumbnail-row {
       display: none;
@@ -82,7 +107,7 @@
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 6px;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s;
     }
     .thumbnail-row img:hover {
       transform: scale(1.05);
@@ -93,14 +118,15 @@
       padding: 2rem;
       border-radius: 12px;
       margin-top: 3rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
-    label, input, textarea {
+    label, input, textarea, select {
       display: block;
       width: 100%;
       margin-bottom: 1rem;
       font-size: 1rem;
     }
-    input, textarea {
+    input, textarea, select {
       padding: 0.5rem;
       border: none;
       border-radius: 6px;
@@ -115,104 +141,183 @@
     input[type="submit"]:hover {
       background-color: #d94f00;
     }
+    .hidden {
+      display: none;
+    }
+    .product-preview {
+      width: 100px;
+      height: auto;
+      margin-bottom: 1rem;
+      display: block;
+    }
   </style>
 </head>
 <body>
-<section class="section" id="produkty">
-<h2>Produkty</h2>
+  <section class="section" id="produkty">
+    <h2>Produkty</h2>
 
-<!-- DEADLIFT JACK -->
-<div class="product-card">
-  <img id="mainImage1" src="images/dljack4.png" alt="FE Deadlift Jack" />
-  <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
-  <div id="gallery1" class="thumbnail-row">
-    <img src="images/dljack1.png" onclick="document.getElementById('mainImage1').src=this.src">
-    <img src="images/dljack2.png" onclick="document.getElementById('mainImage1').src=this.src">
-    <img src="images/dljack3.png" onclick="document.getElementById('mainImage1').src=this.src">
-    <img src="images/dljack5.png" onclick="document.getElementById('mainImage1').src=this.src">
-    <img src="images/dljack4.png" onclick="document.getElementById('mainImage1').src=this.src">
-  </div>
-  <h3> FE Deadlift Jack</h3>
-  <p><strong>Už žádné přetahování s činkou.</strong><br />
-    Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
-    Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
-    Minimalistický design<br />
-    Rychlé nakládání<br />
-    Bezkonkurenční cena</p>
-  <ul>
-    <li>Délka: 100 cm</li>
-    <li>Hloubka: 60 cm</li>
-    <li>Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
-    <li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
-  </ul>
-</div>
+    <!-- DEADLIFT JACK -->
+    <div class="product-card">
+      <img id="mainImage1" src="images/dljack4.png" alt="FE Deadlift Jack" />
+      <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
+      <div id="gallery1" class="thumbnail-row">
+        <img src="images/dljack1.png" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack2.png" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack3.png" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack5.png" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack4.png" onclick="document.getElementById('mainImage1').src=this.src">
+      </div>
+      <h3> FE Deadlift Jack</h3>
+      <p><strong>Už žádné přetahování s činkou.</strong><br />
+        Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
+        Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
+        Minimalistický design<br />
+        Rychlé nakládání<br />
+        Bezkonkurenční cena</p>
+      <ul>
+        <li>Délka: 100 cm</li>
+        <li>Hloubka: 60 cm</li>
+        <li>Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
+        <li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
+      </ul>
+    </div>
 
-<!-- GYMPIN -->
-<div class="product-card">
-  <img id="mainImage2" src="images/gympin1.png" alt="FE GymPin" />
-  <div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
-  <div id="gallery2" class="thumbnail-row">
-    <img src="images/gympin1.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin2.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin3.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin4.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin5.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin6.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin7.png" onclick="document.getElementById('mainImage2').src=this.src">
-    <img src="images/gympin8.png" onclick="document.getElementById('mainImage2').src=this.src">
-  </div>
-  <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
-  <p><strong>Když ti nestačí váha na stroji.</strong><br />
-    Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
-  <ul>
-    <li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
-    <li>Délka tyče do stroje: 10 cm</li>
-    <li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
-    <li>Hmotnost: 450 g</li>
-  </ul>
-</div>
+    <!-- GYMPIN -->
+    <div class="product-card">
+      <img id="mainImage2" src="images/gympin1.png" alt="FE GymPin" />
+      <div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
+      <div id="gallery2" class="thumbnail-row">
+        <img src="images/gympin1.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin2.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin3.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin4.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin5.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin6.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin7.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin8.png" onclick="document.getElementById('mainImage2').src=this.src">
+      </div>
+      <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
+      <p><strong>Když ti nestačí váha na stroji.</strong><br />
+        Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
+      <ul>
+        <li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
+        <li>Délka tyče do stroje: 10 cm</li>
+        <li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+        <li>Hmotnost: 450 g</li>
+      </ul>
+    </div>
 
-<!-- FE BAR -->
-<div class="product-card">
-  <img id="mainImage3" src="images/febar1.png" alt="FE Bar – nastavitelný adaptér na kladky" />
-  <div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
-  <div id="gallery3" class="thumbnail-row">
-    <img src="images/febar2.png" onclick="document.getElementById('mainImage3').src=this.src">
-    <img src="images/febar.png" onclick="document.getElementById('mainImage3').src=this.src">
-  </div>
-  <h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
-  <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
-  <ul>
-    <li>Počet otvorů: 23</li>
-    <li>Rozestup mezi otvory: 1,5 cm</li>
-    <li>Kompaktní design s logem Fe</li>
-    <li>Kompatibilita s různým vybavením posiloven</li>
-  </ul>
-</div>
+    <!-- FE BAR -->
+    <div class="product-card">
+      <img id="mainImage3" src="images/febar1.png" alt="FE Bar – nastavitelný adaptér na kladky" />
+      <div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
+      <div id="gallery3" class="thumbnail-row">
+        <img src="images/febar2.png" onclick="document.getElementById('mainImage3').src=this.src">
+        <img src="images/febar.png" onclick="document.getElementById('mainImage3').src=this.src">
+      </div>
+      <h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
+      <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
+      <ul>
+        <li>Počet otvorů: 23</li>
+        <li>Rozestup mezi otvory: 1,5 cm</li>
+        <li>Kompaktní design s logem Fe</li>
+        <li>Kompatibilita s různým vybavením posiloven</li>
+      </ul>
+    </div>
+    <form action="https://formspree.io/f/mjkrvoep" method="POST" onsubmit="return validateForm()">
+    <h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
+    <label for="name">Jméno a příjmení:</label>
+    <input type="text" id="name" name="name" required>
 
-<script>
-function toggleGallery(id) {
-  var el = document.getElementById(id);
-  el.style.display = el.style.display === "flex" ? "none" : "flex";
-}
-</script>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
 
-<form action="https://formspree.io/f/mjkrvoep" method="POST">
-  <h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
-  <label for="name">Jméno a příjmení:</label>
-  <input type="text" id="name" name="name" required>
-  <label for="email">E-mail:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="product">Vybraný produkt:</label>
-  <input type="text" id="product" name="product" placeholder="Např. Deadlift Jack, GymPin 8mm..." required>
-  <label for="quantity">Počet kusů:</label>
-  <input type="number" id="quantity" name="quantity" min="1" required>
-  <label for="address">Doručovací adresa:</label>
-  <textarea id="address" name="address" rows="3" required></textarea>
-  <label for="message">Poznámka:</label>
-  <textarea id="message" name="message" rows="3"></textarea>
-  <input type="submit" value="Odeslat objednávku">
-</form>
+    <label for="product">Vybraný produkt:</label>
+    <select id="product" name="product" required onchange="handleProductChange(event)">
+      <option value="">-- Vyberte produkt --</option>
+      <option value="Deadlift Jack">Deadlift Jack</option>
+      <option value="GymPin 8mm">GymPin 8mm</option>
+      <option value="GymPin 10mm">GymPin 10mm</option>
+      <option value="FE Bar">FE Bar</option>
+    </select>
+
+    <img id="product-preview" class="product-preview hidden" alt="Náhled produktu" />
+
+    <div id="variant-group" class="hidden">
+      <label for="variant">Varianta GymPin:</label>
+      <select id="variant" name="variant"></select>
+    </div>
+
+    <label for="quantity">Počet kusů:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+
+    <label for="address">Doručovací adresa:</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+
+    <label for="message">Poznámka:</label>
+    <textarea id="message" name="message" rows="3"></textarea>
+
+    <input type="submit" value="Odeslat objednávku">
+  </form>
 </section>
+<script>
+  function toggleGallery(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "flex" ? "none" : "flex";
+  }
+
+  function handleProductChange(e) {
+    const variantGroup = document.getElementById("variant-group");
+    const variantSelect = document.getElementById("variant");
+    const previewImage = document.getElementById("product-preview");
+    const messageField = document.getElementById("message");
+    const value = e.target.value;
+
+    let productText = value;
+    let previewSrc = "";
+
+    if (value === "GymPin 8mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelect.innerHTML = `
+        <option value="8mm - 13 cm">8mm – 13 cm</option>
+        <option value="8mm - 18 cm">8mm – 18 cm</option>
+      `;
+      previewSrc = "images/gympin1.png";
+    } else if (value === "GymPin 10mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelect.innerHTML = `
+        <option value="10mm - 13 cm">10mm – 13 cm</option>
+        <option value="10mm - 18 cm">10mm – 18 cm</option>
+      `;
+      previewSrc = "images/gympin1.png";
+    } else {
+      variantGroup.classList.add("hidden");
+      variantSelect.innerHTML = "";
+      previewSrc = value === "Deadlift Jack" ? "images/dljack4.png" :
+                   value === "FE Bar" ? "images/febar1.png" : "";
+    }
+
+    previewImage.src = previewSrc;
+    previewImage.classList.toggle("hidden", !previewSrc);
+
+    if (value) {
+      messageField.value = `Zvolený produkt: ${productText}`;
+    } else {
+      messageField.value = "";
+    }
+  }
+
+  function validateForm() {
+    const product = document.getElementById("product").value;
+    const variantGroup = document.getElementById("variant-group");
+    const variant = document.getElementById("variant").value;
+
+    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
+      alert("Prosím vyberte variantu délky GymPinu.");
+      return false;
+    }
+    return true;
+  }
+</script>
 </body>
 </html>
