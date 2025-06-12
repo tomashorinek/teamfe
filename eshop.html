@@ -158,14 +158,14 @@
 
     <!-- DEADLIFT JACK -->
     <div class="product-card">
-      <img id="mainImage1" src="images/dljack4.png" alt="FE Deadlift Jack" />
+      <img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
       <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
       <div id="gallery1" class="thumbnail-row">
-        <img src="images/dljack1.png" onclick="document.getElementById('mainImage1').src=this.src">
-        <img src="images/dljack2.png" onclick="document.getElementById('mainImage1').src=this.src">
-        <img src="images/dljack3.png" onclick="document.getElementById('mainImage1').src=this.src">
-        <img src="images/dljack5.png" onclick="document.getElementById('mainImage1').src=this.src">
-        <img src="images/dljack4.png" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack1.webp" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack2.webp" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack3.webp" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack5.webp" onclick="document.getElementById('mainImage1').src=this.src">
+        <img src="images/dljack4.webp" onclick="document.getElementById('mainImage1').src=this.src">
       </div>
       <h3> FE Deadlift Jack</h3>
       <p><strong>Už žádné přetahování s činkou.</strong><br />
@@ -184,17 +184,17 @@
 
     <!-- GYMPIN -->
     <div class="product-card">
-      <img id="mainImage2" src="images/gympin1.png" alt="FE GymPin" />
+      <img id="mainImage2" src="images/gympin1.webp" alt="FE GymPin" />
       <div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
       <div id="gallery2" class="thumbnail-row">
-        <img src="images/gympin1.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin2.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin3.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin4.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin5.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin6.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin7.png" onclick="document.getElementById('mainImage2').src=this.src">
-        <img src="images/gympin8.png" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin1.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin2.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin3.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin4.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin5.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin6.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin7.webp" onclick="document.getElementById('mainImage2').src=this.src">
+        <img src="images/gympin8.webp" onclick="document.getElementById('mainImage2').src=this.src">
       </div>
       <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
       <p><strong>Když ti nestačí váha na stroji.</strong><br />
@@ -209,11 +209,11 @@
 
     <!-- FE BAR -->
     <div class="product-card">
-      <img id="mainImage3" src="images/febar1.png" alt="FE Bar – nastavitelný adaptér na kladky" />
+      <img id="mainImage3" src="images/febar1.webp" alt="FE Bar – nastavitelný adaptér na kladky" />
       <div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
       <div id="gallery3" class="thumbnail-row">
-        <img src="images/febar2.png" onclick="document.getElementById('mainImage3').src=this.src">
-        <img src="images/febar.png" onclick="document.getElementById('mainImage3').src=this.src">
+        <img src="images/febar2.webp" onclick="document.getElementById('mainImage3').src=this.src">
+        <img src="images/febar.webp" onclick="document.getElementById('mainImage3').src=this.src">
       </div>
       <h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
       <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
@@ -282,19 +282,19 @@
         <option value="8mm - 13 cm">8mm – 13 cm</option>
         <option value="8mm - 18 cm">8mm – 18 cm</option>
       `;
-      previewSrc = "images/gympin1.png";
+      previewSrc = "images/gympin1.webp";
     } else if (value === "GymPin 10mm") {
       variantGroup.classList.remove("hidden");
       variantSelect.innerHTML = `
         <option value="10mm - 13 cm">10mm – 13 cm</option>
         <option value="10mm - 18 cm">10mm – 18 cm</option>
       `;
-      previewSrc = "images/gympin1.png";
+      previewSrc = "images/gympin1.webp";
     } else {
       variantGroup.classList.add("hidden");
       variantSelect.innerHTML = "";
-      previewSrc = value === "Deadlift Jack" ? "images/dljack4.png" :
-                   value === "FE Bar" ? "images/febar1.png" : "";
+      previewSrc = value === "Deadlift Jack" ? "images/dljack4.webp" :
+                   value === "FE Bar" ? "images/febar1.webp" : "";
     }
 
     previewImage.src = previewSrc;
