@@ -230,7 +230,8 @@
         <li>Kompatibilita s různým vybavením posiloven</li>
       </ul>
     </div>
-    <form action="https://formspree.io/f/mjkrvoep" method="POST" onsubmit="return validateForm()">
+    <form action="https://formspree.io/f/mjkrvoep" 
+      <input type="hidden" name="_redirect" value="https://www.teamfe.cz/#form-confirmation" method="POST" onsubmit="return validateForm()">
     <h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
     <label for="name">Jméno a příjmení:</label>
     <input type="text" id="name" name="name" required>
@@ -265,6 +266,10 @@
 
     <input type="submit" value="Odeslat objednávku">
   </form>
+<div id="form-confirmation" style="text-align:center; padding: 2rem; font-size: 1.2rem; background-color: #1c1c1c; color: #00cc66; border-radius: 12px; margin-top: 3rem; display: none;">
+  ✅ Děkujeme! Objednávka byla úspěšně odeslána. Ozveme se vám co nejdříve. 💪<br>
+  <a href="#produkty" style="display:inline-block; margin-top:1rem; color:#ff3c3c; font-weight:bold; text-decoration:underline;">Zpět na produkty</a>
+</div>
 </section>
 <script>
   function toggleGallery(id) {
@@ -323,6 +328,15 @@
       return false;
     }
     return true;
+  }
+</script>
+<script>
+  if (window.location.hash === "#form-confirmation") {
+    const confirm = document.getElementById("form-confirmation");
+    if (confirm) confirm.style.display = "block";
+    setTimeout(() => {
+      if (confirm) confirm.style.display = "none";
+    }, 8000);
   }
 </script>
 </body>
