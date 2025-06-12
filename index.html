@@ -87,25 +87,6 @@
     .gradient-section {
       background: linear-gradient(to bottom, #111 0%, #181818 100%);
     }
-    .parallax-overlay {
-      position: relative;
-      background-image: url('images/parallax-gym.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    .parallax-overlay::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
-    }
-    .parallax-overlay .content {
-      position: relative;
-      z-index: 2;
-    }
     .icon-grid {
       display: flex;
       flex-wrap: wrap;
@@ -129,6 +110,25 @@
       width: 96px;
       height: 96px;
       margin-bottom: 1rem;
+    }
+    .icon-card .description {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease-in-out;
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      text-align: center;
+      min-height: 50px;
+    }
+    .icon-link:hover .description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .icon-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
     }
     .external-link {
       text-align: center;
@@ -157,25 +157,6 @@
       color: #ccc;
       margin: 0 0.5rem;
       text-decoration: none;
-    }
-    .icon-card .description {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease-in-out;
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-      text-align: center;
-      min-height: 50px;
-    }
-    .icon-link:hover .description {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .icon-link {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
     }
     body::before {
       content: "";
@@ -224,11 +205,12 @@
       <h1>TeamFE - Fitness Evolution</h1>
       <div class="subhead">Evoluce nezačíná ve fitku. Začíná v tobě.</div>
       <div class="cta-buttons">
+        <a href="#produkty">Navštiv e-shop</a>
         <a href="#koucink">Přidej se</a>
-        <a href="#more">Zjistit víc</a>
       </div>
     </div>
   </header>
+
   <section class="section gradient-section" id="more">
     <div class="content">
       <h2>Proč TeamFE?</h2>
@@ -257,6 +239,7 @@
       </div>
     </div>
   </section>
+
   <div class="section gradient-section" id="produkty">
     <h2>Produkty</h2>
     <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
@@ -264,14 +247,7 @@
       <a href="eshop.html">Navštiv náš e-shop</a>
     </div>
   </div>
-  <div class="section gradient-section" id="komunita">
-    <h2>Komunita a Členství</h2>
-    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
-    <p>Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny like-minded lidí.</p>
-    <div class="cta-buttons">
-      <a href="#">Získat přístup</a>
-    </div>
-  </div>
+
   <div class="section gradient-section" id="koucink">
     <h2>Koučink</h2>
     <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
@@ -282,6 +258,16 @@
       <img src="images/kubafecoaching.jpeg" alt="Kuba Železňák" style="max-width:100%; border-radius:12px;" />
     </div>
   </div>
+
+  <div class="section gradient-section" id="komunita">
+    <h2>Komunita a Členství</h2>
+    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
+    <p>Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny like-minded lidí.</p>
+    <div class="cta-buttons">
+      <a href="#">Získat přístup</a>
+    </div>
+  </div>
+
   <div class="section gradient-section" id="blog">
     <h2>Blog a videa</h2>
     <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
@@ -290,10 +276,12 @@
       <a href="#">Číst blog</a>
     </div>
   </div>
+
   <footer>
     © 2025 TEAMFE – Všechna práva vyhrazena<br />
     <a href="#">Instagram</a> | <a href="#">Kontakt</a>
   </footer>
+
   <script>
     document.addEventListener("scroll", function () {
       document.querySelectorAll(".section").forEach(element => {
