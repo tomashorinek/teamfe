@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+  <style>
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+.back-button:hover {
+  background-color: #d94f00;
+  transform: scale(1.05);
+}
+</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Koučink s Kubou</title>
@@ -84,6 +103,7 @@
   </style>
 </head>
 <body>
+  <a href="https://www.teamfe.cz/" class="back-button">⬅️ Zpět na hlavní stránku</a>
   <section class="section" id="koucink">
     <div>
       <h2>Koučink s Kubou</h2>
