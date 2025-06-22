@@ -26,6 +26,20 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
+    .price-tag {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00cc66;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #121212;
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #00cc66;
+  box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+}
+
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(to bottom, #0d0d0d 0%, #1a1a1a 100%);
@@ -170,6 +184,8 @@
       display: block;
     }
   </style>
+  
+
 </head>
 <body>
   <a href="https://www.teamfe.cz/" class="back-button">⬅️ Zpět na hlavní stránku</a>
@@ -196,6 +212,7 @@
         Minimalistický design<br />
         Rychlé nakládání<br />
         Bezkonkurenční cena</p>
+      <div class="price-tag">Cena: 2 200 Kč</div>
       <ul>
         <li>Délka: 100 cm</li>
         <li>Hloubka: 60 cm</li>
@@ -203,7 +220,6 @@
         <li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
       </ul>
     </div>
-
     <!-- GYMPIN -->
     <div class="product-card">
       <img id="mainImage2" src="images/gympin1.webp" alt="FE GymPin" />
@@ -220,16 +236,19 @@
         <img src="images/gympin7.webp" onclick="document.getElementById('mainImage2').src=this.src">
         <img src="images/gympin8.webp" onclick="document.getElementById('mainImage2').src=this.src">
       </div>
-      <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
-      <p><strong>Když ti nestačí váha na stroji.</strong><br />
-        Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
-      <ul>
-        <li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
-        <li>Délka tyče do stroje: 10 cm</li>
-        <li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
-        <li>Hmotnost: 450 g</li>
-      </ul>
-    </div>
+    <h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
+  <p><strong>Když ti nestačí váha na stroji.</strong><br />
+    Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
+
+  <div class="price-tag">Cena: 800 Kč (13 cm) / 1 000 Kč (18 cm)</div>
+
+  <ul>
+    <li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
+    <li>Délka tyče do stroje: 10 cm</li>
+    <li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+    <li>Hmotnost: 450 g</li>
+  </ul>
+</div>
 
     <!-- FE BAR -->
     <div class="product-card">
@@ -243,6 +262,7 @@
       </div>
       <h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
       <p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
+       <div class="price-tag">Cena: 1 500 Kč</div>
       <ul>
         <li>Počet otvorů: 23</li>
         <li>Rozestup mezi otvory: 1,5 cm</li>
