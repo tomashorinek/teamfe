@@ -1,385 +1,909 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<style>
-.back-button {
-position: absolute;
-top: 20px;
-left: 20px;
-background-color: #ff6600;
-color: white;
-padding: 10px 20px;
-border-radius: 6px;
-font-weight: bold;
-text-decoration: none;
-transition: background-color 0.3s ease, transform 0.3s ease;
-z-index: 1000;
-}
-.back-button:hover {
-background-color: #d94f00;
-transform: scale(1.05);
-}
-</style>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TeamFE E-shop</title>
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
-<style>
-.price-tag {
-font-size: 1.5rem;
-font-weight: bold;
-color: #00cc66;
-margin-top: 1rem;
-margin-bottom: 1rem;
-background-color: #121212;
-display: inline-block;
-padding: 0.4rem 1rem;
-border-radius: 8px;
-border: 2px solid #00cc66;
-box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeamFE — E-shop</title>
 
-body {
-font-family: 'Roboto', sans-serif;
-background: linear-gradient(to bottom, #0d0d0d 0%, #1a1a1a 100%);
-color: white;
-margin: 0;
-padding: 0;
-}
-.section {
-padding: 3rem 1rem;
-max-width: 900px;
-margin: auto;
-animation: fadeIn 1s ease-in-out;
-}
-@keyframes fadeIn {
-0% { opacity: 0; transform: translateY(20px); }
-100% { opacity: 1; transform: translateY(0); }
-}
-h2 {
-font-family: 'Montserrat', sans-serif;
-font-size: 2rem;
-margin-bottom: 2rem;
-text-align: center;
-color: #ff3c3c;
-}
-.product-card {
-background-color: #1c1c1c;
-padding: 2rem;
-margin-bottom: 2rem;
-border-radius: 12px;
-text-align: center;
-box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-transition: transform 0.3s ease;
-}
-.product-card:hover {
-transform: translateY(-5px);
-}
-.product-card img {
-width: 100%;
-max-width: 400px;
-border-radius: 8px;
-transition: transform 0.3s ease;
-}
-.product-card img:hover {
-transform: scale(1.02);
-}
-.product-card h3 {
-font-family: 'Montserrat', sans-serif;
-font-size: 1.6rem;
-margin: 1rem 0 0.5rem;
-}
-.product-card p {
-font-size: 1rem;
-color: #ddd;
-}
-.cta-button {
-display: inline-block;
-background-color: #ff6600;
-color: white;
-padding: 12px 24px;
-border-radius: 6px;
-font-weight: bold;
-text-decoration: none;
-transition: all 0.3s ease;
-}
-.cta-button:hover {
-background-color: #d94f00;
-transform: scale(1.05);
-}
-.toggle-gallery {
-margin-top: 1rem;
-cursor: pointer;
-font-weight: bold;
-color: #fff;
-background-color: #ff6600;
-padding: 12px 18px;
-border-radius: 30px;
-display: inline-block;
-transition: background-color 0.3s, transform 0.3s;
-box-shadow: 0 4px 12px rgba(255, 102, 0, 0.5);
-font-size: 1.05rem;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-.toggle-gallery:hover {
-background-color: #d94f00;
-transform: scale(1.05);
-}
-.thumbnail-row {
-display: none;
-justify-content: center;
-flex-wrap: wrap;
-gap: 1rem;
-margin-top: 1rem;
-}
-.thumbnail-row img {
-width: 100px;
-height: auto;
-cursor: pointer;
-border: 2px solid transparent;
-border-radius: 6px;
-transition: transform 0.2s ease, border-color 0.2s;
-}
-.thumbnail-row img:hover {
-transform: scale(1.05);
-border-color: #ff3c3c;
-}
-form {
-background-color: #1c1c1c;
-padding: 2rem;
-border-radius: 12px;
-margin-top: 3rem;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-label, input, textarea, select {
-display: block;
-width: 100%;
-margin-bottom: 1rem;
-font-size: 1rem;
-}
-input, textarea, select {
-padding: 0.5rem;
-border: none;
-border-radius: 6px;
-}
-input[type="submit"] {
-background-color: #ff6600;
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-input[type="submit"]:hover {
-background-color: #d94f00;
-}
-.hidden {
-display: none;
-}
-.product-preview {
-width: 100px;
-height: auto;
-margin-bottom: 1rem;
-display: block;
-}
-</style>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
+  <style>
+    :root{
+      --bg0:#0b0b0c;
+      --bg1:#121214;
+      --card:#17171a;
+      --card2:#1d1d22;
+      --text:#ffffff;
+      --muted:#cfcfd6;
+      --muted2:#a9a9b3;
+      --orange:#ff6600;
+      --orange2:#d94f00;
+      --red:#ff3c3c;
+      --green:#00cc66;
+      --border:#2a2a31;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --shadow2: 0 8px 20px rgba(0,0,0,.35);
+      --radius:16px;
+    }
 
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Roboto',sans-serif;
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(255,102,0,.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(255,60,60,.12), transparent 55%),
+        linear-gradient(to bottom, var(--bg0) 0%, var(--bg1) 100%);
+    }
+
+    /* ========= TOP BAR ========= */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,12,.65);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .topbar-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:12px 16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+      min-width: 220px;
+    }
+    .brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:10px;
+      background: rgba(255,255,255,.06);
+      padding:6px;
+    }
+    .brand strong{
+      font-family:'Montserrat',sans-serif;
+      font-weight:700;
+      letter-spacing:.2px;
+      line-height:1.1;
+      display:block;
+    }
+    .brand span{
+      display:block;
+      font-size:.85rem;
+      color:var(--muted2);
+      margin-top:2px;
+      line-height:1.1;
+    }
+
+    .top-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+      cursor:pointer;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.18);
+    }
+    .pill.primary{
+      background: rgba(255,102,0,.18);
+      border-color: rgba(255,102,0,.35);
+    }
+    .pill.primary:hover{
+      background: rgba(255,102,0,.24);
+    }
+
+    /* ========= HERO ========= */
+    .hero{
+      max-width:1100px;
+      margin:0 auto;
+      padding:38px 16px 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(500px 240px at 15% 0%, rgba(255,102,0,.22), transparent 60%),
+        radial-gradient(520px 260px at 95% 30%, rgba(255,60,60,.18), transparent 60%);
+      opacity:.9;
+      z-index:0;
+    }
+    .hero-card > *{position:relative; z-index:1;}
+    .hero h1{
+      font-family:'Montserrat',sans-serif;
+      font-size:2.2rem;
+      margin:0 0 10px 0;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:0 0 14px 0;
+      color:var(--muted);
+      font-size:1.02rem;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+    .hero-bullets{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-weight:700;
+      font-size:.92rem;
+    }
+    .hero-side{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .side-card{
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding:18px;
+    }
+    .side-card h3{
+      font-family:'Montserrat',sans-serif;
+      margin:0 0 8px 0;
+      font-size:1.05rem;
+    }
+    .side-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+      line-height:1.5;
+    }
+    .accent{
+      color: var(--orange);
+      font-weight:800;
+    }
+
+    /* ========= LAYOUT ========= */
+    .section{
+      max-width:1100px;
+      margin:0 auto;
+      padding:18px 16px 42px;
+      animation: fadeIn .9s ease-in-out;
+    }
+    @keyframes fadeIn{
+      0%{opacity:0; transform:translateY(16px);}
+      100%{opacity:1; transform:translateY(0);}
+    }
+
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.9rem;
+      margin:18px 0 18px;
+      text-align:center;
+      color: var(--red);
+      letter-spacing:.2px;
+    }
+    .subline{
+      text-align:center;
+      color: var(--muted);
+      margin: -8px auto 20px;
+      max-width: 70ch;
+      line-height:1.55;
+    }
+
+    /* ========= PRODUCT GRID ========= */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .product-card{
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 340px;
+    }
+    .product-media{
+      padding:18px;
+      border-right:1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.18);
+    }
+    .product-media img{
+      width:100%;
+      max-width:520px;
+      height:auto;
+      border-radius: 14px;
+      display:block;
+      margin:0 auto;
+      transition: transform .25s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .product-media img:hover{transform: scale(1.01);}
+    .product-content{
+      padding:18px 18px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .product-content h3{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.55rem;
+      margin:0;
+    }
+    .product-content p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top: 6px;
+    }
+    .price-tag{
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--green);
+      background: rgba(0, 204, 102, 0.08);
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 204, 102, 0.35);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size: .92rem;
+    }
+
+    .toggle-gallery{
+      margin-top: 6px;
+      cursor: pointer;
+      font-weight: 900;
+      color: #fff;
+      background-color: var(--orange);
+      padding: 12px 16px;
+      border-radius: 999px;
+      display: inline-block;
+      transition: background-color .2s, transform .2s;
+      box-shadow: 0 10px 22px rgba(255, 102, 0, 0.30);
+      font-size: .92rem;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      border:1px solid rgba(255,255,255,.10);
+      user-select:none;
+      width: fit-content;
+    }
+    .toggle-gallery:hover{
+      background-color: var(--orange2);
+      transform: translateY(-1px);
+    }
+
+    .thumbnail-row{
+      display:none;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .thumbnail-row img{
+      width:92px;
+      height:auto;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      background: rgba(255,255,255,.04);
+      padding:6px;
+    }
+    .thumbnail-row img:hover{
+      transform: scale(1.04);
+      border-color: rgba(255,60,60,.55);
+      box-shadow: 0 10px 22px rgba(0,0,0,.30);
+    }
+
+    .specs{
+      margin: 6px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height:1.55;
+    }
+
+    .cta-row{
+      margin-top:auto;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding-top: 8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background-color: var(--orange);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      transition: all .2s ease;
+      border:1px solid rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+    .btn:hover{
+      background-color: var(--orange2);
+      transform: translateY(-1px);
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .btn.ghost:hover{
+      background: rgba(255,255,255,.09);
+      transform: translateY(-1px);
+    }
+
+    /* ========= ORDER ========= */
+    .order-wrap{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:start;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding:18px;
+    }
+    .card h3{
+      font-family:'Montserrat',sans-serif;
+      margin:0 0 10px 0;
+      font-size:1.2rem;
+    }
+    .help{
+      color: var(--muted);
+      line-height:1.55;
+      margin:0;
+    }
+    form{
+      margin:0;
+    }
+    label{
+      display:block;
+      width:100%;
+      margin: 12px 0 6px;
+      font-size:.95rem;
+      color: var(--muted);
+      font-weight:700;
+    }
+    input, textarea, select{
+      width:100%;
+      padding: 12px 12px;
+      border:none;
+      border-radius: 12px;
+      background: rgba(0,0,0,.35);
+      color: var(--text);
+      outline: 1px solid rgba(255,255,255,.10);
+      transition: outline-color .2s ease, background .2s ease;
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus, select:focus{
+      outline-color: rgba(255,102,0,.55);
+      background: rgba(0,0,0,.45);
+    }
+    textarea{resize: vertical;}
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .hidden{display:none;}
+    .product-preview{
+      width:120px;
+      height:auto;
+      margin:10px 0 0;
+      display:block;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:8px;
+    }
+
+    .submit{
+      margin-top: 14px;
+      width:100%;
+      background-color: var(--orange);
+      color:white;
+      font-weight: 900;
+      cursor:pointer;
+      transition: all .2s ease;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .submit:hover{
+      background-color: var(--orange2);
+      transform: translateY(-1px);
+    }
+    .fineprint{
+      margin-top: 10px;
+      font-size:.88rem;
+      color: var(--muted2);
+      line-height:1.45;
+    }
+    .fineprint a{color: var(--muted);}
+
+    /* ========= CONFIRMATION ========= */
+    #form-confirmation{
+      text-align:center;
+      padding: 18px;
+      font-size: 1.05rem;
+      background: rgba(0,204,102,.08);
+      color: var(--green);
+      border-radius: var(--radius);
+      margin-top: 16px;
+      border: 1px solid rgba(0,204,102,.30);
+      display:none;
+    }
+
+    /* ========= FOOTER ========= */
+    footer{
+      max-width:1100px;
+      margin: 18px auto 0;
+      padding: 28px 16px 40px;
+      color: var(--muted2);
+      text-align:center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    footer a{
+      color: var(--muted);
+      text-decoration:none;
+      font-weight:700;
+      margin:0 8px;
+    }
+    footer a:hover{text-decoration:underline;}
+
+    /* ========= RESPONSIVE ========= */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr; padding-top: 22px;}
+      .product-card{grid-template-columns: 1fr; }
+      .product-media{border-right:none; border-bottom:1px solid rgba(255,255,255,.06);}
+      .order-wrap{grid-template-columns: 1fr;}
+      .brand{min-width: unset;}
+    }
+    @media (max-width: 520px){
+      .hero h1{font-size:1.75rem;}
+      .thumbnail-row img{width:82px;}
+      .row{grid-template-columns:1fr;}
+      .top-actions{gap:8px;}
+      .pill{padding:9px 12px; font-size:.95rem;}
+    }
+  </style>
 </head>
+
 <body>
-<a href="https://www.teamfe.cz/" class="back-button">⬅️ Zpět na hlavní stránku</a>
-<section class="section" id="produkty">
-<h2>Produkty</h2>
 
-<!-- DEADLIFT JACK -->
-<div class="product-card">
-<img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
-<br><br>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#produkty" aria-label="TeamFE E-shop">
+        <img src="images/favicon.png" alt="TeamFE" />
+        <div>
+          <strong>TEAMFE E-shop</strong>
+          <span>Pomůcky • adaptéry • merch</span>
+        </div>
+      </a>
 
-<div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
-<div id="gallery1" class="thumbnail-row">
-<img src="images/dljack1.webp" onclick="document.getElementById('mainImage1').src=this.src">
-<img src="images/dljack2.webp" onclick="document.getElementById('mainImage1').src=this.src">
-<img src="images/dljack3.webp" onclick="document.getElementById('mainImage1').src=this.src">
-<img src="images/dljack5.webp" onclick="document.getElementById('mainImage1').src=this.src">
-<img src="images/dljack4.webp" onclick="document.getElementById('mainImage1').src=this.src">
-</div>
-<h3> FE Deadlift Jack</h3>
-<p><strong>Už žádné přetahování s činkou.</strong><br />
-Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
-Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
-Minimalistický design<br />
-Rychlé nakládání<br />
-Bezkonkurenční cena</p>
-<div class="price-tag">Cena: 2 200 Kč</div>
-<ul>
-<li>Délka: 100 cm</li>
-<li>Hloubka: 60 cm</li>
-<li>Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
-<li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
-</ul>
-</div>
-<!-- GYMPIN -->
-<div class="product-card">
-<img id="mainImage2" src="images/gympin1.webp" alt="FE GymPin" />
-<br><br>
+      <div class="top-actions">
+        <a class="pill" href="#produkty">Produkty</a>
+        <a class="pill primary" href="#order">Objednat</a>
+      </div>
+    </div>
+  </div>
 
-<div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
-<div id="gallery2" class="thumbnail-row">
-<img src="images/gympin1.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin2.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin3.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin4.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin5.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin6.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin7.webp" onclick="document.getElementById('mainImage2').src=this.src">
-<img src="images/gympin8.webp" onclick="document.getElementById('mainImage2').src=this.src">
-</div>
-<h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
-<p><strong>Když ti nestačí váha na stroji.</strong><br />
-Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <h1>Vybavení, které ti zrychlí trénink a zvedne kvalitu.</h1>
+      <p>
+        Produkty TEAMFE vznikají z praxe: jednoduché, pevné, bez marketingových blbostí.
+        Vybereš produkt → vyplníš objednávku → ozveme se s potvrzením a dopravou.
+      </p>
 
-<div class="price-tag">Cena: 800 Kč (13 cm) / 1 000 Kč (18 cm)</div>
+      <div class="hero-bullets">
+        <div class="chip">✅ Ověřené v praxi</div>
+        <div class="chip">⚙️ Jednoduchý design</div>
+        <div class="chip">💬 Rychlá domluva</div>
+        <div class="chip">📦 Odeslání dle dostupnosti</div>
+      </div>
 
-<ul>
-<li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
-<li>Délka tyče do stroje: 10 cm</li>
-<li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
-<li>Hmotnost: 450 g</li>
-</ul>
-</div>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="#produkty">Prohlédnout produkty</a>
+        <a class="btn ghost" href="#order">Objednat teď</a>
+      </div>
+    </div>
 
-<!-- FE BAR -->
-<div class="product-card">
-<img id="mainImage3" src="images/febar1.webp" alt="FE Bar – nastavitelný adaptér na kladky" />
-<br><br>
+    <div class="hero-side">
+      <div class="side-card">
+        <h3>Jak to funguje</h3>
+        <p class="help">
+          1) Vyber produkt<br>
+          2) Vyplň objednávku<br>
+          3) Potvrdíme cenu + dopravu e-mailem<br>
+          <span class="accent">4) Odesíláme</span>
+        </p>
+      </div>
+      <div class="side-card">
+        <h3>Potřebuješ poradit?</h3>
+        <p class="help">
+          Napiš do poznámky v objednávce, jaké máš vybavení / stroj, a doporučíme variantu.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
-<div id="gallery3" class="thumbnail-row">
-<img src="images/febar2.webp" onclick="document.getElementById('mainImage3').src=this.src">
-<img src="images/febar.webp" onclick="document.getElementById('mainImage3').src=this.src">
-</div>
-<h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
-<p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
-<div class="price-tag">Cena: 1 500 Kč</div>
-<ul>
-<li>Počet otvorů: 23</li>
-<li>Rozestup mezi otvory: 1,5 cm</li>
-<li>Kompaktní design s logem Fe</li>
-<li>Kompatibilita s různým vybavením posiloven</li>
-</ul>
-</div>
-<form action="https://formspree.io/f/mjkrvoep" method="POST" onsubmit="return validateForm()">
-<input type="hidden" name="_redirect" value="https://www.teamfe.cz/dekujeme.html">
-<h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
-<label for="name">Jméno a příjmení:</label>
-<input type="text" id="name" name="name" required>
+  <!-- PRODUCTS -->
+  <section class="section" id="produkty">
+    <h2 class="section-title">Produkty</h2>
+    <p class="subline">Vyber si produkt, proklikni fotky a dole rovnou objednej. Minimum tření, maximum jasnosti.</p>
 
-<label for="email">E-mail:</label>
-<input type="email" id="email" name="email" required>
+    <div class="grid">
 
-<label for="product">Vybraný produkt:</label>
-<select id="product" name="product" required onchange="handleProductChange(event)">
-<option value="">-- Vyberte produkt --</option>
-<option value="Deadlift Jack">Deadlift Jack</option>
-<option value="GymPin 8mm">GymPin 8mm</option>
-<option value="GymPin 10mm">GymPin 10mm</option>
-<option value="FE Bar">FE Bar</option>
-</select>
+      <!-- DEADLIFT JACK -->
+      <div class="product-card" id="deadlift-jack">
+        <div class="product-media">
+          <img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
+          <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
+          <div id="gallery1" class="thumbnail-row" aria-label="Galerie Deadlift Jack">
+            <img src="images/dljack1.webp" alt="Deadlift Jack foto 1" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack2.webp" alt="Deadlift Jack foto 2" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack3.webp" alt="Deadlift Jack foto 3" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack5.webp" alt="Deadlift Jack foto 4" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack4.webp" alt="Deadlift Jack foto 5" onclick="document.getElementById('mainImage1').src=this.src">
+          </div>
+        </div>
 
-<img id="product-preview" class="product-preview hidden" alt="Náhled produktu" />
+        <div class="product-content">
+          <h3>FE Deadlift Jack</h3>
 
-<div id="variant-group" class="hidden">
-<label for="variant">Varianta GymPin:</label>
-<select id="variant" name="variant"></select>
-</div>
+          <p><strong>Už žádné přetahování s činkou.</strong><br>
+            Najeď osou do držáku a jedním pohybem přepáčíš osu nahoru. Šetří to čas, energii a nervy při nakládání.</p>
 
-<label for="quantity">Počet kusů:</label>
-<input type="number" id="quantity" name="quantity" min="1" required>
+          <div class="meta-row">
+            <div class="price-tag">2 200 Kč</div>
+            <div class="badge">🔥 Best-seller</div>
+            <div class="badge">🧱 Stabilní základ</div>
+          </div>
 
-<label for="address">Doručovací adresa:</label>
-<textarea id="address" name="address" rows="3" required></textarea>
+          <ul class="specs">
+            <li>Délka: 100 cm</li>
+            <li>Hloubka: 60 cm</li>
+            <li>Dotyková část (držák osy): odolné PLA (chrání osu)</li>
+            <li>Rychlé a plynulé nadzvednutí jedním pohybem</li>
+          </ul>
 
-<label for="message">Poznámka:</label>
-<textarea id="message" name="message" rows="3"></textarea>
+          <div class="cta-row">
+            <a class="btn" href="#order" onclick="prefillOrder('Deadlift Jack')">Objednat</a>
+            <a class="btn ghost" href="#order" onclick="prefillOrder('Deadlift Jack')">Chci to přidat do poznámky</a>
+          </div>
+        </div>
+      </div>
 
-<input type="submit" value="Odeslat objednávku">
-</form>
-<div id="form-confirmation" style="text-align:center; padding: 2rem; font-size: 1.2rem; background-color: #1c1c1c; color: #00cc66; border-radius: 12px; margin-top: 3rem; display: none;">
-✅ Děkujeme! Objednávka byla úspěšně odeslána. Ozveme se vám co nejdříve. 💪<br>
-<a href="#produkty" style="display:inline-block; margin-top:1rem; color:#ff3c3c; font-weight:bold; text-decoration:underline;">Zpět na produkty</a>
-</div>
-</section>
-<script>
-function toggleGallery(id) {
-const el = document.getElementById(id);
-el.style.display = el.style.display === "flex" ? "none" : "flex";
-}
+      <!-- GYMPIN -->
+      <div class="product-card" id="gympin">
+        <div class="product-media">
+          <img id="mainImage2" src="images/gympin1.webp" alt="FE GymPin" />
+          <div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
+          <div id="gallery2" class="thumbnail-row" aria-label="Galerie GymPin">
+            <img src="images/gympin1.webp" alt="GymPin foto 1" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin2.webp" alt="GymPin foto 2" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin3.webp" alt="GymPin foto 3" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin4.webp" alt="GymPin foto 4" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin5.webp" alt="GymPin foto 5" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin6.webp" alt="GymPin foto 6" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin7.webp" alt="GymPin foto 7" onclick="document.getElementById('mainImage2').src=this.src">
+            <img src="images/gympin8.webp" alt="GymPin foto 8" onclick="document.getElementById('mainImage2').src=this.src">
+          </div>
+        </div>
 
-function handleProductChange(e) {
-const variantGroup = document.getElementById("variant-group");
-const variantSelect = document.getElementById("variant");
-const previewImage = document.getElementById("product-preview");
-const messageField = document.getElementById("message");
-const value = e.target.value;
+        <div class="product-content">
+          <h3>🛠️ FE GymPin — 8 mm / 10 mm</h3>
 
-let productText = value;
-let previewSrc = "";
+          <p><strong>Když ti nestačí váha na stroji.</strong><br>
+            Přidáš extra zátěž nebo doladíš mezikrok. Jednoduchá věc, která dělá obří rozdíl v progresu.</p>
 
-if (value === "GymPin 8mm") {
-variantGroup.classList.remove("hidden");
-variantSelect.innerHTML = `
-<option value="8mm - 13 cm">8mm – 13 cm</option>
-<option value="8mm - 18 cm">8mm – 18 cm</option>
-`;
-previewSrc = "images/gympin1.webp";
-} else if (value === "GymPin 10mm") {
-variantGroup.classList.remove("hidden");
-variantSelect.innerHTML = `
-<option value="10mm - 13 cm">10mm – 13 cm</option>
-<option value="10mm - 18 cm">10mm – 18 cm</option>
-`;
-previewSrc = "images/gympin1.webp";
-} else {
-variantGroup.classList.add("hidden");
-variantSelect.innerHTML = "";
-previewSrc = value === "Deadlift Jack" ? "images/dljack4.webp" :
-value === "FE Bar" ? "images/febar1.webp" : "";
-}
+          <div class="meta-row">
+            <div class="price-tag">800 Kč (13 cm) / 1 000 Kč (18 cm)</div>
+            <div class="badge">⚖️ Mikro-progrese</div>
+            <div class="badge">✅ 8/10 mm</div>
+          </div>
 
-previewImage.src = previewSrc;
-previewImage.classList.toggle("hidden", !previewSrc);
+          <ul class="specs">
+            <li>Nakládací část: 13 cm nebo 18 cm</li>
+            <li>Délka tyče do stroje: 10 cm</li>
+            <li>Průměr: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+            <li>Hmotnost: 450 g</li>
+          </ul>
 
-if (value) {
-messageField.value = `Zvolený produkt: ${productText}`;
-} else {
-messageField.value = "";
-}
-}
+          <div class="cta-row">
+            <a class="btn" href="#order" onclick="prefillOrder('GymPin 8mm')">Objednat (8mm)</a>
+            <a class="btn ghost" href="#order" onclick="prefillOrder('GymPin 10mm')">Objednat (10mm)</a>
+          </div>
+        </div>
+      </div>
 
-function validateForm() {
-const product = document.getElementById("product").value;
-const variantGroup = document.getElementById("variant-group");
-const variant = document.getElementById("variant").value;
+      <!-- FE BAR -->
+      <div class="product-card" id="fe-bar">
+        <div class="product-media">
+          <img id="mainImage3" src="images/febar1.webp" alt="FE Bar – nastavitelný adaptér na kladky" />
+          <div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
+          <div id="gallery3" class="thumbnail-row" aria-label="Galerie FE Bar">
+            <img src="images/febar2.webp" alt="FE Bar foto 1" onclick="document.getElementById('mainImage3').src=this.src">
+            <img src="images/febar.webp" alt="FE Bar foto 2" onclick="document.getElementById('mainImage3').src=this.src">
+          </div>
+        </div>
 
-if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
-alert("Prosím vyberte variantu délky GymPinu.");
-return false;
-}
-return true;
-}
-</script>
-<script>
-if (window.location.hash === "#form-confirmation") {
-const confirm = document.getElementById("form-confirmation");
-if (confirm) confirm.style.display = "block";
-setTimeout(() => {
-if (confirm) confirm.style.display = "none";
-}, 8000);
-}
-</script>
+        <div class="product-content">
+          <h3>🔧 FE Bar — nastavitelný adaptér na kladky</h3>
+
+          <p><strong>Variabilní nakládací tyč s 23 otvory.</strong><br>
+            Pokud chceš měnit úchopy, šířku nebo setup a mít “jeden adaptér na všechno”, tohle je ono.</p>
+
+          <div class="meta-row">
+            <div class="price-tag">1 500 Kč</div>
+            <div class="badge">🧩 Variabilita</div>
+            <div class="badge">🧠 Chytrý design</div>
+          </div>
+
+          <ul class="specs">
+            <li>Počet otvorů: 23</li>
+            <li>Rozestup: 1,5 cm</li>
+            <li>Kompaktní design s logem FE</li>
+            <li>Kompatibilní s různým vybavením posiloven</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn" href="#order" onclick="prefillOrder('FE Bar')">Objednat</a>
+            <a class="btn ghost" href="#order" onclick="prefillOrder('FE Bar')">Chci se zeptat</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ORDER -->
+    <div class="order-wrap" id="order">
+      <div class="card">
+        <h3>🛒 Objednávka</h3>
+        <p class="help">
+          Vyplň údaje, vyber produkt a odešli. Ozveme se e-mailem s potvrzením a dopravou.
+          Pokud si nejsi jistý průměrem GymPinu nebo kompatibilitou, napiš to do poznámky.
+        </p>
+
+        <p class="fineprint">
+          Tip: Pokud objednáváš GymPin, zkontroluj průměr otvoru ve stroji (8mm vs 10mm).
+        </p>
+      </div>
+
+      <div class="card">
+        <form action="https://formspree.io/f/mjkrvoep" method="POST" onsubmit="return validateForm()">
+          <!-- Přesměrování na děkovací stránku (zůstává funkční) -->
+          <input type="hidden" name="_redirect" value="https://www.teamfe.cz/dekujeme.html">
+
+          <div class="row">
+            <div>
+              <label for="name">Jméno a příjmení</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <label for="product">Vybraný produkt</label>
+          <select id="product" name="product" required onchange="handleProductChange(event)">
+            <option value="">-- Vyberte produkt --</option>
+            <option value="Deadlift Jack">Deadlift Jack</option>
+            <option value="GymPin 8mm">GymPin 8mm</option>
+            <option value="GymPin 10mm">GymPin 10mm</option>
+            <option value="FE Bar">FE Bar</option>
+          </select>
+
+          <img id="product-preview" class="product-preview hidden" alt="Náhled produktu" />
+
+          <div id="variant-group" class="hidden">
+            <label for="variant">Varianta GymPin (délka)</label>
+            <select id="variant" name="variant"></select>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="quantity">Počet kusů</label>
+              <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+            <div>
+              <label for="message">Poznámka (volitelné)</label>
+              <input type="text" id="message" name="message" placeholder="Např. jaký stroj / průměr otvoru / dotaz">
+            </div>
+          </div>
+
+          <label for="address">Doručovací adresa</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+
+          <input class="submit" type="submit" value="Odeslat objednávku">
+
+          <div class="fineprint">
+            Odesláním objednávky souhlasíš s tím, že tě kontaktujeme kvůli potvrzení ceny a dopravy.
+          </div>
+        </form>
+
+        <div id="form-confirmation">
+          ✅ Děkujeme! Objednávka byla úspěšně odeslána. Ozveme se co nejdříve. 💪<br>
+          <a href="#produkty" style="display:inline-block; margin-top:10px; color:var(--red); font-weight:900; text-decoration:underline;">Zpět na produkty</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2025 TEAMFE — Všechna práva vyhrazena<br>
+    <a href="#">Instagram</a> | <a href="#">Kontakt</a>
+  </footer>
+
+  <script>
+    // Zachováno: galerie (pouze UI je hezčí)
+    function toggleGallery(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === "flex") ? "none" : "flex";
+    }
+
+    // Nové: rychlé předvyplnění objednávky klikem z produktu (marketing/UX)
+    function prefillOrder(productValue){
+      const productSelect = document.getElementById("product");
+      productSelect.value = productValue;
+      handleProductChange({ target: productSelect });
+
+      // jemný scroll bez rušení
+      const order = document.getElementById("order");
+      if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function handleProductChange(e) {
+      const variantGroup = document.getElementById("variant-group");
+      const variantSelect = document.getElementById("variant");
+      const previewImage = document.getElementById("product-preview");
+      const messageField = document.getElementById("message");
+      const value = e.target.value;
+
+      let previewSrc = "";
+
+      if (value === "GymPin 8mm") {
+        variantGroup.classList.remove("hidden");
+        variantSelect.innerHTML = `
+          <option value="8mm - 13 cm">8mm – 13 cm</option>
+          <option value="8mm - 18 cm">8mm – 18 cm</option>
+        `;
+        previewSrc = "images/gympin1.webp";
+      } else if (value === "GymPin 10mm") {
+        variantGroup.classList.remove("hidden");
+        variantSelect.innerHTML = `
+          <option value="10mm - 13 cm">10mm – 13 cm</option>
+          <option value="10mm - 18 cm">10mm – 18 cm</option>
+        `;
+        previewSrc = "images/gympin1.webp";
+      } else {
+        variantGroup.classList.add("hidden");
+        variantSelect.innerHTML = "";
+        previewSrc =
+          (value === "Deadlift Jack") ? "images/dljack4.webp" :
+          (value === "FE Bar") ? "images/febar1.webp" : "";
+      }
+
+      previewImage.src = previewSrc;
+      previewImage.classList.toggle("hidden", !previewSrc);
+
+      // Oprava UX: nepřepisuj uživatelovu poznámku, jen aktualizuj první řádek s produktem
+      const prefix = value ? `Zvolený produkt: ${value}\n` : "";
+      if (!value) return;
+
+      if (!messageField.value.startsWith("Zvolený produkt:")) {
+        messageField.value = prefix + messageField.value;
+      } else {
+        messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
+      }
+    }
+
+    function validateForm() {
+      const product = document.getElementById("product").value;
+      const variant = document.getElementById("variant").value;
+
+      if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
+        alert("Prosím vyberte variantu délky GymPinu.");
+        return false;
+      }
+      return true;
+    }
+
+    // Zůstává: potvrzení po odeslání přes hash (pokud někdy přesměruješ na #form-confirmation)
+    if (window.location.hash === "#form-confirmation") {
+      const confirm = document.getElementById("form-confirmation");
+      if (confirm) confirm.style.display = "block";
+      setTimeout(() => {
+        if (confirm) confirm.style.display = "none";
+      }, 8000);
+    }
+  </script>
 </body>
 </html>
-
