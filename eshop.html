@@ -1,296 +1,385 @@
 
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <script type='text/javascript' src='https://www.teamfe.cz/aChz8SS5oO2AcqvMGHuH_MCzABygYNVYswrIePC2KyqgZt5gZV1oGbJhERRdpR7CwARXEMl-M1WpEQa1XTguJA=='></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TeamFE - Fitness Evolution</title>
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: url('images/parallax-gym.jpg') center center fixed;
-      background-size: cover;
-      background-repeat: no-repeat;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2rem 3rem;
-      background: linear-gradient(to right, #111, #222);
-    }
-    header img {
-      height: 120px;
-      border-radius: 8px;
-    }
-    .headline {
-      flex-grow: 1;
-      text-align: center;
-      padding: 3rem 1rem;
-      background: radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 100%);
-    }
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      margin: 0.5rem 0;
-    }
-    .subhead {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-top: 0.2rem;
-    }
-    .cta-buttons {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-    .cta-buttons button, .cta-buttons a {
-      background-color: #FF6600;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 0 0.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
-    }
-    .cta-buttons button:hover, .cta-buttons a:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
-    }
-    .section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-      border-bottom: 1px solid #222;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .section.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff3c3c;
-    }
-    .gradient-section {
-      background: linear-gradient(to bottom, #111 0%, #181818 100%);
-    }
-    .icon-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .icon-card {
-      background-color: #1a1a1a;
-      padding: 1rem;
-      border-radius: 10px;
-      width: 250px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .icon-card:hover {
-      background-color: #2c2c2c;
-      transform: translateY(-5px);
-    }
-    .icon-card img {
-      width: 96px;
-      height: 96px;
-      margin-bottom: 1rem;
-    }
-    .icon-card .description {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease-in-out;
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-      text-align: center;
-      min-height: 50px;
-    }
-    .icon-link:hover .description {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .icon-link {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-    }
-    .external-link {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .external-link a {
-      background-color: #FF6600;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease-in-out;
-    }
-    .external-link a:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      background-color: #000;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-      }
-      header img {
-        height: 80px;
-        margin-bottom: 1rem;
-      }
-      .headline {
-        padding: 1.5rem 1rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .subhead {
-        font-size: 1rem;
-      }
-      .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .cta-buttons a {
-        display: block;
-        margin: 0.5rem auto;
-        width: 80%;
-        font-size: 1rem;
-        padding: 10px 20px;
-      }
-    }
-  </style>
+<style>
+.back-button {
+position: absolute;
+top: 20px;
+left: 20px;
+background-color: #ff6600;
+color: white;
+padding: 10px 20px;
+border-radius: 6px;
+font-weight: bold;
+text-decoration: none;
+transition: background-color 0.3s ease, transform 0.3s ease;
+z-index: 1000;
+}
+.back-button:hover {
+background-color: #d94f00;
+transform: scale(1.05);
+}
+</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TeamFE E-shop</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+<style>
+.price-tag {
+font-size: 1.5rem;
+font-weight: bold;
+color: #00cc66;
+margin-top: 1rem;
+margin-bottom: 1rem;
+background-color: #121212;
+display: inline-block;
+padding: 0.4rem 1rem;
+border-radius: 8px;
+border: 2px solid #00cc66;
+box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+}
+
+body {
+font-family: 'Roboto', sans-serif;
+background: linear-gradient(to bottom, #0d0d0d 0%, #1a1a1a 100%);
+color: white;
+margin: 0;
+padding: 0;
+}
+.section {
+padding: 3rem 1rem;
+max-width: 900px;
+margin: auto;
+animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+0% { opacity: 0; transform: translateY(20px); }
+100% { opacity: 1; transform: translateY(0); }
+}
+h2 {
+font-family: 'Montserrat', sans-serif;
+font-size: 2rem;
+margin-bottom: 2rem;
+text-align: center;
+color: #ff3c3c;
+}
+.product-card {
+background-color: #1c1c1c;
+padding: 2rem;
+margin-bottom: 2rem;
+border-radius: 12px;
+text-align: center;
+box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+transition: transform 0.3s ease;
+}
+.product-card:hover {
+transform: translateY(-5px);
+}
+.product-card img {
+width: 100%;
+max-width: 400px;
+border-radius: 8px;
+transition: transform 0.3s ease;
+}
+.product-card img:hover {
+transform: scale(1.02);
+}
+.product-card h3 {
+font-family: 'Montserrat', sans-serif;
+font-size: 1.6rem;
+margin: 1rem 0 0.5rem;
+}
+.product-card p {
+font-size: 1rem;
+color: #ddd;
+}
+.cta-button {
+display: inline-block;
+background-color: #ff6600;
+color: white;
+padding: 12px 24px;
+border-radius: 6px;
+font-weight: bold;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+.cta-button:hover {
+background-color: #d94f00;
+transform: scale(1.05);
+}
+.toggle-gallery {
+margin-top: 1rem;
+cursor: pointer;
+font-weight: bold;
+color: #fff;
+background-color: #ff6600;
+padding: 12px 18px;
+border-radius: 30px;
+display: inline-block;
+transition: background-color 0.3s, transform 0.3s;
+box-shadow: 0 4px 12px rgba(255, 102, 0, 0.5);
+font-size: 1.05rem;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+.toggle-gallery:hover {
+background-color: #d94f00;
+transform: scale(1.05);
+}
+.thumbnail-row {
+display: none;
+justify-content: center;
+flex-wrap: wrap;
+gap: 1rem;
+margin-top: 1rem;
+}
+.thumbnail-row img {
+width: 100px;
+height: auto;
+cursor: pointer;
+border: 2px solid transparent;
+border-radius: 6px;
+transition: transform 0.2s ease, border-color 0.2s;
+}
+.thumbnail-row img:hover {
+transform: scale(1.05);
+border-color: #ff3c3c;
+}
+form {
+background-color: #1c1c1c;
+padding: 2rem;
+border-radius: 12px;
+margin-top: 3rem;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+label, input, textarea, select {
+display: block;
+width: 100%;
+margin-bottom: 1rem;
+font-size: 1rem;
+}
+input, textarea, select {
+padding: 0.5rem;
+border: none;
+border-radius: 6px;
+}
+input[type="submit"] {
+background-color: #ff6600;
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+input[type="submit"]:hover {
+background-color: #d94f00;
+}
+.hidden {
+display: none;
+}
+.product-preview {
+width: 100px;
+height: auto;
+margin-bottom: 1rem;
+display: block;
+}
+</style>
+
+
 </head>
 <body>
-  <header>
-    <img src="images/LOGO TEAMFE.png" alt="TeamFE Logo" />
-    <div class="headline">
-      <h1>TeamFE - Fitness Evolution</h1>
-      <div class="subhead">Evoluce nezačíná ve fitku. Začíná v tobě.</div>
-      <div class="cta-buttons">
-        <a href="#produkty">Navštiv e-shop</a>
-        <a href="#koucink">Přidej se</a>
-      </div>
-    </div>
-  </header>
+<a href="https://www.teamfe.cz/" class="back-button">⬅️ Zpět na hlavní stránku</a>
+<section class="section" id="produkty">
+<h2>Produkty</h2>
 
-  <section class="section gradient-section" id="more">
-    <div class="content">
-      <h2>Proč TeamFE?</h2>
-      <div class="icon-grid">
-        <a href="#koucink" class="icon-link">
-          <div class="icon-card">
-            <img src="images/zkušenosti ikona.jpg" alt="Zkušenosti" />
-            <h3>Zkušenosti</h3>
-            <div class="description">Kuba spojuje vědu a praxi. Od naturálního závodníka po kouče desítek transformací – ví, co funguje.</div>
-          </div>
-        </a>
-        <a href="#komunita" class="icon-link">
-          <div class="icon-card">
-            <img src="images/komunita ikona.jpg" alt="Komunita" />
-            <h3>Komunita</h3>
-            <div class="description">Přístup k tipům, videím a slevám. Spojujeme like-minded lidi. Evoluce nezačíná ve fitku. Začíná v tobě.</div>
-          </div>
-        </a>
-        <a href="#produkty" class="icon-link">
-          <div class="icon-card">
-            <img src="images/vývjoj ikona.jpg" alt="Vývoj" />
-            <h3>Vývoj</h3>
-            <div class="description">Vybavení, co šetří čas, peníze i nervy. Od pomůcek po vlastní stroje – efektivní, dostupné, bez zbytečností.</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+<!-- DEADLIFT JACK -->
+<div class="product-card">
+<img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
+<br><br>
 
-  <div class="section gradient-section" id="produkty">
-    <h2>Produkty</h2>
-    <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
-    <div class="external-link">
-      <a href="eshop.html">Navštiv náš e-shop</a>
-    </div>
-  </div>
+<div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
+<div id="gallery1" class="thumbnail-row">
+<img src="images/dljack1.webp" onclick="document.getElementById('mainImage1').src=this.src">
+<img src="images/dljack2.webp" onclick="document.getElementById('mainImage1').src=this.src">
+<img src="images/dljack3.webp" onclick="document.getElementById('mainImage1').src=this.src">
+<img src="images/dljack5.webp" onclick="document.getElementById('mainImage1').src=this.src">
+<img src="images/dljack4.webp" onclick="document.getElementById('mainImage1').src=this.src">
+</div>
+<h3> FE Deadlift Jack</h3>
+<p><strong>Už žádné přetahování s činkou.</strong><br />
+Zvedání činky a neustálé nakládání z jedné strany vás stojí čas i sílu. Náš <strong>Deadlift Jack</strong> je jednoduchý, efektivní nástroj, který vám to usnadní.<br />
+Najeď osou do držáku a jedním pohybem přepáčíte osu nahoru.<br />
+Minimalistický design<br />
+Rychlé nakládání<br />
+Bezkonkurenční cena</p>
+<div class="price-tag">Cena: 2 200 Kč</div>
+<ul>
+<li>Délka: 100 cm</li>
+<li>Hloubka: 60 cm</li>
+<li>Dotyková část (držák osy): vyrobena z odolného PLA plastu – chrání osu před poškozením</li>
+<li>Rychlé a plynulé nadzvednutí osy jedním pohybem</li>
+</ul>
+</div>
+<!-- GYMPIN -->
+<div class="product-card">
+<img id="mainImage2" src="images/gympin1.webp" alt="FE GymPin" />
+<br><br>
 
-  <div class="section gradient-section" id="koucink">
-    <h2>Koučink</h2>
-    <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
-    <div class="cta-buttons">
-      <a href="coaching.html">Vyplnit dotazník</a>
-    </div>
-    <div style="text-align:center; margin-top:2rem;">
-      <img src="images/kubafecoaching.jpeg" alt="Kuba Železňák" style="max-width:100%; border-radius:12px;" />
-    </div>
-  </div>
+<div class="toggle-gallery" onclick="toggleGallery('gallery2')">Zobrazit více fotek</div>
+<div id="gallery2" class="thumbnail-row">
+<img src="images/gympin1.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin2.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin3.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin4.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin5.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin6.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin7.webp" onclick="document.getElementById('mainImage2').src=this.src">
+<img src="images/gympin8.webp" onclick="document.getElementById('mainImage2').src=this.src">
+</div>
+<h3>🛠️ FE GymPin – 8 mm / 10 mm</h3>
+<p><strong>Když ti nestačí váha na stroji.</strong><br />
+Chceš přidat extra zátěž na stroj nebo doladit mezikrok v sérii? FE GymPin je přesně to, co potřebuješ.</p>
 
-  <div class="section gradient-section" id="komunita">
-    <h2>Komunita a Členství</h2>
-    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
-    <p>Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny like-minded lidí.</p>
-    <div class="cta-buttons">
-      <a href="#">Získat přístup</a>
-    </div>
-  </div>
+<div class="price-tag">Cena: 800 Kč (13 cm) / 1 000 Kč (18 cm)</div>
 
-  <div class="section gradient-section" id="blog">
-    <h2>Blog a videa</h2>
-    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
-    <p>Tipy, příběhy, triky a rady na cestě za lepším tréninkem.</p>
-    <div class="cta-buttons">
-      <a href="#">Číst blog</a>
-    </div>
-  </div>
+<ul>
+<li>Nakládací část: dvě varianty – 13 cm nebo 18 cm</li>
+<li>Délka tyče do stroje: 10 cm</li>
+<li>Dostupné průměry tyče: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+<li>Hmotnost: 450 g</li>
+</ul>
+</div>
 
-  <footer>
-    © 2025 TEAMFE – Všechna práva vyhrazena<br />
-    <a href="#">Instagram</a> | <a href="#">Kontakt</a>
-  </footer>
+<!-- FE BAR -->
+<div class="product-card">
+<img id="mainImage3" src="images/febar1.webp" alt="FE Bar – nastavitelný adaptér na kladky" />
+<br><br>
 
-  <script>
-    document.addEventListener("scroll", function () {
-      document.querySelectorAll(".section").forEach(element => {
-        if (element.getBoundingClientRect().top < window.innerHeight) {
-          element.classList.add("fade-in");
-        }
-      });
-    });
-  </script>
+<div class="toggle-gallery" onclick="toggleGallery('gallery3')">Zobrazit více fotek</div>
+<div id="gallery3" class="thumbnail-row">
+<img src="images/febar2.webp" onclick="document.getElementById('mainImage3').src=this.src">
+<img src="images/febar.webp" onclick="document.getElementById('mainImage3').src=this.src">
+</div>
+<h3>🔧 FE Bar – nastavitelný adaptér na kladky</h3>
+<p><strong>FE Bar je variabilní nakládací tyč s 23 nastavitelnými otvory pro maximální flexibilitu.</strong></p>
+<div class="price-tag">Cena: 1 500 Kč</div>
+<ul>
+<li>Počet otvorů: 23</li>
+<li>Rozestup mezi otvory: 1,5 cm</li>
+<li>Kompaktní design s logem Fe</li>
+<li>Kompatibilita s různým vybavením posiloven</li>
+</ul>
+</div>
+<form action="https://formspree.io/f/mjkrvoep" method="POST" onsubmit="return validateForm()">
+<input type="hidden" name="_redirect" value="https://www.teamfe.cz/dekujeme.html">
+<h3 style="color: #fff;">🛒 Objednávkový formulář</h3>
+<label for="name">Jméno a příjmení:</label>
+<input type="text" id="name" name="name" required>
+
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" required>
+
+<label for="product">Vybraný produkt:</label>
+<select id="product" name="product" required onchange="handleProductChange(event)">
+<option value="">-- Vyberte produkt --</option>
+<option value="Deadlift Jack">Deadlift Jack</option>
+<option value="GymPin 8mm">GymPin 8mm</option>
+<option value="GymPin 10mm">GymPin 10mm</option>
+<option value="FE Bar">FE Bar</option>
+</select>
+
+<img id="product-preview" class="product-preview hidden" alt="Náhled produktu" />
+
+<div id="variant-group" class="hidden">
+<label for="variant">Varianta GymPin:</label>
+<select id="variant" name="variant"></select>
+</div>
+
+<label for="quantity">Počet kusů:</label>
+<input type="number" id="quantity" name="quantity" min="1" required>
+
+<label for="address">Doručovací adresa:</label>
+<textarea id="address" name="address" rows="3" required></textarea>
+
+<label for="message">Poznámka:</label>
+<textarea id="message" name="message" rows="3"></textarea>
+
+<input type="submit" value="Odeslat objednávku">
+</form>
+<div id="form-confirmation" style="text-align:center; padding: 2rem; font-size: 1.2rem; background-color: #1c1c1c; color: #00cc66; border-radius: 12px; margin-top: 3rem; display: none;">
+✅ Děkujeme! Objednávka byla úspěšně odeslána. Ozveme se vám co nejdříve. 💪<br>
+<a href="#produkty" style="display:inline-block; margin-top:1rem; color:#ff3c3c; font-weight:bold; text-decoration:underline;">Zpět na produkty</a>
+</div>
+</section>
+<script>
+function toggleGallery(id) {
+const el = document.getElementById(id);
+el.style.display = el.style.display === "flex" ? "none" : "flex";
+}
+
+function handleProductChange(e) {
+const variantGroup = document.getElementById("variant-group");
+const variantSelect = document.getElementById("variant");
+const previewImage = document.getElementById("product-preview");
+const messageField = document.getElementById("message");
+const value = e.target.value;
+
+let productText = value;
+let previewSrc = "";
+
+if (value === "GymPin 8mm") {
+variantGroup.classList.remove("hidden");
+variantSelect.innerHTML = `
+<option value="8mm - 13 cm">8mm – 13 cm</option>
+<option value="8mm - 18 cm">8mm – 18 cm</option>
+`;
+previewSrc = "images/gympin1.webp";
+} else if (value === "GymPin 10mm") {
+variantGroup.classList.remove("hidden");
+variantSelect.innerHTML = `
+<option value="10mm - 13 cm">10mm – 13 cm</option>
+<option value="10mm - 18 cm">10mm – 18 cm</option>
+`;
+previewSrc = "images/gympin1.webp";
+} else {
+variantGroup.classList.add("hidden");
+variantSelect.innerHTML = "";
+previewSrc = value === "Deadlift Jack" ? "images/dljack4.webp" :
+value === "FE Bar" ? "images/febar1.webp" : "";
+}
+
+previewImage.src = previewSrc;
+previewImage.classList.toggle("hidden", !previewSrc);
+
+if (value) {
+messageField.value = `Zvolený produkt: ${productText}`;
+} else {
+messageField.value = "";
+}
+}
+
+function validateForm() {
+const product = document.getElementById("product").value;
+const variantGroup = document.getElementById("variant-group");
+const variant = document.getElementById("variant").value;
+
+if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
+alert("Prosím vyberte variantu délky GymPinu.");
+return false;
+}
+return true;
+}
+</script>
+<script>
+if (window.location.hash === "#form-confirmation") {
+const confirm = document.getElementById("form-confirmation");
+if (confirm) confirm.style.display = "block";
+setTimeout(() => {
+if (confirm) confirm.style.display = "none";
+}, 8000);
+}
+</script>
 </body>
 </html>
+
