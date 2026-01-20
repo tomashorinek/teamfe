@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
   <script type='text/javascript' src='https://www.teamfe.cz/aChz8SS5oO2AcqvMGHuH_MCzABygYNVYswrIePC2KyqgZt5gZV1oGbJhERRdpR7CwARXEMl-M1WpEQa1XTguJA=='></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TeamFE - Fitness Evolution</title>
+  <title>TeamFE — E-shop</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -49,7 +49,7 @@
       margin-top: 1.5rem;
       text-align: center;
     }
-    .cta-buttons button, .cta-buttons a {
+    .cta-buttons a {
       background-color: #FF6600;
       color: white;
       padding: 12px 24px;
@@ -60,8 +60,9 @@
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s ease-in-out;
+      display: inline-block;
     }
-    .cta-buttons button:hover, .cta-buttons a:hover {
+    .cta-buttons a:hover {
       background-color: #D94F00;
       transform: scale(1.05);
     }
@@ -83,52 +84,10 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #ff3c3c;
+      text-align: center;
     }
     .gradient-section {
       background: linear-gradient(to bottom, #111 0%, #181818 100%);
-    }
-    .icon-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .icon-card {
-      background-color: #1a1a1a;
-      padding: 1rem;
-      border-radius: 10px;
-      width: 250px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .icon-card:hover {
-      background-color: #2c2c2c;
-      transform: translateY(-5px);
-    }
-    .icon-card img {
-      width: 96px;
-      height: 96px;
-      margin-bottom: 1rem;
-    }
-    .icon-card .description {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease-in-out;
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-      text-align: center;
-      min-height: 50px;
-    }
-    .icon-link:hover .description {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .icon-link {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
     }
     .external-link {
       text-align: center;
@@ -142,6 +101,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: all 0.3s ease-in-out;
+      display: inline-block;
     }
     .external-link a:hover {
       background-color: #D94F00;
@@ -184,10 +144,6 @@
       .subhead {
         font-size: 1rem;
       }
-      .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
-      }
       .cta-buttons a {
         display: block;
         margin: 0.5rem auto;
@@ -198,83 +154,33 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <img src="images/LOGO TEAMFE.png" alt="TeamFE Logo" />
     <div class="headline">
-      <h1>TeamFE - Fitness Evolution</h1>
-      <div class="subhead">Evoluce nezačíná ve fitku. Začíná v tobě.</div>
+      <h1>TeamFE — E-shop</h1>
+      <div class="subhead">Pomůcky, merch a FE adaptéry. Rychle, jednoduše, bez zbytečností.</div>
       <div class="cta-buttons">
-        <a href="#produkty">Navštiv e-shop</a>
-        <a href="#koucink">Přidej se</a>
+        <a href="eshop.html">Přejít do e-shopu</a>
       </div>
     </div>
   </header>
 
-  <section class="section gradient-section" id="more">
-    <div class="content">
-      <h2>Proč TeamFE?</h2>
-      <div class="icon-grid">
-        <a href="#koucink" class="icon-link">
-          <div class="icon-card">
-            <img src="images/zkušenosti ikona.jpg" alt="Zkušenosti" />
-            <h3>Zkušenosti</h3>
-            <div class="description">Kuba spojuje vědu a praxi. Od naturálního závodníka po kouče desítek transformací – ví, co funguje.</div>
-          </div>
-        </a>
-        <a href="#komunita" class="icon-link">
-          <div class="icon-card">
-            <img src="images/komunita ikona.jpg" alt="Komunita" />
-            <h3>Komunita</h3>
-            <div class="description">Přístup k tipům, videím a slevám. Spojujeme like-minded lidi. Evoluce nezačíná ve fitku. Začíná v tobě.</div>
-          </div>
-        </a>
-        <a href="#produkty" class="icon-link">
-          <div class="icon-card">
-            <img src="images/vývjoj ikona.jpg" alt="Vývoj" />
-            <h3>Vývoj</h3>
-            <div class="description">Vybavení, co šetří čas, peníze i nervy. Od pomůcek po vlastní stroje – efektivní, dostupné, bez zbytečností.</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="section gradient-section" id="produkty">
-    <h2>Produkty</h2>
-    <p>FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.</p>
+  <div class="section gradient-section fade-in" id="produkty">
+    <h2>E-shop</h2>
+    <p style="text-align:center; max-width: 720px; margin: 0 auto;">
+      FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.
+      Klikni a vyber si produkt.
+    </p>
     <div class="external-link">
-      <a href="eshop.html">Navštiv náš e-shop</a>
+      <a href="eshop.html">Otevřít e-shop</a>
     </div>
-  </div>
 
-  <div class="section gradient-section" id="koucink">
-    <h2>Koučink</h2>
-    <p>Chceš výsledky? Vyplň dotazník, spojíme se a zjistíme, zda jsme pro sebe ta správná volba.</p>
-    <div class="cta-buttons">
-      <a href="coaching.html">Vyplnit dotazník</a>
-    </div>
-    <div style="text-align:center; margin-top:2rem;">
-      <img src="images/kubafecoaching.jpeg" alt="Kuba Železňák" style="max-width:100%; border-radius:12px;" />
-    </div>
-  </div>
-
-  <div class="section gradient-section" id="komunita">
-    <h2>Komunita a Členství</h2>
-    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
-    <p>Tipy, videa, vedení progresu, odpovědi na tvoje otázky. Přístup do skupiny like-minded lidí.</p>
-    <div class="cta-buttons">
-      <a href="#">Získat přístup</a>
-    </div>
-  </div>
-
-  <div class="section gradient-section" id="blog">
-    <h2>Blog a videa</h2>
-    <p style="text-align:center; font-style: italic; margin-top: 1rem;">Coming soon...</p>
-    <p>Tipy, příběhy, triky a rady na cestě za lepším tréninkem.</p>
-    <div class="cta-buttons">
-      <a href="#">Číst blog</a>
-    </div>
+    <!-- Volitelně: rychlý “trust” řádek -->
+    <p style="text-align:center; color:#ccc; margin-top: 1.25rem; font-size: 0.95rem;">
+      ✅ Ověřené v praxi • 🚚 Rychlé odeslání (dle dostupnosti) • 💬 Podpora na IG
+    </p>
   </div>
 
   <footer>
@@ -283,6 +189,7 @@
   </footer>
 
   <script>
+    // Zachovávám tvoji logiku, jen je teď na stránce méně sekcí
     document.addEventListener("scroll", function () {
       document.querySelectorAll(".section").forEach(element => {
         if (element.getBoundingClientRect().top < window.innerHeight) {
