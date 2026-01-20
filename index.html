@@ -1,187 +1,579 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <script type='text/javascript' src='https://www.teamfe.cz/aChz8SS5oO2AcqvMGHuH_MCzABygYNVYswrIePC2KyqgZt5gZV1oGbJhERRdpR7CwARXEMl-M1WpEQa1XTguJA=='></script>
+  <!-- POZN: Podezřelý script odstraněn (bez jasného původu) -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TeamFE — E-shop</title>
+  <title>TEAMFE — E-shop</title>
+
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: url('images/parallax-gym.jpg') center center fixed;
+    :root{
+      --bg0:#0b0b0c;
+      --bg1:#121214;
+      --text:#ffffff;
+      --muted:#cfcfd6;
+      --muted2:#a9a9b3;
+      --orange:#ff6600;
+      --orange2:#d94f00;
+      --red:#ff3c3c;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --shadow2: 0 8px 20px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Roboto',sans-serif;
+      color: var(--text);
+
+      /* zachovávám tvůj “gym vibe”, ale v premium stylu */
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(255,102,0,.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(255,60,60,.12), transparent 55%),
+        linear-gradient(to bottom, var(--bg0) 0%, var(--bg1) 100%),
+        url('images/parallax-gym.jpg') center center fixed;
       background-size: cover;
       background-repeat: no-repeat;
-      color: #fff;
-      scroll-behavior: smooth;
     }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2rem 3rem;
-      background: linear-gradient(to right, #111, #222);
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.62);
+      z-index:-1;
     }
-    header img {
-      height: 120px;
-      border-radius: 8px;
+
+    /* TOPBAR */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,12,.65);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .headline {
-      flex-grow: 1;
-      text-align: center;
-      padding: 3rem 1rem;
-      background: radial-gradient(ellipse at top, #1a1a1a 0%, #0d0d0d 100%);
+    .topbar-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      margin: 0.5rem 0;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+      min-width: 240px;
     }
-    .subhead {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-top: 0.2rem;
+    .brand img{
+      width:42px; height:42px;
+      object-fit:contain;
+      border-radius:12px;
+      background: rgba(255,255,255,.06);
+      padding:6px;
     }
-    .cta-buttons {
-      margin-top: 1.5rem;
-      text-align: center;
+    .brand strong{
+      font-family:'Montserrat',sans-serif;
+      font-weight:700;
+      display:block;
+      line-height:1.05;
     }
-    .cta-buttons a {
-      background-color: #FF6600;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 0 0.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
-      display: inline-block;
+    .brand span{
+      display:block;
+      font-size:.85rem;
+      color:var(--muted2);
+      margin-top:2px;
+      line-height:1.1;
     }
-    .cta-buttons a:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
+
+    .nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-      border-bottom: 1px solid #222;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:800;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.18);
+    }
+    .pill.primary{
+      background: rgba(255,102,0,.18);
+      border-color: rgba(255,102,0,.35);
+    }
+    .pill.primary:hover{
+      background: rgba(255,102,0,.24);
+    }
+
+    /* HERO */
+    header{
+      max-width:1100px;
+      margin:0 auto;
+      padding:34px 16px 18px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(520px 240px at 15% 0%, rgba(255,102,0,.22), transparent 60%),
+        radial-gradient(520px 260px at 95% 30%, rgba(255,60,60,.18), transparent 60%);
+      opacity:.9;
+      z-index:0;
+    }
+    .card > *{position:relative; z-index:1;}
+
+    h1{
+      font-family:'Montserrat',sans-serif;
+      font-size:2.35rem;
+      margin:0 0 10px 0;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .subhead{
+      margin:0;
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius: 14px;
+      font-weight:900;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      transition: all .2s ease;
+      cursor:pointer;
+      color: var(--text);
+    }
+    .btn.primary{
+      background: var(--orange);
+    }
+    .btn.primary:hover{
+      background: var(--orange2);
+      transform: translateY(-1px);
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+    }
+    .btn.ghost:hover{
+      background: rgba(255,255,255,.09);
+      transform: translateY(-1px);
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      font-weight:800;
+      font-size:.92rem;
+    }
+
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .side h3{
+      font-family:'Montserrat',sans-serif;
+      margin:0 0 8px 0;
+      font-size:1.05rem;
+    }
+    .side p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: .98rem;
+    }
+    .accent{color: var(--orange); font-weight:900;}
+
+    /* SECTIONS */
+    .section{
+      padding: 18px 16px 46px;
+      max-width:1100px;
+      margin:0 auto;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(16px);
+      transition: opacity .9s ease, transform .9s ease;
     }
-    .section.fade-in {
+    .section.fade-in{
       opacity: 1;
       transform: translateY(0);
     }
-    .section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff3c3c;
-      text-align: center;
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.9rem;
+      margin: 18px 0 14px;
+      color: var(--red);
+      text-align:center;
+      letter-spacing:.2px;
     }
-    .gradient-section {
-      background: linear-gradient(to bottom, #111 0%, #181818 100%);
+    .center{
+      text-align:center;
+      color: var(--muted);
+      max-width: 72ch;
+      margin: 0 auto;
+      line-height:1.55;
     }
-    .external-link {
-      text-align: center;
-      margin-top: 2rem;
+
+    /* MINI PRODUCT PREVIEW */
+    .preview-grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
     }
-    .external-link a {
-      background-color: #FF6600;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease-in-out;
-      display: inline-block;
+    .mini{
+      grid-column: span 4;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 240px;
     }
-    .external-link a:hover {
-      background-color: #D94F00;
-      transform: scale(1.05);
+    .mini img{
+      width:100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.25);
     }
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      background-color: #000;
-      font-size: 0.9rem;
+    .mini strong{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.05rem;
     }
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      text-decoration: none;
+    .mini span{
+      color: var(--muted);
+      line-height:1.45;
+      font-size: .95rem;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
+    .mini .mini-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:auto;
     }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-      }
-      header img {
-        height: 80px;
-        margin-bottom: 1rem;
-      }
-      .headline {
-        padding: 1.5rem 1rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .subhead {
-        font-size: 1rem;
-      }
-      .cta-buttons a {
-        display: block;
-        margin: 0.5rem auto;
-        width: 80%;
-        font-size: 1rem;
-        padding: 10px 20px;
-      }
+    .price{
+      font-weight:900;
+      color: #00cc66;
+      background: rgba(0,204,102,.08);
+      border: 1px solid rgba(0,204,102,.30);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size:.95rem;
+      white-space:nowrap;
+    }
+    .link{
+      font-weight:900;
+      color: var(--text);
+      text-decoration:none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition: all .2s ease;
+      white-space:nowrap;
+    }
+    .link:hover{
+      background: rgba(255,255,255,.09);
+      transform: translateY(-1px);
+    }
+
+    /* HOW IT WORKS */
+    .steps{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .step{
+      grid-column: span 4;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+    }
+    .step .num{
+      width:38px;
+      height:38px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      background: rgba(255,102,0,.18);
+      border: 1px solid rgba(255,102,0,.35);
+      margin-bottom: 10px;
+    }
+    .step h4{
+      font-family:'Montserrat',sans-serif;
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+    .step p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: .98rem;
+    }
+
+    /* FINAL CTA */
+    .final{
+      text-align:center;
+    }
+    .final .big{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.55rem;
+      margin: 0 0 10px;
+    }
+
+    /* FOOTER */
+    footer{
+      max-width:1100px;
+      margin: 18px auto 0;
+      padding: 28px 16px 40px;
+      color: var(--muted2);
+      text-align:center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    footer a{
+      color: var(--muted);
+      text-decoration:none;
+      font-weight:700;
+      margin:0 8px;
+    }
+    footer a:hover{text-decoration:underline;}
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr;}
+      .mini{grid-column: span 12;}
+      .step{grid-column: span 12;}
+      .brand{min-width:unset;}
+    }
+    @media (max-width: 520px){
+      h1{font-size:1.85rem;}
+      .pill{padding:9px 12px;}
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <img src="images/LOGO TEAMFE.png" alt="TeamFE Logo" />
-    <div class="headline">
-      <h1>TeamFE — E-shop</h1>
-      <div class="subhead">Pomůcky, merch a FE adaptéry. Rychle, jednoduše, bez zbytečností.</div>
-      <div class="cta-buttons">
-        <a href="eshop.html">Přejít do e-shopu</a>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="TEAMFE E-shop">
+        <img src="images/favicon.png" alt="TEAMFE">
+        <div>
+          <strong>TEAMFE E-shop</strong>
+          <span>pomůcky • adaptéry • merch</span>
+        </div>
+      </a>
+
+      <div class="nav">
+        <a class="pill" href="#produkty">Produkty</a>
+        <a class="pill" href="#jaktofunguje">Jak to funguje</a>
+        <a class="pill primary" href="eshop.html">Otevřít e-shop</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="top">
+    <div class="hero">
+      <div class="card">
+        <h1>Vybavení, které ti zrychlí trénink a zvedne kvalitu.</h1>
+        <p class="subhead">
+          TEAMFE produkty vznikají z praxe: jednoduché, pevné a bez zbytečností.
+          Vybereš produkt, vyplníš objednávku a my potvrdíme cenu + dopravu e-mailem.
+        </p>
+
+        <div class="chips">
+          <div class="chip">✅ Ověřené v praxi</div>
+          <div class="chip">⚙️ Jednoduchý design</div>
+          <div class="chip">💬 Rychlá domluva</div>
+          <div class="chip">📦 Odeslání dle dostupnosti</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="eshop.html">Přejít do e-shopu</a>
+          <a class="btn ghost" href="#produkty">Mrknout na produkty</a>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card">
+          <h3>Co teď lidi kupují nejčastěji</h3>
+          <p>
+            <span class="accent">Deadlift Jack</span> pro rychlé nakládání,
+            <span class="accent">GymPin</span> pro mikro-progresi na strojích,
+            <span class="accent">FE Bar</span> pro variabilitu na kladkách.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Potřebuješ poradit?</h3>
+          <p>
+            V e-shopu v objednávce napiš do poznámky, jaký máš stroj / otvor (8mm vs 10mm) a my doporučíme variantu.
+          </p>
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="section gradient-section fade-in" id="produkty">
-    <h2>E-shop</h2>
-    <p style="text-align:center; max-width: 720px; margin: 0 auto;">
-      FE Adaptéry, tréninkové pomůcky, merch a do budoucna i vlastní stroje.
-      Klikni a vyber si produkt.
+  <!-- PRODUCTS PREVIEW -->
+  <section class="section" id="produkty">
+    <h2 class="section-title">Rychlý výběr</h2>
+    <p class="center">
+      Tohle jsou top produkty. Klikni do e-shopu a vyber detail + fotky. Odeslání a dopravu potvrdíme e-mailem.
     </p>
-    <div class="external-link">
-      <a href="eshop.html">Otevřít e-shop</a>
+
+    <div class="preview-grid">
+      <div class="mini">
+        <img src="images/dljack4.webp" alt="FE Deadlift Jack">
+        <strong>FE Deadlift Jack</strong>
+        <span>Rychlejší nakládání činky bez přetahování z jedné strany.</span>
+        <div class="mini-row">
+          <div class="price">2 200 Kč</div>
+          <a class="link" href="eshop.html#deadlift-jack">Detail</a>
+        </div>
+      </div>
+
+      <div class="mini">
+        <img src="images/gympin1.webp" alt="FE GymPin">
+        <strong>FE GymPin (8/10 mm)</strong>
+        <span>Mikro-progrese na strojích, když jsou skoky vah moc velké.</span>
+        <div class="mini-row">
+          <div class="price">od 800 Kč</div>
+          <a class="link" href="eshop.html#gympin">Detail</a>
+        </div>
+      </div>
+
+      <div class="mini">
+        <img src="images/febar1.webp" alt="FE Bar">
+        <strong>FE Bar (23 otvorů)</strong>
+        <span>Variabilní adaptér na kladky pro různé úchopy a setupy.</span>
+        <div class="mini-row">
+          <div class="price">1 500 Kč</div>
+          <a class="link" href="eshop.html#fe-bar">Detail</a>
+        </div>
+      </div>
     </div>
 
-    <!-- Volitelně: rychlý “trust” řádek -->
-    <p style="text-align:center; color:#ccc; margin-top: 1.25rem; font-size: 0.95rem;">
-      ✅ Ověřené v praxi • 🚚 Rychlé odeslání (dle dostupnosti) • 💬 Podpora na IG
-    </p>
-  </div>
+    <div style="text-align:center; margin-top:18px;">
+      <a class="btn primary" href="eshop.html">Otevřít e-shop</a>
+      <a class="btn ghost" href="#jaktofunguje">Jak to funguje</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="jaktofunguje">
+    <h2 class="section-title">Jak to funguje</h2>
+    <p class="center">Rychlé, jednoduché, lidské. Bez “mystéria” a zbytečného čekání.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Vybereš produkt</h4>
+        <p>Proklikneš fotky, přečteš detaily a vybereš variantu.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Vyplníš objednávku</h4>
+        <p>Jméno, e-mail, adresa. Když váháš, napiš dotaz do poznámky.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Potvrzení + doprava</h4>
+        <p>Ozveme se e-mailem s potvrzením ceny a dopravou. Pak odesíláme.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final" id="cta">
+    <h2 class="section-title">Připraven?</h2>
+    <p class="big">Klikni a vyber si produkt. Zbytek doladíme rychle e-mailem.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a class="btn primary" href="eshop.html">Přejít do e-shopu</a>
+      <a class="btn ghost" href="#top">Zpět nahoru</a>
+    </div>
+  </section>
 
   <footer>
     © 2025 TEAMFE – Všechna práva vyhrazena<br />
@@ -189,14 +581,17 @@
   </footer>
 
   <script>
-    // Zachovávám tvoji logiku, jen je teď na stránce méně sekcí
-    document.addEventListener("scroll", function () {
-      document.querySelectorAll(".section").forEach(element => {
-        if (element.getBoundingClientRect().top < window.innerHeight) {
-          element.classList.add("fade-in");
+    // Fade-in sekcí při scrollu (zůstává jako u tebe, jen lépe použitý)
+    const reveal = () => {
+      document.querySelectorAll(".section").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+          el.classList.add("fade-in");
         }
       });
-    });
+    };
+    document.addEventListener("scroll", reveal);
+    reveal();
   </script>
+
 </body>
 </html>
