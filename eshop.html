@@ -849,66 +849,27 @@
     }
 
 <script>
-  function handleProductChange(e) {
-    const variantGroup = document.getElementById("variant-group");
-    const variantSelect = document.getElementById("variant");
-    const previewImage = document.getElementById("product-preview");
-    const messageField = document.getElementById("message");
-    const value = e.target.value;
-
-    let previewSrc = "";
-
-    if (value === "GymPin 8mm") {
-      variantGroup.classList.remove("hidden");
-      variantSelect.innerHTML = `
-        <option value="">-- Vyber délku --</option>
-        <option value="8mm - 13 cm (1000 Kč)">8mm – 13 cm (1 000 Kč)</option>
-        <option value="8mm - 18 cm (1000 Kč)">8mm – 18 cm (1 000 Kč)</option>
-        <option value="8mm - Vlastní délka (+200 Kč)">8mm – Vlastní délka (+200 Kč)</option>
-      `;
-      previewSrc = "images/gympin1.webp";
-      toggleCustomLength();
-
-    } else if (value === "GymPin 10mm") {
-      variantGroup.classList.remove("hidden");
-      variantSelect.innerHTML = `
-        <option value="">-- Vyber délku --</option>
-        <option value="10mm - 13 cm (1000 Kč)">10mm – 13 cm (1 000 Kč)</option>
-        <option value="10mm - 18 cm (1000 Kč)">10mm – 18 cm (1 000 Kč)</option>
-        <option value="10mm - Vlastní délka (+200 Kč)">10mm – Vlastní délka (+200 Kč)</option>
-      `;
-      previewSrc = "images/gympin1.webp";
-      toggleCustomLength();
-
-    } else {
-      variantGroup.classList.add("hidden");
-      variantSelect.innerHTML = "";
-      customGroup.classList.add("hidden");
-      customInput.value = "";
-
-      previewSrc =
-        (value === "Deadlift Jack") ? "images/dljack4.webp" :
-        (value === "FE Bar") ? "images/febar1.webp" : "";
-    }
-
-    previewImage.src = previewSrc;
-    previewImage.classList.toggle("hidden", !previewSrc);
-
-    // UX: aktualizuj jen řádek s produktem, nepřepisuj zbytek poznámky
-    const prefix = value ? `Zvolený produkt: ${value}\n` : "";
-    if (!value) return;
-
-    if (!messageField.value.startsWith("Zvolený produkt:")) {
-      messageField.value = prefix + messageField.value;
-    } else {
-      messageField.value = messageField.value.replace(
-        /^Zvolený produkt:.*\n?/,
-        prefix
-      );
-    }
+  // Galerie
+  function toggleGallery(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === "flex") ? "none" : "flex";
   }
 
+  // Rychlé předvyplnění objednávky klikem z produktu
+  function prefillOrder(productValue){
+    const productSelect = document.getElementById("product");
+    productSelect.value = productValue;
+    handleProductChange({ target: productSelect });
+
+    const order = document.getElementById("order");
+    if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Elementy formuláře
+  const variantGroup = document.getElementById("variant-group");
   const variantSelectEl = document.getElementById("variant");
+  const previewImage = document.getElementById("product-preview");
+  const messageField = document.getElementById("message");
   const customGroup = document.getElementById("custom-length-group");
   const customInput = document.getElementById("customLength");
 
@@ -921,23 +882,69 @@
 
   variantSelectEl.addEventListener("change", toggleCustomLength);
 
+  function handleProductChange(e) {
+    const value = e.target.value;
+    let previewSrc = "";
+
+    if (value === "GymPin 8mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelectEl.innerHTML = `
+        <option value="">-- Vyber délku --</option>
+        <option value="8mm - 13 cm (1000 Kč)">8mm – 13 cm (1 000 Kč)</option>
+        <option value="8mm - 18 cm (1000 Kč)">8mm – 18 cm (1 000 Kč)</option>
+        <option value="8mm - Vlastní délka (+200 Kč)">8mm – Vlastní délka (+200 Kč)</option>
+      `;
+      previewSrc = "images/gympin1.webp";
+      toggleCustomLength();
+
+    } else if (value === "GymPin 10mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelectEl.innerHTML = `
+        <option value="">-- Vyber délku --</option>
+        <option value="10mm - 13 cm (1000 Kč)">10mm – 13 cm (1 000 Kč)</option>
+        <option value="10mm - 18 cm (1000 Kč)">10mm – 18 cm (1 000 Kč)</option>
+        <option value="10mm - Vlastní délka (+200 Kč)">10mm – Vlastní délka (+200 Kč)</option>
+      `;
+      previewSrc = "images/gympin1.webp";
+      toggleCustomLength();
+
+    } else {
+      variantGroup.classList.add("hidden");
+      variantSelectEl.innerHTML = "";
+      customGroup.classList.add("hidden");
+      customInput.value = "";
+
+      previewSrc =
+        (value === "Deadlift Jack") ? "images/dljack4.webp" :
+        (value === "FE Bar") ? "images/febar1.webp" : "";
+    }
+
+    // Náhled obrázku
+    previewImage.src = previewSrc;
+    previewImage.classList.toggle("hidden", !previewSrc);
+
+    // Poznámka: aktualizuj jen první řádek s produktem
+    if (!value) return;
+    const prefix = `Zvolený produkt: ${value}\n`;
+
+    if (!messageField.value.startsWith("Zvolený produkt:")) {
+      messageField.value = prefix + messageField.value;
+    } else {
+      messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
+    }
+  }
+
   function validateForm() {
     const product = document.getElementById("product").value;
-    const variant = document.getElementById("variant").value;
+    const variant = variantSelectEl.value;
 
-    if (
-      (product === "GymPin 8mm" || product === "GymPin 10mm") &&
-      !variant
-    ) {
+    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
       alert("Prosím vyberte variantu délky GymPinu.");
       return false;
     }
 
-    if (
-      (product === "GymPin 8mm" || product === "GymPin 10mm") &&
-      variant.includes("Vlastní délka")
-    ) {
-      const len = document.getElementById("customLength").value;
+    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && variant.includes("Vlastní délka")) {
+      const len = customInput.value;
       if (!len) {
         alert("Prosím vyplň vlastní délku (cm).");
         return false;
@@ -947,7 +954,7 @@
     return true;
   }
 
-  // potvrzení po odeslání (hash)
+  // potvrzení po odeslání přes hash (pokud někdy použiješ #form-confirmation)
   if (window.location.hash === "#form-confirmation") {
     const confirm = document.getElementById("form-confirmation");
     if (confirm) confirm.style.display = "block";
