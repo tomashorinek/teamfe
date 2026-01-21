@@ -319,13 +319,14 @@
       line-height:1.45;
       font-size: .95rem;
     }
-    .mini .mini-row{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      margin-top:auto;
-    }
+ .mini .mini-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  margin-top:auto;
+}
     .price{
       font-weight:900;
       color: #00cc66;
@@ -336,17 +337,18 @@
       font-size:.95rem;
       white-space:nowrap;
     }
-    .link{
-      font-weight:900;
-      color: var(--text);
-      text-decoration:none;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      transition: all .2s ease;
-      white-space:nowrap;
-    }
+.link{
+  font-weight:900;
+  color: var(--text);
+  text-decoration:none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  transition: all .2s ease;
+  white-space:nowrap;
+  text-align: center;
+}
     .link:hover{
       background: rgba(255,255,255,.09);
       transform: translateY(-1px);
@@ -445,11 +447,12 @@
         </div>
       </a>
 
-      <div class="nav">
-        <a class="pill" href="#produkty">Produkty</a>
-        <a class="pill" href="#jaktofunguje">Jak to funguje</a>
-        <a class="pill primary" href="eshop.html">Otevřít e-shop</a>
-      </div>
+ <div class="nav">
+  <a class="pill" href="#produkty">Produkty</a>
+  <a class="pill" href="#jaktofunguje">Jak to funguje</a>
+  <a class="pill" href="eshop.html#order">Objednat</a>
+  <a class="pill primary" href="eshop.html">Otevřít e-shop</a>
+    </div>
     </div>
   </div>
 
@@ -457,11 +460,12 @@
   <header id="top">
     <div class="hero">
       <div class="card">
-        <h1>Vybavení, které ti zrychlí trénink a zvedne kvalitu.</h1>
-        <p class="subhead">
-          TEAMFE produkty vznikají z praxe: jednoduché, pevné a bez zbytečností.
-          Vybereš produkt, vyplníš objednávku a my potvrdíme cenu + dopravu e-mailem.
-        </p>
+       <h1>Nechtěli jsme prodávat další „fitness doplněk“.</h1>
+<p class="subhead">
+  Vznikli jsme z frustrace. Z vybavení, které vypadalo dobře, ale nefungovalo.
+  Proto TeamFE spojuje trenéry a lidi z výroby — jednoduché věci, které reálně zlepší trénink.
+</p>
+
 
         <div class="chips">
           <div class="chip">✅ Ověřené v praxi</div>
@@ -511,6 +515,7 @@
         <div class="mini-row">
           <div class="price">2 200 Kč</div>
           <a class="link" href="eshop.html#deadlift-jack">Detail</a>
+<a class="link" href="eshop.html#order">Objednat</a>
         </div>
       </div>
 
@@ -519,8 +524,9 @@
         <strong>FE GymPin (8/10 mm)</strong>
         <span>Mikro-progrese na strojích, když jsou skoky vah moc velké.</span>
         <div class="mini-row">
-          <div class="price">od 800 Kč</div>
+          <div class="price">od 1 000 Kč</div>
           <a class="link" href="eshop.html#gympin">Detail</a>
+          <a class="link" href="eshop.html#order">Objednat</a>
         </div>
       </div>
 
@@ -531,6 +537,7 @@
         <div class="mini-row">
           <div class="price">1 500 Kč</div>
           <a class="link" href="eshop.html#fe-bar">Detail</a>
+<a class="link" href="eshop.html#order">Objednat</a>
         </div>
       </div>
     </div>
@@ -575,10 +582,13 @@
     </div>
   </section>
 
-  <footer>
-    © 2025 TEAMFE – Všechna práva vyhrazena<br />
-    <a href="#">Instagram</a> | <a href="#">Kontakt</a>
-  </footer>
+<footer>
+  © 2025 TEAMFE – Všechna práva vyhrazena<br />
+  <a href="https://www.instagram.com/fe_fitness_engineering/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  |
+  <a href="eshop.html#order">Objednávka / Kontakt</a>
+</footer>
+
 
   <script>
     // Fade-in sekcí při scrollu (zůstává jako u tebe, jen lépe použitý)
