@@ -830,36 +830,17 @@
     <a href="#">Instagram</a> | <a href="#">Kontakt</a>
   </footer>
 
-  <script>
-    // Zachováno: galerie (pouze UI je hezčí)
-    function toggleGallery(id) {
-      const el = document.getElementById(id);
-      el.style.display = (el.style.display === "flex") ? "none" : "flex";
-    }
-
-    // Nové: rychlé předvyplnění objednávky klikem z produktu (marketing/UX)
-    function prefillOrder(productValue){
-      const productSelect = document.getElementById("product");
-      productSelect.value = productValue;
-      handleProductChange({ target: productSelect });
-
-      // jemný scroll bez rušení
-      const order = document.getElementById("order");
-      if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
 <script>
-  // Helper - bezpečné čtení elementů
   function $(id){ return document.getElementById(id); }
 
-  // Galerie
+  // Galerie (zůstává)
   window.toggleGallery = function(id) {
     const el = $(id);
     if (!el) return;
     el.style.display = (el.style.display === "flex") ? "none" : "flex";
   };
 
-  // Vlastní délka (show/hide)
+  // Vlastní délka (zobrazení inputu)
   function toggleCustomLength() {
     const variantSelectEl = $("variant");
     const customGroup = $("custom-length-group");
@@ -872,7 +853,7 @@
     if (!isCustom) customInput.value = "";
   }
 
-  // Předvyplnění z karet produktů
+  // Předvyplnění objednávky z tlačítek na produktech
   window.prefillOrder = function(productValue){
     const productSelect = $("product");
     if (!productSelect) return;
@@ -884,7 +865,7 @@
     if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Hlavní změna produktu
+  // Change produktu ve formuláři
   window.handleProductChange = function(e) {
     const variantGroup = $("variant-group");
     const variantSelectEl = $("variant");
@@ -893,13 +874,13 @@
     const customGroup = $("custom-length-group");
     const customInput = $("customLength");
 
-    if (!variantGroup || !variantSelectEl || !previewImage || !messageField || !customGroup || !customInput) {
-      console.error("Chybí některé elementy formuláře. Zkontroluj ID v HTML.");
-      return;
-    }
-
     const value = (e && e.target) ? e.target.value : "";
     let previewSrc = "";
+
+    if (!variantGroup || !variantSelectEl || !previewImage || !messageField || !customGroup || !customInput) {
+      console.error("Chybí elementy formuláře — zkontroluj ID (product, variant, product-preview, message...).");
+      return;
+    }
 
     if (value === "GymPin 8mm") {
       variantGroup.classList.remove("hidden");
@@ -934,11 +915,11 @@
         (value === "FE Bar") ? "images/febar1.webp" : "";
     }
 
-    // náhled obrázku
+    // náhled produktu
     previewImage.src = previewSrc;
     previewImage.classList.toggle("hidden", !previewSrc);
 
-    // poznámka - udržuj první řádek s produktem
+    // poznámka - udržuj první řádek
     if (!value) return;
     const prefix = `Zvolený produkt: ${value}\n`;
 
@@ -949,13 +930,33 @@
     }
   };
 
-  // Validace formuláře
+  // Validace
   window.validateForm = function() {
     const product = $("product")?.value || "";
     const variant = $("variant")?.value || "";
-    const customLen = $("customLength")?.value || "";
 
-    if ((product === "GymPin 8mm" || product === "GymPin
+    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
+      alert("Prosím vyberte variantu délky GymPinu.");
+      return false;
+    }
+
+    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && variant.includes("Vlastní délka")) {
+      const len = $("customLength")?.value || "";
+      if (!len) {
+        alert("Prosím vyplň vlastní délku (cm).");
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  // Listener na variant (pro zobrazení vlastního rozměru)
+  document.addEventListener("DOMContentLoaded", () => {
+    const variantSelectEl = $("variant");
+    if (variantSelectEl) variantSelectEl.addEventListener("change", toggleCustomLength);
+  });
+</script>
 
 </body>
 </html>
