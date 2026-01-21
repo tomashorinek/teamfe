@@ -849,41 +849,56 @@
     }
 
 <script>
+  // Helper - bezpečné čtení elementů
+  function $(id){ return document.getElementById(id); }
+
   // Galerie
-  function toggleGallery(id) {
-    const el = document.getElementById(id);
+  window.toggleGallery = function(id) {
+    const el = $(id);
+    if (!el) return;
     el.style.display = (el.style.display === "flex") ? "none" : "flex";
-  }
+  };
 
-  // Rychlé předvyplnění objednávky klikem z produktu
-  function prefillOrder(productValue){
-    const productSelect = document.getElementById("product");
-    productSelect.value = productValue;
-    handleProductChange({ target: productSelect });
-
-    const order = document.getElementById("order");
-    if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  // Elementy formuláře
-  const variantGroup = document.getElementById("variant-group");
-  const variantSelectEl = document.getElementById("variant");
-  const previewImage = document.getElementById("product-preview");
-  const messageField = document.getElementById("message");
-  const customGroup = document.getElementById("custom-length-group");
-  const customInput = document.getElementById("customLength");
-
+  // Vlastní délka (show/hide)
   function toggleCustomLength() {
+    const variantSelectEl = $("variant");
+    const customGroup = $("custom-length-group");
+    const customInput = $("customLength");
+    if (!variantSelectEl || !customGroup || !customInput) return;
+
     const v = variantSelectEl.value || "";
     const isCustom = v.includes("Vlastní délka");
     customGroup.classList.toggle("hidden", !isCustom);
     if (!isCustom) customInput.value = "";
   }
 
-  variantSelectEl.addEventListener("change", toggleCustomLength);
+  // Předvyplnění z karet produktů
+  window.prefillOrder = function(productValue){
+    const productSelect = $("product");
+    if (!productSelect) return;
 
-  function handleProductChange(e) {
-    const value = e.target.value;
+    productSelect.value = productValue;
+    window.handleProductChange({ target: productSelect });
+
+    const order = $("order");
+    if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // Hlavní změna produktu
+  window.handleProductChange = function(e) {
+    const variantGroup = $("variant-group");
+    const variantSelectEl = $("variant");
+    const previewImage = $("product-preview");
+    const messageField = $("message");
+    const customGroup = $("custom-length-group");
+    const customInput = $("customLength");
+
+    if (!variantGroup || !variantSelectEl || !previewImage || !messageField || !customGroup || !customInput) {
+      console.error("Chybí některé elementy formuláře. Zkontroluj ID v HTML.");
+      return;
+    }
+
+    const value = (e && e.target) ? e.target.value : "";
     let previewSrc = "";
 
     if (value === "GymPin 8mm") {
@@ -919,11 +934,11 @@
         (value === "FE Bar") ? "images/febar1.webp" : "";
     }
 
-    // Náhled obrázku
+    // náhled obrázku
     previewImage.src = previewSrc;
     previewImage.classList.toggle("hidden", !previewSrc);
 
-    // Poznámka: aktualizuj jen první řádek s produktem
+    // poznámka - udržuj první řádek s produktem
     if (!value) return;
     const prefix = `Zvolený produkt: ${value}\n`;
 
@@ -932,36 +947,15 @@
     } else {
       messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
     }
-  }
+  };
 
-  function validateForm() {
-    const product = document.getElementById("product").value;
-    const variant = variantSelectEl.value;
+  // Validace formuláře
+  window.validateForm = function() {
+    const product = $("product")?.value || "";
+    const variant = $("variant")?.value || "";
+    const customLen = $("customLength")?.value || "";
 
-    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
-      alert("Prosím vyberte variantu délky GymPinu.");
-      return false;
-    }
+    if ((product === "GymPin 8mm" || product === "GymPin
 
-    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && variant.includes("Vlastní délka")) {
-      const len = customInput.value;
-      if (!len) {
-        alert("Prosím vyplň vlastní délku (cm).");
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  // potvrzení po odeslání přes hash (pokud někdy použiješ #form-confirmation)
-  if (window.location.hash === "#form-confirmation") {
-    const confirm = document.getElementById("form-confirmation");
-    if (confirm) confirm.style.display = "block";
-    setTimeout(() => {
-      if (confirm) confirm.style.display = "none";
-    }, 8000);
-  }
-</script>
 </body>
 </html>
