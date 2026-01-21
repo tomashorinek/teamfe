@@ -571,46 +571,50 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-card">
-      <h1>Vybavení, které ti zrychlí trénink a zvedne kvalitu.</h1>
-      <p>
-        Produkty TEAMFE vznikají z praxe: jednoduché, pevné, bez marketingových blbostí.
-        Vybereš produkt → vyplníš objednávku → ozveme se s potvrzením a dopravou.
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card">
+    <h1>Nechtěli jsme prodávat další „fitness doplněk“.</h1>
+    <p>
+      Vznikli jsme z frustrace. Z vybavení, které vypadalo dobře, ale nefungovalo.
+      Chtěli jsme řešit problémy, které v tréninku reálně vznikají — proto TeamFE spojuje trenéry a lidi z výroby.
+    </p>
+    <p style="margin-top:-6px;">
+      <strong>Testujeme, upravujeme, ladíme.</strong><br>
+      Každý produkt má jasný účel — a smysluplnou cenu.
+    </p>
+
+    <div class="hero-bullets">
+      <div class="chip">⚙️ Biomechanika</div>
+      <div class="chip">🧪 Testováno v tréninku</div>
+      <div class="chip">🧱 Pevné & jednoduché</div>
+      <div class="chip">💸 Smysluplná cena</div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="btn" href="#produkty">Prohlédnout produkty</a>
+      <a class="btn ghost" href="#order">Objednat teď</a>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="side-card">
+      <h3>Jak to funguje</h3>
+      <p class="help">
+        1) Vyber produkt<br>
+        2) Vyplň objednávku<br>
+        3) Potvrdíme cenu + dopravu e-mailem<br>
+        <span class="accent">4) Odesíláme</span>
       </p>
-
-      <div class="hero-bullets">
-        <div class="chip">✅ Ověřené v praxi</div>
-        <div class="chip">⚙️ Jednoduchý design</div>
-        <div class="chip">💬 Rychlá domluva</div>
-        <div class="chip">📦 Odeslání dle dostupnosti</div>
-      </div>
-
-      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" href="#produkty">Prohlédnout produkty</a>
-        <a class="btn ghost" href="#order">Objednat teď</a>
-      </div>
     </div>
-
-    <div class="hero-side">
-      <div class="side-card">
-        <h3>Jak to funguje</h3>
-        <p class="help">
-          1) Vyber produkt<br>
-          2) Vyplň objednávku<br>
-          3) Potvrdíme cenu + dopravu e-mailem<br>
-          <span class="accent">4) Odesíláme</span>
-        </p>
-      </div>
-      <div class="side-card">
-        <h3>Potřebuješ poradit?</h3>
-        <p class="help">
-          Napiš do poznámky v objednávce, jaké máš vybavení / stroj, a doporučíme variantu.
-        </p>
-      </div>
+    <div class="side-card">
+      <h3>Potřebuješ poradit?</h3>
+      <p class="help">
+        Napiš do poznámky v objednávce, jaké máš vybavení / stroj, a doporučíme variantu.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- PRODUCTS -->
   <section class="section" id="produkty">
@@ -682,14 +686,14 @@
             Přidáš extra zátěž nebo doladíš mezikrok. Jednoduchá věc, která dělá obří rozdíl v progresu.</p>
 
           <div class="meta-row">
-            <div class="price-tag">800 Kč (13 cm) / 1 000 Kč (18 cm)</div>
+            <div class="price-tag">1 000 Kč (13 cm / 18 cm) • Vlastní délka +200 Kč</div>
             <div class="badge">🔥 Best-seller</div>
             <div class="badge">⚖️ Mikro-progrese</div>
             <div class="badge">✅ 8/10 mm</div>
           </div>
 
           <ul class="specs">
-            <li>Nakládací část: 13 cm nebo 18 cm</li>
+            <li>Nakládací část: 13 cm / 18 cm / vlastní délka (+200 Kč)</li>
             <li>Délka tyče do stroje: 10 cm</li>
             <li>Průměr: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
             <li>Hmotnost: 450 g</li>
@@ -786,6 +790,10 @@
             <label for="variant">Varianta GymPin (délka)</label>
             <select id="variant" name="variant"></select>
           </div>
+          <div id="custom-length-group" class="hidden">
+          <label for="customLength">Vlastní délka nakládací části (cm)</label>
+          <input type="number" id="customLength" name="customLength" min="5" max="50" placeholder="Např. 22">
+          </div>
 
           <div class="row">
             <div>
@@ -840,70 +848,113 @@
       if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    function handleProductChange(e) {
-      const variantGroup = document.getElementById("variant-group");
-      const variantSelect = document.getElementById("variant");
-      const previewImage = document.getElementById("product-preview");
-      const messageField = document.getElementById("message");
-      const value = e.target.value;
+<script>
+  function handleProductChange(e) {
+    const variantGroup = document.getElementById("variant-group");
+    const variantSelect = document.getElementById("variant");
+    const previewImage = document.getElementById("product-preview");
+    const messageField = document.getElementById("message");
+    const value = e.target.value;
 
-      let previewSrc = "";
+    let previewSrc = "";
 
-      if (value === "GymPin 8mm") {
-        variantGroup.classList.remove("hidden");
-        variantSelect.innerHTML = `
-          <option value="8mm - 13 cm">8mm – 13 cm</option>
-          <option value="8mm - 18 cm">8mm – 18 cm</option>
-        `;
-        previewSrc = "images/gympin1.webp";
-      } else if (value === "GymPin 10mm") {
-        variantGroup.classList.remove("hidden");
-        variantSelect.innerHTML = `
-          <option value="10mm - 13 cm">10mm – 13 cm</option>
-          <option value="10mm - 18 cm">10mm – 18 cm</option>
-        `;
-        previewSrc = "images/gympin1.webp";
-      } else {
-        variantGroup.classList.add("hidden");
-        variantSelect.innerHTML = "";
-        previewSrc =
-          (value === "Deadlift Jack") ? "images/dljack4.webp" :
-          (value === "FE Bar") ? "images/febar1.webp" : "";
-      }
+    if (value === "GymPin 8mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelect.innerHTML = `
+        <option value="">-- Vyber délku --</option>
+        <option value="8mm - 13 cm (1000 Kč)">8mm – 13 cm (1 000 Kč)</option>
+        <option value="8mm - 18 cm (1000 Kč)">8mm – 18 cm (1 000 Kč)</option>
+        <option value="8mm - Vlastní délka (+200 Kč)">8mm – Vlastní délka (+200 Kč)</option>
+      `;
+      previewSrc = "images/gympin1.webp";
+      toggleCustomLength();
 
-      previewImage.src = previewSrc;
-      previewImage.classList.toggle("hidden", !previewSrc);
+    } else if (value === "GymPin 10mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelect.innerHTML = `
+        <option value="">-- Vyber délku --</option>
+        <option value="10mm - 13 cm (1000 Kč)">10mm – 13 cm (1 000 Kč)</option>
+        <option value="10mm - 18 cm (1000 Kč)">10mm – 18 cm (1 000 Kč)</option>
+        <option value="10mm - Vlastní délka (+200 Kč)">10mm – Vlastní délka (+200 Kč)</option>
+      `;
+      previewSrc = "images/gympin1.webp";
+      toggleCustomLength();
 
-      // Oprava UX: nepřepisuj uživatelovu poznámku, jen aktualizuj první řádek s produktem
-      const prefix = value ? `Zvolený produkt: ${value}\n` : "";
-      if (!value) return;
+    } else {
+      variantGroup.classList.add("hidden");
+      variantSelect.innerHTML = "";
+      customGroup.classList.add("hidden");
+      customInput.value = "";
 
-      if (!messageField.value.startsWith("Zvolený produkt:")) {
-        messageField.value = prefix + messageField.value;
-      } else {
-        messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
-      }
+      previewSrc =
+        (value === "Deadlift Jack") ? "images/dljack4.webp" :
+        (value === "FE Bar") ? "images/febar1.webp" : "";
     }
 
-    function validateForm() {
-      const product = document.getElementById("product").value;
-      const variant = document.getElementById("variant").value;
+    previewImage.src = previewSrc;
+    previewImage.classList.toggle("hidden", !previewSrc);
 
-      if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
-        alert("Prosím vyberte variantu délky GymPinu.");
+    // UX: aktualizuj jen řádek s produktem, nepřepisuj zbytek poznámky
+    const prefix = value ? `Zvolený produkt: ${value}\n` : "";
+    if (!value) return;
+
+    if (!messageField.value.startsWith("Zvolený produkt:")) {
+      messageField.value = prefix + messageField.value;
+    } else {
+      messageField.value = messageField.value.replace(
+        /^Zvolený produkt:.*\n?/,
+        prefix
+      );
+    }
+  }
+
+  const variantSelectEl = document.getElementById("variant");
+  const customGroup = document.getElementById("custom-length-group");
+  const customInput = document.getElementById("customLength");
+
+  function toggleCustomLength() {
+    const v = variantSelectEl.value || "";
+    const isCustom = v.includes("Vlastní délka");
+    customGroup.classList.toggle("hidden", !isCustom);
+    if (!isCustom) customInput.value = "";
+  }
+
+  variantSelectEl.addEventListener("change", toggleCustomLength);
+
+  function validateForm() {
+    const product = document.getElementById("product").value;
+    const variant = document.getElementById("variant").value;
+
+    if (
+      (product === "GymPin 8mm" || product === "GymPin 10mm") &&
+      !variant
+    ) {
+      alert("Prosím vyberte variantu délky GymPinu.");
+      return false;
+    }
+
+    if (
+      (product === "GymPin 8mm" || product === "GymPin 10mm") &&
+      variant.includes("Vlastní délka")
+    ) {
+      const len = document.getElementById("customLength").value;
+      if (!len) {
+        alert("Prosím vyplň vlastní délku (cm).");
         return false;
       }
-      return true;
     }
 
-    // Zůstává: potvrzení po odeslání přes hash (pokud někdy přesměruješ na #form-confirmation)
-    if (window.location.hash === "#form-confirmation") {
-      const confirm = document.getElementById("form-confirmation");
-      if (confirm) confirm.style.display = "block";
-      setTimeout(() => {
-        if (confirm) confirm.style.display = "none";
-      }, 8000);
-    }
-  </script>
+    return true;
+  }
+
+  // potvrzení po odeslání (hash)
+  if (window.location.hash === "#form-confirmation") {
+    const confirm = document.getElementById("form-confirmation");
+    if (confirm) confirm.style.display = "block";
+    setTimeout(() => {
+      if (confirm) confirm.style.display = "none";
+    }, 8000);
+  }
+</script>
 </body>
 </html>
