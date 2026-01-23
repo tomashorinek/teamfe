@@ -838,6 +838,12 @@ textarea#message{
   </footer>
 
 <script>
+  // Deep-link z indexu: ?product=FE%20Bar nebo ?product=GymPin%208mm
+  function getQueryParam(name){
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name) || "";
+  }
+
   function $(id){ return document.getElementById(id); }
 
   // Galerie (zůstává)
@@ -930,7 +936,6 @@ textarea#message{
     if (!value) return;
     const prefix = `Zvolený produkt: ${value}\n`;
 
-
     if (!messageField.value.startsWith("Zvolený produkt:")) {
       messageField.value = prefix + messageField.value;
     } else {
@@ -963,8 +968,31 @@ textarea#message{
   document.addEventListener("DOMContentLoaded", () => {
     const variantSelectEl = $("variant");
     if (variantSelectEl) variantSelectEl.addEventListener("change", toggleCustomLength);
+
+    // ✅ Deep-link spouštěč po načtení DOMu
+    const qpProduct = getQueryParam("product");
+    const qpVariant = getQueryParam("variant");
+    const qpQty = getQueryParam("qty");
+
+    if (qpProduct) {
+      window.prefillOrder(decodeURIComponent(qpProduct));
+
+      if (qpVariant) {
+        const variantEl = $("variant");
+        if (variantEl) {
+          setTimeout(() => {
+            variantEl.value = decodeURIComponent(qpVariant);
+            toggleCustomLength();
+          }, 50);
+        }
+      }
+
+      if (qpQty) {
+        const q = $("quantity");
+        if (q) q.value = decodeURIComponent(qpQty);
+      }
+    }
   });
 </script>
-
 </body>
 </html>
