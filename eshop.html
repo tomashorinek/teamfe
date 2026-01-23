@@ -461,7 +461,9 @@
       background: rgba(0,0,0,.45);
     }
     textarea{resize: vertical;}
-
+textarea#message{
+  min-height: 46px;
+}
     .row{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -623,45 +625,6 @@
 
     <div class="grid">
 
-      <!-- DEADLIFT JACK -->
-      <div class="product-card" id="deadlift-jack">
-        <div class="product-media">
-          <img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
-          <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
-          <div id="gallery1" class="thumbnail-row" aria-label="Galerie Deadlift Jack">
-            <img src="images/dljack1.webp" alt="Deadlift Jack foto 1" onclick="document.getElementById('mainImage1').src=this.src">
-            <img src="images/dljack2.webp" alt="Deadlift Jack foto 2" onclick="document.getElementById('mainImage1').src=this.src">
-            <img src="images/dljack3.webp" alt="Deadlift Jack foto 3" onclick="document.getElementById('mainImage1').src=this.src">
-            <img src="images/dljack5.webp" alt="Deadlift Jack foto 4" onclick="document.getElementById('mainImage1').src=this.src">
-            <img src="images/dljack4.webp" alt="Deadlift Jack foto 5" onclick="document.getElementById('mainImage1').src=this.src">
-          </div>
-        </div>
-
-        <div class="product-content">
-          <h3>FE Deadlift Jack</h3>
-
-          <p><strong>Už žádné přetahování s činkou.</strong><br>
-            Najeď osou do držáku a jedním pohybem přepáčíš osu nahoru. Šetří to čas, energii a nervy při nakládání.</p>
-
-          <div class="meta-row">
-            <div class="price-tag">2 200 Kč</div>
-            <div class="badge">🧱 Stabilní základ</div>
-          </div>
-
-          <ul class="specs">
-            <li>Délka: 100 cm</li>
-            <li>Hloubka: 60 cm</li>
-            <li>Dotyková část (držák osy): odolné PLA (chrání osu)</li>
-            <li>Rychlé a plynulé nadzvednutí jedním pohybem</li>
-          </ul>
-
-          <div class="cta-row">
-            <a class="btn" href="#order" onclick="prefillOrder('Deadlift Jack')">Objednat</a>
-            <a class="btn ghost" href="#order" onclick="prefillOrder('Deadlift Jack')">Chci to přidat do poznámky</a>
-          </div>
-        </div>
-      </div>
-
       <!-- GYMPIN -->
       <div class="product-card" id="gympin">
         <div class="product-media">
@@ -738,11 +701,51 @@
 
           <div class="cta-row">
             <a class="btn" href="#order" onclick="prefillOrder('FE Bar')">Objednat</a>
-            <a class="btn ghost" href="#order" onclick="prefillOrder('FE Bar')">Chci se zeptat</a>
+           <a class="btn ghost" href="#order"
+   onclick="prefillOrder('FE Bar'); document.getElementById('message').value += (document.getElementById('message').value ? '\n' : '') + 'Dotaz k FE Bar: ';"
+>Chci se zeptat</a>
           </div>
         </div>
       </div>
 
+            <!-- DEADLIFT JACK -->
+      <div class="product-card" id="deadlift-jack">
+        <div class="product-media">
+          <img id="mainImage1" src="images/dljack4.webp" alt="FE Deadlift Jack" />
+          <div class="toggle-gallery" onclick="toggleGallery('gallery1')">Zobrazit více fotek</div>
+          <div id="gallery1" class="thumbnail-row" aria-label="Galerie Deadlift Jack">
+            <img src="images/dljack1.webp" alt="Deadlift Jack foto 1" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack2.webp" alt="Deadlift Jack foto 2" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack3.webp" alt="Deadlift Jack foto 3" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack5.webp" alt="Deadlift Jack foto 4" onclick="document.getElementById('mainImage1').src=this.src">
+            <img src="images/dljack4.webp" alt="Deadlift Jack foto 5" onclick="document.getElementById('mainImage1').src=this.src">
+          </div>
+        </div>
+
+        <div class="product-content">
+          <h3>FE Deadlift Jack</h3>
+
+          <p><strong>Už žádné přetahování s činkou.</strong><br>
+            Najeď osou do držáku a jedním pohybem přepáčíš osu nahoru. Šetří to čas, energii a nervy při nakládání.</p>
+
+          <div class="meta-row">
+            <div class="price-tag">2 200 Kč</div>
+            <div class="badge">🧱 Stabilní základ</div>
+          </div>
+
+          <ul class="specs">
+            <li>Délka: 100 cm</li>
+            <li>Hloubka: 60 cm</li>
+            <li>Dotyková část (držák osy): odolné PLA (chrání osu)</li>
+            <li>Rychlé a plynulé nadzvednutí jedním pohybem</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn" href="#order" onclick="prefillOrder('Deadlift Jack')">Objednat</a>
+            <a class="btn ghost" href="#order" onclick="prefillOrder('Deadlift Jack')">Chci to přidat do poznámky</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ORDER -->
@@ -801,8 +804,9 @@
               <input type="number" id="quantity" name="quantity" min="1" required>
             </div>
             <div>
-              <label for="message">Poznámka (volitelné)</label>
-              <input type="text" id="message" name="message" placeholder="Např. jaký stroj / průměr otvoru / dotaz">
+             <label for="message">Poznámka (volitelné)</label>
+             <textarea id="message" name="message" rows="3" placeholder="Např. jaký stroj / průměr otvoru / dotaz"></textarea>
+
             </div>
           </div>
 
@@ -922,6 +926,7 @@
     // poznámka - udržuj první řádek
     if (!value) return;
     const prefix = `Zvolený produkt: ${value}\n`;
+
 
     if (!messageField.value.startsWith("Zvolený produkt:")) {
       messageField.value = prefix + messageField.value;
