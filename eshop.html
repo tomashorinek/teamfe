@@ -707,6 +707,64 @@ textarea#message{
           </div>
         </div>
       </div>
+      
+      <!-- GRIP HANDLES -->
+      <div class="product-card" id="grip-handles">
+        <div class="product-media">
+          <img id="mainImage4" src="images/teamfe-grip-handles-01.jpg" alt="TEAMFE Grip Handles" />
+          <div class="toggle-gallery" onclick="toggleGallery('gallery4')">Zobrazit více fotek</div>
+          <div id="gallery4" class="thumbnail-row" aria-label="Galerie Grip Handles">
+            <img src="images/teamfe-grip-handles-01.jpg" alt="Grip Handles foto 1" onclick="document.getElementById('mainImage4').src=this.src">
+            <img src="images/teamfe-grip-handles-02.jpg" alt="Grip Handles foto 2" onclick="document.getElementById('mainImage4').src=this.src">
+            <img src="images/teamfe-grip-handles-03.jpg" alt="Grip Handles foto 3" onclick="document.getElementById('mainImage4').src=this.src">
+            <img src="images/teamfe-grip-handles-04.jpg" alt="Grip Handles foto 4" onclick="document.getElementById('mainImage4').src=this.src">
+          </div>
+        </div>
+
+        <div class="product-content">
+          <h3>TEAMFE Grip Handles — madla na osu</h3>
+
+          <p><strong>Dřepy bez bolesti a kompromisů.</strong><br>
+            Ne každý má mobilitu ramen a zápěstí na klasický úchop osy. Bolest, tlak nebo ztráta kontroly pak zbytečně limitují výkon.
+          </p>
+
+          <p>
+            Pomocná madla TeamFE upravují grip osy do přirozenější pozice, odlehčují ramenům i zápěstím a pomáhají udržet stabilní, konzistentní dřep – i při vyšších vahách.
+            <br><strong>Soustřeď se na nohy. Ne na boj s osou.</strong>
+          </p>
+
+          <div class="meta-row">
+            <div class="price-tag">2 500 Kč</div>
+            <div class="badge">🦾 Dřepy bez bolesti</div>
+            <div class="badge">🧠 Lepší úchop</div>
+            <div class="badge">⚙️ Rychlá montáž</div>
+          </div>
+
+          <p style="margin-top:4px;"><strong>Pro koho jsou ideální:</strong></p>
+          <ul class="specs">
+            <li>při bolesti nebo přetížení ramen a zápěstí</li>
+            <li>při omezené mobilitě horní poloviny těla</li>
+            <li>po zranění nebo jako prevence</li>
+            <li>pro každého, kdo chce dřepovat technicky čistě a dlouhodobě</li>
+          </ul>
+
+          <p style="margin-top:4px;"><strong>Hlavní benefity:</strong></p>
+          <ul class="specs">
+            <li>přirozenější a pohodlnější úchop osy</li>
+            <li>menší stres na ramena a zápěstí</li>
+            <li>lepší stabilita a kontrola pohybu</li>
+            <li>rychlá montáž na klasickou osu</li>
+            <li>vhodné pro silový i objemový trénink</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn" href="#order" onclick="prefillOrder('Grip Handles')">Objednat</a>
+            <a class="btn ghost" href="#order"
+               onclick="prefillOrder('Grip Handles'); document.getElementById('message').value += (document.getElementById('message').value ? '\n' : '') + 'Dotaz k Grip Handles: ';"
+            >Chci se zeptat</a>
+          </div>
+        </div>
+      </div>
 
             <!-- DEADLIFT JACK -->
       <div class="product-card" id="deadlift-jack">
@@ -785,6 +843,7 @@ textarea#message{
             <option value="GymPin 8mm">GymPin 8mm</option>
             <option value="GymPin 10mm">GymPin 10mm</option>
             <option value="FE Bar">FE Bar</option>
+            <option value="Grip Handles">Grip Handles</option>
           </select>
 
           <img id="product-preview" class="product-preview hidden" alt="Náhled produktu" />
@@ -923,9 +982,10 @@ textarea#message{
       customGroup.classList.add("hidden");
       customInput.value = "";
 
-      previewSrc =
-        (value === "Deadlift Jack") ? "images/dljack4.webp" :
-        (value === "FE Bar") ? "images/febar1.webp" : "";
+ previewSrc =
+  (value === "Deadlift Jack") ? "images/dljack4.webp" :
+  (value === "FE Bar") ? "images/febar1.webp" :
+  (value === "Grip Handles") ? "images/teamfe-grip-handles-01.jpg" : "";
     }
 
     // náhled produktu
