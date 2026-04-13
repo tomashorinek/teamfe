@@ -990,7 +990,6 @@ textarea#message{
   </footer>
 
 <script>
-  // Deep-link z indexu: ?product=FE%20Bar nebo ?product=GymPin%208mm
   function getQueryParam(name){
     const params = new URLSearchParams(window.location.search);
     return params.get(name) || "";
@@ -998,27 +997,229 @@ textarea#message{
 
   function $(id){ return document.getElementById(id); }
 
-  // Galerie (zůstává)
+  const GYMPIN_PRODUCTS = ["GymPin 8mm", "GymPin 10mm", "GymPin Hybrid 8/10mm"];
+  let cart = [];
+
+  function formatPrice(value){
+    return `${Number(value || 0).toLocaleString("cs-CZ")} Kč`;
+  }
+
+  function isGymPin(product){
+    return GYMPIN_PRODUCTS.includes(product);
+  }
+
+  function getBasePrice(product){
+    switch (product) {
+      case "Deadlift Jack": return 2200;
+      case "FE Bar": return 1500;
+      case "Grip Handles": return 2500;
+      case "GymPin 8mm": return 1200;
+      case "GymPin 10mm": return 1200;
+      case "GymPin Hybrid 8/10mm": return 1300;
+      default: return 0;
+    }
+  }
+
   window.toggleGallery = function(id) {
     const el = $(id);
     if (!el) return;
     el.style.display = (el.style.display === "flex") ? "none" : "flex";
   };
 
-  // Vlastní délka (zobrazení inputu)
   function toggleCustomLength() {
     const variantSelectEl = $("variant");
     const customGroup = $("custom-length-group");
     const customInput = $("customLength");
     if (!variantSelectEl || !customGroup || !customInput) return;
 
-    const v = variantSelectEl.value || "";
-    const isCustom = v.includes("Vlastní délka");
+    const value = variantSelectEl.value || "";
+    const isCustom = value.includes("Vlastní délka");
+
     customGroup.classList.toggle("hidden", !isCustom);
-    if (!isCustom) customInput.value = "";
+
+    if (!isCustom) {
+      customInput.value = "";
+    }
+
+    updateLivePrice();
   }
 
-  // Předvyplnění objednávky z tlačítek na produktech
+  function getPreviewSrc(product){
+    if (isGymPin(product)) return "images/gympin1.webp";
+    if (product === "Deadlift Jack") return "images/dljack4.webp";
+    if (product === "FE Bar") return "images/febar1.webp";
+    if (product === "Grip Handles") return "images/teamfe-grip-handles-01.jpg";
+    return "";
+  }
+
+  function updateMessagePrefix(product){
+    const messageField = $("message");
+    if (!messageField || !product) return;
+
+    const prefix = `Zvolený produkt: ${product}\n`;
+
+    if (!messageField.value.startsWith("Zvolený produkt:")) {
+      messageField.value = prefix + messageField.value;
+    } else {
+      messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
+    }
+  }
+
+  function getCurrentSelection(options = {}){
+    const allowIncomplete = !!options.allowIncomplete;
+
+    const product = $("product")?.value || "";
+    const variant = $("variant")?.value || "";
+    const customLength = ($("customLength")?.value || "").trim();
+
+    let qty = parseInt($("quantity")?.value || "1", 10);
+    if (!Number.isFinite(qty) || qty < 1) qty = 1;
+
+    if (!product) return null;
+
+    if (isGymPin(product) && !variant && !allowIncomplete) return null;
+    if (isGymPin(product) && variant.includes("Vlastní délka") && !customLength && !allowIncomplete) return null;
+
+    let unitPrice = getBasePrice(product);
+    if (isGymPin(product) && variant.includes("Vlastní délka")) {
+      unitPrice += 200;
+    }
+
+    let label = product;
+    if (variant) label += ` — ${variant}`;
+    if (isGymPin(product) && variant.includes("Vlastní délka") && customLength) {
+      label += ` (${customLength} cm)`;
+    }
+
+    return {
+      product,
+      variant,
+      customLength,
+      qty,
+      unitPrice,
+      total: unitPrice * qty,
+      label
+    };
+  }
+
+  function updateLivePrice(){
+    const nameEl = $("selected-product-name");
+    const unitEl = $("selected-product-price");
+    const qtyEl = $("selected-qty");
+    const totalEl = $("selected-total-price");
+
+    if (!nameEl || !unitEl || !qtyEl || !totalEl) return;
+
+    const item = getCurrentSelection({ allowIncomplete: true });
+
+    if (!item) {
+      nameEl.textContent = "Nic nevybráno";
+      unitEl.textContent = "0 Kč";
+      qtyEl.textContent = "0 ks";
+      totalEl.textContent = "0 Kč";
+      return;
+    }
+
+    nameEl.textContent = item.label;
+    unitEl.textContent = formatPrice(item.unitPrice);
+    qtyEl.textContent = `${item.qty} ks`;
+    totalEl.textContent = formatPrice(item.total);
+  }
+
+  function syncHiddenCartFields(){
+    const cartSummaryInput = $("cartSummary");
+    const finalTotalInput = $("finalTotal");
+
+    const total = cart.reduce((sum, item) => sum + item.total, 0);
+    const summary = cart.map(item => `${item.label} | ${item.qty} ks | ${formatPrice(item.total)}`).join(" || ");
+
+    if (cartSummaryInput) cartSummaryInput.value = summary;
+    if (finalTotalInput) finalTotalInput.value = formatPrice(total);
+  }
+
+  function renderCart(){
+    const cartItemsEl = $("cart-items");
+    const cartTotalEl = $("cart-total-price");
+
+    if (!cartItemsEl || !cartTotalEl) return;
+
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = "Košík je zatím prázdný.";
+      cartItemsEl.className = "cart-empty";
+      cartTotalEl.textContent = "0 Kč";
+      syncHiddenCartFields();
+      return;
+    }
+
+    cartItemsEl.className = "";
+    cartItemsEl.innerHTML = cart.map((item, index) => `
+      <div style="display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-top:${index === 0 ? "0" : "1px solid rgba(255,255,255,.08)"};">
+        <div style="min-width:0;">
+          <div style="font-weight:800; color:#fff; line-height:1.4;">${item.label}</div>
+          <div style="color:var(--muted); font-size:.95rem; margin-top:4px;">${item.qty} ks × ${formatPrice(item.unitPrice)}</div>
+        </div>
+        <div style="text-align:right; flex-shrink:0;">
+          <div style="font-weight:900; color:#00cc66;">${formatPrice(item.total)}</div>
+          <button
+            type="button"
+            onclick="removeCartItem(${index})"
+            style="margin-top:6px; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:6px 10px; cursor:pointer;"
+          >
+            Odebrat
+          </button>
+        </div>
+      </div>
+    `).join("");
+
+    const total = cart.reduce((sum, item) => sum + item.total, 0);
+    cartTotalEl.textContent = formatPrice(total);
+    syncHiddenCartFields();
+  }
+
+  window.removeCartItem = function(index){
+    cart.splice(index, 1);
+    renderCart();
+  };
+
+  window.addCurrentToCart = function(silent = false){
+    const product = $("product")?.value || "";
+    const variant = $("variant")?.value || "";
+    const customLength = ($("customLength")?.value || "").trim();
+
+    if (!product) {
+      if (!silent) alert("Nejdřív vyber produkt.");
+      return false;
+    }
+
+    if (isGymPin(product) && !variant) {
+      if (!silent) alert("Prosím vyber variantu délky GymPinu.");
+      return false;
+    }
+
+    if (isGymPin(product) && variant.includes("Vlastní délka") && !customLength) {
+      if (!silent) alert("Prosím vyplň vlastní délku (cm).");
+      return false;
+    }
+
+    const item = getCurrentSelection();
+    if (!item) {
+      if (!silent) alert("Nepodařilo se načíst vybranou položku.");
+      return false;
+    }
+
+    const existingIndex = cart.findIndex(cartItem => cartItem.label === item.label && cartItem.unitPrice === item.unitPrice);
+
+    if (existingIndex >= 0) {
+      cart[existingIndex].qty += item.qty;
+      cart[existingIndex].total = cart[existingIndex].qty * cart[existingIndex].unitPrice;
+    } else {
+      cart.push({ ...item });
+    }
+
+    renderCart();
+    return true;
+  };
+
   window.prefillOrder = function(productValue){
     const productSelect = $("product");
     if (!productSelect) return;
@@ -1027,57 +1228,53 @@ textarea#message{
     window.handleProductChange({ target: productSelect });
 
     const order = $("order");
-    if (order) order.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (order) {
+      order.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
-  // Change produktu ve formuláři
   window.handleProductChange = function(e) {
     const variantGroup = $("variant-group");
     const variantSelectEl = $("variant");
     const previewImage = $("product-preview");
-    const messageField = $("message");
     const customGroup = $("custom-length-group");
     const customInput = $("customLength");
 
     const value = (e && e.target) ? e.target.value : "";
-    let previewSrc = "";
 
-    if (!variantGroup || !variantSelectEl || !previewImage || !messageField || !customGroup || !customInput) {
-      console.error("Chybí elementy formuláře — zkontroluj ID (product, variant, product-preview, message...).");
+    if (!variantGroup || !variantSelectEl || !previewImage || !customGroup || !customInput) {
+      console.error("Chybí elementy formuláře — zkontroluj ID.");
       return;
     }
 
-if (value === "GymPin 8mm") {
+    if (value === "GymPin 8mm") {
       variantGroup.classList.remove("hidden");
       variantSelectEl.innerHTML = `
         <option value="">-- Vyber délku --</option>
-        <option value="8mm - 13 cm (1200 Kč)">8mm – 13 cm (1 200 Kč)</option>
-        <option value="8mm - 18 cm (1200 Kč)">8mm – 18 cm (1 200 Kč)</option>
-        <option value="8mm - Vlastní délka (+200 Kč)">8mm – Vlastní délka (+200 Kč)</option>
+        <option value="8mm - 13 cm">8mm – 13 cm</option>
+        <option value="8mm - 18 cm">8mm – 18 cm</option>
+        <option value="8mm - Vlastní délka">8mm – Vlastní délka (+200 Kč)</option>
       `;
-      previewSrc = "images/gympin1.webp";
       toggleCustomLength();
 
     } else if (value === "GymPin 10mm") {
       variantGroup.classList.remove("hidden");
       variantSelectEl.innerHTML = `
         <option value="">-- Vyber délku --</option>
-        <option value="10mm - 13 cm (1200 Kč)">10mm – 13 cm (1 200 Kč)</option>
-        <option value="10mm - 18 cm (1200 Kč)">10mm – 18 cm (1 200 Kč)</option>
-        <option value="10mm - Vlastní délka (+200 Kč)">10mm – Vlastní délka (+200 Kč)</option>
+        <option value="10mm - 13 cm">10mm – 13 cm</option>
+        <option value="10mm - 18 cm">10mm – 18 cm</option>
+        <option value="10mm - Vlastní délka">10mm – Vlastní délka (+200 Kč)</option>
       `;
-      previewSrc = "images/gympin1.webp";
       toggleCustomLength();
 
     } else if (value === "GymPin Hybrid 8/10mm") {
       variantGroup.classList.remove("hidden");
       variantSelectEl.innerHTML = `
         <option value="">-- Vyber délku --</option>
-        <option value="Hybrid 8/10mm - 13 cm (1300 Kč)">Hybrid 8/10 mm – 13 cm (1 300 Kč)</option>
-        <option value="Hybrid 8/10mm - 18 cm (1300 Kč)">Hybrid 8/10 mm – 18 cm (1 300 Kč)</option>
-        <option value="Hybrid 8/10mm - Vlastní délka (+200 Kč)">Hybrid 8/10 mm – Vlastní délka (+200 Kč)</option>
+        <option value="Hybrid 8/10mm - 13 cm">Hybrid 8/10 mm – 13 cm</option>
+        <option value="Hybrid 8/10mm - 18 cm">Hybrid 8/10 mm – 18 cm</option>
+        <option value="Hybrid 8/10mm - Vlastní délka">Hybrid 8/10 mm – Vlastní délka (+200 Kč)</option>
       `;
-      previewSrc = "images/gympin1.webp";
       toggleCustomLength();
 
     } else {
@@ -1085,56 +1282,59 @@ if (value === "GymPin 8mm") {
       variantSelectEl.innerHTML = "";
       customGroup.classList.add("hidden");
       customInput.value = "";
-
- previewSrc =
-  (value === "Deadlift Jack") ? "images/dljack4.webp" :
-  (value === "FE Bar") ? "images/febar1.webp" :
-  (value === "Grip Handles") ? "images/teamfe-grip-handles-01.jpg" : "";
     }
 
-    // náhled produktu
+    const previewSrc = getPreviewSrc(value);
     previewImage.src = previewSrc;
     previewImage.classList.toggle("hidden", !previewSrc);
 
-    // poznámka - udržuj první řádek
-    if (!value) return;
-    const prefix = `Zvolený produkt: ${value}\n`;
-
-    if (!messageField.value.startsWith("Zvolený produkt:")) {
-      messageField.value = prefix + messageField.value;
-    } else {
-      messageField.value = messageField.value.replace(/^Zvolený produkt:.*\n?/, prefix);
-    }
+    if (value) updateMessagePrefix(value);
+    updateLivePrice();
   };
 
-  // Validace
-window.validateForm = function() {
-    const product = $("product")?.value || "";
-    const variant = $("variant")?.value || "";
-    const gymPinProducts = ["GymPin 8mm", "GymPin 10mm", "GymPin Hybrid 8/10mm"];
-
-    if (gymPinProducts.includes(product) && !variant) {
-      alert("Prosím vyberte variantu délky GymPinu.");
-      return false;
-    }
-
-    if (gymPinProducts.includes(product) && variant.includes("Vlastní délka")) {
-      const len = $("customLength")?.value || "";
-      if (!len) {
-        alert("Prosím vyplň vlastní délku (cm).");
-        return false;
+  window.validateForm = function() {
+    if (cart.length === 0) {
+      const currentProduct = $("product")?.value || "";
+      if (currentProduct) {
+        const added = window.addCurrentToCart(true);
+        if (!added) return false;
       }
     }
 
+    if (cart.length === 0) {
+      alert("Přidej aspoň jeden produkt do košíku.");
+      return false;
+    }
+
+    syncHiddenCartFields();
     return true;
   };
 
-  // Listener na variant (pro zobrazení vlastního rozměru)
   document.addEventListener("DOMContentLoaded", () => {
     const variantSelectEl = $("variant");
-    if (variantSelectEl) variantSelectEl.addEventListener("change", toggleCustomLength);
+    const quantityEl = $("quantity");
+    const customLengthEl = $("customLength");
 
-    // ✅ Deep-link spouštěč po načtení DOMu
+    if (variantSelectEl) {
+      variantSelectEl.addEventListener("change", () => {
+        toggleCustomLength();
+        updateLivePrice();
+      });
+    }
+
+    if (quantityEl) {
+      quantityEl.addEventListener("input", updateLivePrice);
+      quantityEl.addEventListener("change", updateLivePrice);
+    }
+
+    if (customLengthEl) {
+      customLengthEl.addEventListener("input", updateLivePrice);
+      customLengthEl.addEventListener("change", updateLivePrice);
+    }
+
+    renderCart();
+    updateLivePrice();
+
     const qpProduct = getQueryParam("product");
     const qpVariant = getQueryParam("variant");
     const qpQty = getQueryParam("qty");
@@ -1148,14 +1348,17 @@ window.validateForm = function() {
           setTimeout(() => {
             variantEl.value = decodeURIComponent(qpVariant);
             toggleCustomLength();
+            updateLivePrice();
           }, 50);
         }
       }
 
       if (qpQty) {
-        const q = $("quantity");
-        if (q) q.value = decodeURIComponent(qpQty);
+        const qtyEl = $("quantity");
+        if (qtyEl) qtyEl.value = decodeURIComponent(qpQty);
       }
+
+      updateLivePrice();
     }
   });
 </script>
