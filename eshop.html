@@ -643,13 +643,13 @@ textarea#message{
         </div>
 
         <div class="product-content">
-          <h3>🛠️ FE GymPin — 8 mm / 10 mm</h3>
+<h3>🛠️ FE GymPin — 8 mm / 10 mm / Hybrid 8+10 mm</h3>
 
           <p><strong>Když ti nestačí váha na stroji.</strong><br>
-            Přidáš extra zátěž nebo doladíš mezikrok. Jednoduchá věc, která dělá obří rozdíl v progresu.</p>
+            Přidáš extra zátěž nebo doladíš mezikrok. Nově máme variantu 8 mm, 10 mm i hybridní verzi s vyměnitelnými šroubovacími tyčemi 8 mm a 10 mm.</p>
 
           <div class="meta-row">
-            <div class="price-tag">1 000 Kč (13 cm / 18 cm) • Vlastní délka +200 Kč</div>
+            <div class="price-tag">1 200 Kč (8 mm / 10 mm) • Hybrid 8+10 mm: 1 300 Kč • Vlastní délka +200 Kč</div>
             <div class="badge">🔥 Best-seller</div>
             <div class="badge">⚖️ Mikro-progrese</div>
             <div class="badge">✅ 8/10 mm</div>
@@ -658,13 +658,15 @@ textarea#message{
           <ul class="specs">
             <li>Nakládací část: 13 cm / 18 cm / vlastní délka (+200 Kč)</li>
             <li>Délka tyče do stroje: 10 cm</li>
-            <li>Průměr: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+            <li>Průměr tyče do stroje: 8 mm nebo 10 mm (dle otvoru ve stroji)</li>
+            <li>Hybridní verze: 1 pin + 2 vyměnitelné šroubovací tyče (8 mm a 10 mm)</li>
             <li>Hmotnost: 450 g</li>
           </ul>
 
           <div class="cta-row">
             <a class="btn" href="#order" onclick="prefillOrder('GymPin 8mm')">Objednat (8mm)</a>
             <a class="btn ghost" href="#order" onclick="prefillOrder('GymPin 10mm')">Objednat (10mm)</a>
+            <a class="btn ghost" href="#order" onclick="prefillOrder('GymPin Hybrid 8/10mm')">Objednat (Hybrid)</a>
           </div>
         </div>
       </div>
@@ -810,9 +812,13 @@ textarea#message{
     <div class="order-wrap" id="order">
       <div class="card">
         <h3>🛒 Objednávka</h3>
-        <p class="help">
+<p class="help">
           Vyplň údaje, vyber produkt a odešli. Ozveme se e-mailem s potvrzením a dopravou.
-          Pokud si nejsi jistý průměrem GymPinu nebo kompatibilitou, napiš to do poznámky.
+          Pokud si nejsi jistý průměrem GymPinu, kompatibilitou nebo tím, jestli zvolit 8 mm, 10 mm nebo hybrid, napiš to do poznámky.
+        </p>
+
+        <p class="fineprint">
+          Tip: Pokud objednáváš GymPin, zkontroluj průměr otvoru ve stroji (8 mm / 10 mm), případně zvol hybridní variantu.
         </p>
 
         <p class="fineprint">
@@ -838,10 +844,11 @@ textarea#message{
 
           <label for="product">Vybraný produkt</label>
           <select id="product" name="product" required onchange="handleProductChange(event)">
-            <option value="">-- Vyberte produkt --</option>
+<option value="">-- Vyberte produkt --</option>
             <option value="Deadlift Jack">Deadlift Jack</option>
             <option value="GymPin 8mm">GymPin 8mm</option>
             <option value="GymPin 10mm">GymPin 10mm</option>
+            <option value="GymPin Hybrid 8/10mm">GymPin Hybrid 8/10mm</option>
             <option value="FE Bar">FE Bar</option>
             <option value="Grip Handles">Grip Handles</option>
           </select>
@@ -954,12 +961,12 @@ textarea#message{
       return;
     }
 
-    if (value === "GymPin 8mm") {
+if (value === "GymPin 8mm") {
       variantGroup.classList.remove("hidden");
       variantSelectEl.innerHTML = `
         <option value="">-- Vyber délku --</option>
-        <option value="8mm - 13 cm (1000 Kč)">8mm – 13 cm (1 000 Kč)</option>
-        <option value="8mm - 18 cm (1000 Kč)">8mm – 18 cm (1 000 Kč)</option>
+        <option value="8mm - 13 cm (1200 Kč)">8mm – 13 cm (1 200 Kč)</option>
+        <option value="8mm - 18 cm (1200 Kč)">8mm – 18 cm (1 200 Kč)</option>
         <option value="8mm - Vlastní délka (+200 Kč)">8mm – Vlastní délka (+200 Kč)</option>
       `;
       previewSrc = "images/gympin1.webp";
@@ -969,9 +976,20 @@ textarea#message{
       variantGroup.classList.remove("hidden");
       variantSelectEl.innerHTML = `
         <option value="">-- Vyber délku --</option>
-        <option value="10mm - 13 cm (1000 Kč)">10mm – 13 cm (1 000 Kč)</option>
-        <option value="10mm - 18 cm (1000 Kč)">10mm – 18 cm (1 000 Kč)</option>
+        <option value="10mm - 13 cm (1200 Kč)">10mm – 13 cm (1 200 Kč)</option>
+        <option value="10mm - 18 cm (1200 Kč)">10mm – 18 cm (1 200 Kč)</option>
         <option value="10mm - Vlastní délka (+200 Kč)">10mm – Vlastní délka (+200 Kč)</option>
+      `;
+      previewSrc = "images/gympin1.webp";
+      toggleCustomLength();
+
+    } else if (value === "GymPin Hybrid 8/10mm") {
+      variantGroup.classList.remove("hidden");
+      variantSelectEl.innerHTML = `
+        <option value="">-- Vyber délku --</option>
+        <option value="Hybrid 8/10mm - 13 cm (1300 Kč)">Hybrid 8/10 mm – 13 cm (1 300 Kč)</option>
+        <option value="Hybrid 8/10mm - 18 cm (1300 Kč)">Hybrid 8/10 mm – 18 cm (1 300 Kč)</option>
+        <option value="Hybrid 8/10mm - Vlastní délka (+200 Kč)">Hybrid 8/10 mm – Vlastní délka (+200 Kč)</option>
       `;
       previewSrc = "images/gympin1.webp";
       toggleCustomLength();
@@ -1004,16 +1022,17 @@ textarea#message{
   };
 
   // Validace
-  window.validateForm = function() {
+window.validateForm = function() {
     const product = $("product")?.value || "";
     const variant = $("variant")?.value || "";
+    const gymPinProducts = ["GymPin 8mm", "GymPin 10mm", "GymPin Hybrid 8/10mm"];
 
-    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && !variant) {
+    if (gymPinProducts.includes(product) && !variant) {
       alert("Prosím vyberte variantu délky GymPinu.");
       return false;
     }
 
-    if ((product === "GymPin 8mm" || product === "GymPin 10mm") && variant.includes("Vlastní délka")) {
+    if (gymPinProducts.includes(product) && variant.includes("Vlastní délka")) {
       const len = $("customLength")?.value || "";
       if (!len) {
         alert("Prosím vyplň vlastní délku (cm).");
