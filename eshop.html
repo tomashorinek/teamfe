@@ -505,6 +505,60 @@ textarea#message{
     }
     .fineprint a{color: var(--muted);}
 
+.price-summary{
+  margin-top:14px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding:14px;
+}
+
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  padding:6px 0;
+  color: var(--muted);
+}
+
+.summary-line strong{
+  color: var(--text);
+  text-align:right;
+}
+
+.summary-line.total{
+  margin-top:6px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-weight:900;
+}
+
+.summary-line.total strong{
+  color:#00cc66;
+  font-size:1.05rem;
+}
+
+.cart-box{
+  margin-top:14px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding:14px;
+}
+
+.cart-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.cart-head h4{
+  margin:0;
+  font-family:'
+
     /* ========= CONFIRMATION ========= */
     #form-confirmation{
       text-align:center;
@@ -843,7 +897,7 @@ textarea#message{
           </div>
 
           <label for="product">Vybraný produkt</label>
-          <select id="product" name="product" required onchange="handleProductChange(event)">
+          <select id="product" name="product" onchange="handleProductChange(event)">
 <option value="">-- Vyberte produkt --</option>
             <option value="Deadlift Jack">Deadlift Jack</option>
             <option value="GymPin 8mm">GymPin 8mm</option>
@@ -863,11 +917,43 @@ textarea#message{
           <label for="customLength">Vlastní délka nakládací části (cm)</label>
           <input type="number" id="customLength" name="customLength" min="5" max="50" placeholder="Např. 22">
           </div>
+<input type="hidden" id="cartSummary" name="cartSummary">
+<input type="hidden" id="finalTotal" name="finalTotal">
 
+<div class="price-summary">
+  <div class="summary-line">
+    <span>Aktuálně vybráno:</span>
+    <strong id="selected-product-name">Nic nevybráno</strong>
+  </div>
+  <div class="summary-line">
+    <span>Cena za kus:</span>
+    <strong id="selected-product-price">0 Kč</strong>
+  </div>
+  <div class="summary-line">
+    <span>Počet kusů:</span>
+    <strong id="selected-qty">0 ks</strong>
+  </div>
+  <div class="summary-line total">
+    <span>Aktuální položka celkem:</span>
+    <strong id="selected-total-price">0 Kč</strong>
+  </div>
+</div>
+
+<div class="cart-box">
+  <div class="cart-head">
+    <h4>Košík</h4>
+    <strong id="cart-total-price">0 Kč</strong>
+  </div>
+  <div id="cart-items" class="cart-empty">Košík je zatím prázdný.</div>
+</div>
+
+<div class="cta-row" style="margin-top:14px;">
+  <button class="btn ghost" type="button" onclick="addCurrentToCart()">Přidat do košíku</button>
+</div>
           <div class="row">
             <div>
               <label for="quantity">Počet kusů</label>
-              <input type="number" id="quantity" name="quantity" min="1" required>
+              <input type="number" id="quantity" name="quantity" min="1" value="1">
             </div>
             <div>
              <label for="message">Poznámka (volitelné)</label>
